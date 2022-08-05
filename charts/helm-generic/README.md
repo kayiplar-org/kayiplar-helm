@@ -1,12 +1,9 @@
 # Arvato Systems Generico Helm Chart
 
-> One Chart to rule them all
 
-A generic Helm chart for Arvato Systems application Deployments. With this chart you can role out deployment, service, ingress and many more manifest files at once.
+A generic Helm chart for application Deployments. With this chart you can role out deployment, service, ingress and many more manifest files at once.
 
 For examples and other tips please have look at the default `values.yaml`.
-
-GIT Repository: https://smgit.arvato-systems.de/projects/CSVC/repos/helm-asys/browse
 
 ## The following features are currently supported:
 - Service + Ingress object creation (with TLS)
