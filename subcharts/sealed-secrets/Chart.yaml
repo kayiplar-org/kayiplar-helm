@@ -7,4 +7,4 @@ description: Helm subchart for the sealed-secrets controller.
 dependencies:
 - name: Bitnami
   version: 2.6.0
-  repository: https://bitnami-labs.github.io/sealed-secrets
+  repository: https://github.com/bitnami-labs/sealed-secrets/helm/sealed-secrets
