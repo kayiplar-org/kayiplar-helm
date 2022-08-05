@@ -20,6 +20,8 @@ version: 0.0.1
 sources:
   - https://github.com/kayiplar-org/kayiplar-helm
 
+  
+
 maintainers:
   - name: Salih Kayiplar
     email: salih.kayiplar@gmail.com
