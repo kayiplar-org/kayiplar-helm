@@ -1,6 +1,6 @@
 apiVersion: v2
-name: asys-generico
-description: One Chart to rule them all - A generic(o) Helm chart for arvato systems application deployments.
+name: kayiplar-generic
+description: A generic Helm chart for deployments.
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -15,15 +15,12 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.6.0
-
-home: https://argos-hub.ws.arvato-systems.de/harbor/projects/7/helm-charts/asys-generico/versions
-icon: https://service-cockpit.sdms.arvato-systems.de/favicon.ico
+version: 0.0.1
 
 sources:
-  - https://smgit.arvato-systems.de/projects/CSVC/repos/helm-asys/browse
+  - https://github.com/kayiplar-org/kayiplar-helm
 
 maintainers:
-  - name: Tim Menze
-    email: tim.menze@bertelsmann.de
-    url: https://github.com/TimMnz09
+  - name: Salih Kayiplar
+    email: salih.kayiplar@gmail.com
+    url: https://github.com/kayiplar
