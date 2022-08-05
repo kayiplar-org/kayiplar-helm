@@ -1,0 +1,17 @@
+{{- define "envFromRef.tpl" -}}
+{{- if or (or (.Values.vars) (.Values.secretEnabled)) .Values.secretName }}
+envFrom: &envFrom
+{{- if .Values.vars }}
+  - configMapRef:
+      name: {{ template "robustName" .Release.Name }}
+{{- end }}
+{{- if .Values.secretEnabled }}
+  - secretRef:
+      name: {{ template "robustName" .Release.Name }}
+{{- end }}
+{{- if .Values.secretName }}
+  - secretRef:
+      name: {{ .Values.secretName }}
+{{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,19 @@
+{{- define "volumeMountsRef.tpl" -}}
+{{- if or (or (.Values.volumes) .Values.fileSecrets) .Values.extraVolumeMounts}}
+volumeMounts: &volumeMounts
+{{- range .Values.volumes }}
+  - name: {{ .name }}
+    mountPath: {{ .mountPath }}
+{{- end }}
+{{- range .Values.fileSecrets }}
+  - name: {{ .name }}
+    mountPath: {{ .mountPath }}
+    subPath: {{ .subPath }}
+    readOnly: true
+{{- end }}
+
+{{- if .Values.extraVolumeMounts }}
+{{- toYaml .Values.extraVolumeMounts | nindent 2 }}
+{{- end }}
+{{- end }}
+{{- end }}

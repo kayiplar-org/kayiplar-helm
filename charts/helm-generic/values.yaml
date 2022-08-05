@@ -1,0 +1,173 @@
+## Default values for chart.
+## This is a YAML-formatted file.
+## Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: argos-hub.ws.arvato-systems.de/proxy-docker/library/nginx
+  ## Should be set to IfNotPresent, if you are running a final image version
+  pullPolicy: Always
+  ## Overrides the image tag
+  tag: latest
+
+imagePullSecrets: []
+# imagePullSecrets:
+#   - name: hub-argos-jenkins
+nameOverride: ""
+fullnameOverride: ""
+
+## Specifies port of container, default for openliberty containers is 9080
+containerPort: 80
+
+## Use vars to create a configMap, that will be referenced as environment variables within your containers
+#vars:
+#  param: Hello
+## You can also create environment variables from existing kubernetes secret object.
+## By default, Generico will look for a secret named exactly as your release
+secretEnabled: false
+# secretName: my-custom-secret
+## Use extraEnv for defining additional environment secrets. Can be used for example to access a secret key in an existing secret
+#extraEnv:
+#  - name: PASSWORD
+#    valueFrom:
+#      secretKeyRef:
+#        name: mysecret.credentials
+#        key: password
+
+serviceAccount:
+  ## Specifies whether a service account should be created
+  create: true
+  ## Annotations to add to the service account
+  annotations: {}
+  ## The name of the service account to use.
+  ## If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+## use strategy to define a specific deployment strategy for your deployment
+#strategy:
+#  rollingUpdate:
+#    maxSurge: 1
+#    maxUnavailable: 1
+#  type: RollingUpdate
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+## currently, only one ingress with one specific host is supported
+ingress:
+  enabled: false
+  annotations: {}
+  host: chart-example.local
+  path: /
+  tlsEnabled: false
+  ## set to true, if the ingress default certificate should be used
+  useDefaultCertificate: false
+## You can also reference to a specific secret with a TLS certificate
+#  secretName: my-own-tls-secret
+
+
+## Add volume mounts to your application
+## for creating a pvc (persistent volume claim) use following
+# volumes:
+#  - name: data
+#    mountPath: /data
+#    size: 10Gi
+#    storageClass: default
+## use existing pvc
+# volumes:
+#  - name: existing-data
+#    mountPath: /existing-data
+#    existingClaim: existing-pvc
+## If you want to create a volume from an existing secret use:
+# fileSecrets:
+#  - name: account-key
+#    mountPath: /account-key
+#    subPath: application.json
+#    secretName: my-app-existing-secret
+#    mode: "0644"
+
+## For more flexability you can define extra volumes and extra mounts
+#extraVolumes:
+#  - configMap:
+#      defaultMode: 420
+#      name: cm-data
+#    name: cm-data
+#extraVolumeMounts:
+#  - name: cm-data
+#    subPath: nginx.conf
+#    mountPath: /etc/nginx/nginx.conf
+#    readOnly: true
+#  - name: cm-data
+#    subPath: config.js
+#    mountPath: /usr/share/nginx/html/config.js
+#    readOnly: true
+#  - name: cm-data
+#    mountPath: /cm-data
+#    configMap:
+#      name: cm-data
+
+## Handler for container lifecycle events
+## https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
+#podLifecycle:
+#  postStart:
+#    exec:
+#      command: [ "/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message" ]
+
+## The resources should be adjust to your specific needs!
+## For application running openliberty the following has been established as good practice:
+resources:
+  limits:
+    cpu: 400m
+    memory: 256Mi
+  requests:
+    cpu: 50m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+probe:
+  enabled: false
+  path: "/"
+  settings:
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+## Before you use a liveness probe: https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html
+livenessProbe:
+  enabled: false
+  path: "/"
+  settings:
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    successThreshold: 1
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

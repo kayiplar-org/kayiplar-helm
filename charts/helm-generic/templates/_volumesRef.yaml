@@ -1,0 +1,23 @@
+{{- define "volumesRef.tpl" -}}
+{{- if or (or (.Values.volumes) .Values.fileSecrets) .Values.extraVolumes }}
+volumes:
+  {{- range .Values.volumes }}
+  - name: {{ .name }}
+    persistentVolumeClaim:
+      {{- if .existingClaim }}
+      claimName: {{ .existingClaim }}
+      {{ else }}
+      claimName: {{ printf "%s-%s" $.Release.Name .name }}
+      {{- end }}
+  {{- end }}
+  {{- range .Values.fileSecrets }}
+  - name: {{ .name }}
+    secret:
+      secretName: {{ .secretName | default (printf "%s-%s" $.Release.Name .name) }}
+      defaultMode: {{ .mode | default "0400"}}
+  {{- end }}
+  {{- if .Values.extraVolumes }}
+  {{- toYaml .Values.extraVolumes | nindent 2 }}
+  {{- end }}
+{{- end }}
+{{- end -}}
