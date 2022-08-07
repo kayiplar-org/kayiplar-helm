@@ -2,6 +2,21 @@ apiVersion: v1
 entries:
   kayiplar-generic:
   - apiVersion: v2
+    created: "2022-08-07T13:26:59.278182519Z"
+    description: A generic Helm chart for deployments.
+    digest: 6e15927b70cab3f87bb36f8aae674b1d1c1d40288b6d4b770bce82debf0d3647
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: kayiplar-generic
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/kayiplar-generic-0.0.6/kayiplar-generic-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
     created: "2022-08-06T13:06:55.816859939Z"
     description: A generic Helm chart for deployments.
     digest: e74d50877173e24e472a5bc9d6e709d923f845ecee63c8feae46b70e7f2577b5
