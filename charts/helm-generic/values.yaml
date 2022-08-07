@@ -17,6 +17,8 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+namespace: default
+
 ## Specifies port of container, default for openliberty containers is 9080
 containerPort: 80
 
@@ -182,6 +184,8 @@ affinity: {}
 #      username: AgA+35VjkkCENwdpmlfsc+6+wnK0n1pPiOylzVdFPiSrDwdZkDnMPLggpjrYltGfPepE9bY1wTpBtADyyqkrDjMFBlrHSOIrOkGa7iZ07LvZgsPimZ36CoiQNzj5Qbjdrwr9cq1HuE0azcrxTVuwgJv4ntSi0wT3Zu+L/oL4K2l/qF6Iua2tqiqXdn6tEzDaZY0iTbISXSjwg1oQE/gQ80WWl8Eot9MR0hMLZ4W6a6ol9dQCeOgRw+R0tcgTs6BSDTj1AKOBBHX5hzi1mhbp1JIhfgPH8zWWpA8SGThbu+rL7JPHtThnBYmPf5ZXbrHfRK+52/y58ysTXzjUfq9CGXPXfxRjlggAwWyPhdIl+7rPJLm9yEjVdrQggYVeCdjWF60X27GDOQE8alkLDRv8Op91mmiHDRG8lRPn7WeK/eHz4ldhdRoUS+9/PCBm8L4lRKa3KV82V5IFyabQL+atTpvinv7FrduZz6Ol05yAF3Ezf7/LV5RSpKSZHRCuMygQ6wLyt1Cejy+K7U4uYnNIkDKcdOg1Jpm5exmMWTXWw9UpgtJCpv4s4jeQdh5UK9z1GqpK5VjHdyvnw413s+22EKq4Bo7bN1jubU03NfxALAksuCM0OiGR0YBTNHLZORU3IknurHTgU3HCqNfna7V/347E/bffWPF75y4wzKg93qgLu0ifT+uHkuB0zZjHCmD6u0FqPkDy3RP9cC3GImN/ng==
 #    labels:
 #      argocd.argoproj.io/secret-type: repository
+#    annotations:
+#      replicator.v1.mittwald.de/replicate-to: "my-ns-1,namespace-[0-9]*"
 #  - name: docker-login
 #    namespace: docker
 #    encryptedData:
