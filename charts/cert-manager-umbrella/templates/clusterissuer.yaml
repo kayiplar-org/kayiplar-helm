@@ -1,21 +1,21 @@
 ---
-{{- with .Values.clusterissuer }}
+{{- with .Values.issuer }}
 apiVersion: cert-manager.io/v1 #cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
-  name: {{.Values.clusterissuer.name}}
+  name: {{ .Values.issuer.name }}
 spec:
   acme:
     # You must replace this email address with your own.
     # Let's Encrypt will use this to contact you about expiring
     # certificates, and issues related to your account.
-    email: {{.Values.clusterissuer.spec.acme.email}}
-    server: {{.Values.clusterissuer.spec.acme.server}}
+    email: {{ .Values.issuer.spec.acme.email }}
+    server: {{ .Values.issuer.spec.acme.server }}
     privateKeySecretRef:
       # Secret resource that will be used to store the account's private key.
-      name: {{.Values.clusterissuer.spec.acme.privateKeySecretRef.name}}
+      name: {{ .Values.issuer.spec.acme.privateKeySecretRef.name }}
     # Add a single challenge solver, HTTP01 using nginx
-    {{- with .Values.clusterissuer.spec.solvers }}
+    {{- with .Values.issuer.spec.solvers }}
     solvers:
     {{- toYaml . | nindent 6 }}
     {{- end }}
