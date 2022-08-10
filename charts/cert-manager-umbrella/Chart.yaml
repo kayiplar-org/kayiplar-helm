@@ -2,11 +2,14 @@ apiVersion: v2
 name: cert-manager-umbrella
 description: A Helm chart with cert-manager as subchart
 type: application
-version: 0.1.0
-appVersion: "0.1.0"
+version: 0.1.1
 dependencies:
   - name: cert-manager
     version: v1.9.1
     repository: https://charts.jetstack.io
     alias: cert-manager
     condition: cert-manager.enabled
+  - name: cert-manager-webhook-hetzner
+    version: 1.1.0
+    repository: https://vadimkim.github.io/cert-manager-webhook-hetzner
+    alias: cert-manager-webhook-hetzner

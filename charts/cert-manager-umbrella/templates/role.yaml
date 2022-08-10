@@ -7,3 +7,16 @@ rules:
 - apiGroups: [""]
   resources: ["*"]
   verbs: ["*"]
+
+---
+{{- if .Values.hetzner-webhook.enable }}
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ namespace: cert-manager
+ name: cert-manager-webhook-hetzner
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+{{- end}}
