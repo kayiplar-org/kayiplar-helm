@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ name: cert-manager-allow-kube-sytem-rolebinding
+ namespace: kube-system
+subjects:
+- kind: ServiceAccount
+  name: cert-manager
+  namespace: cert-manager
+roleRef:
+ kind: Role
+ name: cert-manager-allow-kube-sytem-role
+ apiGroup: rbac.authorization.k8s.io

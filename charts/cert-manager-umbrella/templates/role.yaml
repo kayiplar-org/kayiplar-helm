@@ -1,0 +1,9 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+ namespace: kube-system
+ name: cert-manager-allow-kube-sytem-role
+rules:
+- apiGroups: [""]
+  resources: ["*"]
+  verbs: ["*"]
