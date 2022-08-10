@@ -21,7 +21,7 @@ cert-manager:
 #          apiUrl: https://dns.hetzner.com/api/v1
 
 
-hetzner-webhook:
+hetznerwebhook:
   enable: false
 
 # for hetzner api key

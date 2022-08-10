@@ -7,9 +7,8 @@ rules:
 - apiGroups: [""]
   resources: ["*"]
   verbs: ["*"]
-
 ---
-{{- if .Values.hetzner-webhook.enable }}
+{{- if .Values.hetznerwebhook.enable }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
