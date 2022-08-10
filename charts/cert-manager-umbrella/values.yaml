@@ -2,8 +2,6 @@ cert-manager:
   installCRDs: true
   namespace: cert-manager
 
-namespace: cert-manager
-
 # Add a cluster issuer. Example for hetzner
 #clusterissuer:
 #  email: info@default.com
