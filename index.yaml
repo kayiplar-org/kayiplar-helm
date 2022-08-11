@@ -2,6 +2,25 @@ apiVersion: v1
 entries:
   cert-manager-umbrella:
   - apiVersion: v2
+    created: "2022-08-11T15:29:59.528791239Z"
+    dependencies:
+    - alias: cert-manager
+      condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.9.1
+    - alias: cert-manager-webhook-hetzner
+      name: cert-manager-webhook-hetzner
+      repository: https://vadimkim.github.io/cert-manager-webhook-hetzner
+      version: 1.1.0
+    description: A Helm chart with cert-manager as subchart
+    digest: 50ebabf436d047cdacc51a57481ef15559784aafbdb7e2100646cc9144750ff0
+    name: cert-manager-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/cert-manager-umbrella-0.1.9/cert-manager-umbrella-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
     created: "2022-08-11T15:26:25.039532504Z"
     dependencies:
     - alias: cert-manager
