@@ -2,7 +2,7 @@ apiVersion: v2
 name: cert-manager-umbrella
 description: A Helm chart with cert-manager as subchart
 type: application
-version: 0.1.8
+version: 0.1.9
 dependencies:
   - name: cert-manager
     version: v1.9.1
