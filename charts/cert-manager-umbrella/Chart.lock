@@ -1,0 +1,9 @@
+dependencies:
+- name: cert-manager
+  repository: https://charts.jetstack.io
+  version: v1.9.1
+- name: cert-manager-webhook-hetzner
+  repository: https://vadimkim.github.io/cert-manager-webhook-hetzner
+  version: 1.1.0
+digest: sha256:4b0ab0cf0f7d2e19cb35a1daaf665e2b48a04bbe0d85c39a965c300a608fb6dc
+generated: "2022-08-11T17:15:21.368075+02:00"
