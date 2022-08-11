@@ -1,23 +1,29 @@
-{{- with .Values.issuer }}
+{{- if .Values.hetznerwebhook.claiv.enable }}
 ---
 apiVersion: cert-manager.io/v1 #cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
-  name: cert-manager-issuer
+  name: prod-acme-cluster-issuer-claiv-de
 spec:
   acme:
     # You must replace this email address with your own.
     # Let's Encrypt will use this to contact you about expiring
     # certificates, and issues related to your account.
-    email: {{ .Values.issuer.email }}
-    server: {{ .Values.issuer.server }}
+    email: le@claiv.de
+    server: https://acme-v02.api.letsencrypt.org/directory #https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       # Secret resource that will be used to store the account's private key.
-      name: cert-manager-issuer-key
+      name: prod-acme-cluster-issuer-claiv-de-key
     # Add a single challenge solver, HTTP01 using nginx
-    {{- with .Values.issuer.solvers }}
     solvers:
-    {{- toYaml . | nindent 6 }}
-    {{- end }}
+    - dns01:
+        webhook:
+          groupName: acme.claiv.de
+          solverName: hetzner
+          config:
+            secretName: hetzner-api-key
+            zoneName: claiv.de
+            apiUrl: https://dns.hetzner.com/api/v1
+
 
 {{- end }}
