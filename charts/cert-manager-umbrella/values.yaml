@@ -2,32 +2,53 @@ cert-manager:
   installCRDs: true
   namespace: cert-manager
 
+cert-manager-webhook-hetzner:
+  groupName: acme.claiv.de
+
 # Add a cluster issuer. Example for hetzner
-#clusterissuer:
-#  email: info@default.com
-#  server: default.de
-#  privateKeySecretRef:
-#    # Secret resource that will be used to store the account's private key.
-#    name: default-prod-acme-key
-#    # Add a single challenge solver, HTTP01 using nginx
-#  solvers:
-#  - dns01:
-#      webhook:
-#        groupName: acme.default.de
-#        solverName: hetzner
-#        config:
-#          secretName: hetzner-api-key
-#          zoneName: default.de
-#          apiUrl: https://dns.hetzner.com/api/v1
 
-
+# example for claiv.de
 hetznerwebhook:
-  enable: false
+  enable: true
+
 
 # for hetzner api key
-#  secrets:
-#    - name: hetzner-api-key
-#      namespace: cert-manager
-#      encryptedData:
-#        api-key: AgAetfD4uAX3efVNB5IXNIi/WhOAnezbpCaLRAF6Q0n98gJtDfXCuB9KgDWTiqAQ00J0a7Lo7vLvgvrTKLByHCzvRE5TtXKHFauwhAiFcbkNJqFFNddpczm+4X/EzjDCJvAvz7Hg71Ja+1IzVx/BLK5j8N9TxRtBy71ThTJqU6KJs5Co1tl2SuzIfAFqJKVuH8bogZmcopfklwIP5EoWyccZRuLGtfS7q8EKbrqN3PAwbpsCO8c132HALYvt70k/JZHzlRAM0wcvE5OQKfyTYhif6FYzczjfuzrdCTGom4mXXrGlj+UysBQMnukyeXtOPwrq+oSibqsz8SBd0+4K4Ro7rA/uEXP0ELA8qEaGYNR19zeBDgxM513B9bfCOAoH/5/Dps9O5U3TLIzrLLfeimsFuHfd3noXMAU6/KnzXWFveYN3mU4ysxIrFfBS4XJDoq1sLu5wMroFBxtZx1BNZ/uv+oiAlFmN2q8f8Kk2Swi4cf9PEIkcMMtk8mFAOFSPIx9xfbYKtX3V1Fe8nlQoJoDsjzIcLrCdOCNWl7mcH3m12Xdom0XqDsgQcPMJQwyu/W5iFncHawBAEs7max11VyiwCCY7vvapOpkM3WbNQ44eaM5/y62zG3S7TCGNWdotjvym9P4AcecHLlrweY+KAvEFjAcTDLbe2abJiRGOtWNHhjRtvPYcZTzNbZqhgmnzgzsUDn1RZHVb1i12DM4RIg19AfUmmicVNmh89QmHlWre9A==
-#      type: Opaque
+secrets:
+  - name: hetzner-api-key
+    namespace: cert-manager
+    encryptedData:
+      api-key: AgAetfD4uAX3efVNB5IXNIi/WhOAnezbpCaLRAF6Q0n98gJtDfXCuB9KgDWTiqAQ00J0a7Lo7vLvgvrTKLByHCzvRE5TtXKHFauwhAiFcbkNJqFFNddpczm+4X/EzjDCJvAvz7Hg71Ja+1IzVx/BLK5j8N9TxRtBy71ThTJqU6KJs5Co1tl2SuzIfAFqJKVuH8bogZmcopfklwIP5EoWyccZRuLGtfS7q8EKbrqN3PAwbpsCO8c132HALYvt70k/JZHzlRAM0wcvE5OQKfyTYhif6FYzczjfuzrdCTGom4mXXrGlj+UysBQMnukyeXtOPwrq+oSibqsz8SBd0+4K4Ro7rA/uEXP0ELA8qEaGYNR19zeBDgxM513B9bfCOAoH/5/Dps9O5U3TLIzrLLfeimsFuHfd3noXMAU6/KnzXWFveYN3mU4ysxIrFfBS4XJDoq1sLu5wMroFBxtZx1BNZ/uv+oiAlFmN2q8f8Kk2Swi4cf9PEIkcMMtk8mFAOFSPIx9xfbYKtX3V1Fe8nlQoJoDsjzIcLrCdOCNWl7mcH3m12Xdom0XqDsgQcPMJQwyu/W5iFncHawBAEs7max11VyiwCCY7vvapOpkM3WbNQ44eaM5/y62zG3S7TCGNWdotjvym9P4AcecHLlrweY+KAvEFjAcTDLbe2abJiRGOtWNHhjRtvPYcZTzNbZqhgmnzgzsUDn1RZHVb1i12DM4RIg19AfUmmicVNmh89QmHlWre9A==
+    type: Opaque
+
+
+clusterissuer:
+  config:
+    spec:
+      acme:
+        # You must replace this email address with your own.
+        # Let's Encrypt will use this to contact you about expiring
+        # certificates, and issues related to your account.
+        email: le@claiv.de
+        server: https://acme-v02.api.letsencrypt.org/directory #https://acme-staging-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+          # Secret resource that will be used to store the account's private key.
+          name: prod-acme-cluster-issuer-claiv-de-key
+        # Add a single challenge solver, HTTP01 using nginx
+        solvers:
+        - dns01:
+            webhook:
+              groupName: acme.claiv.de
+              solverName: hetzner
+              config:
+                secretName: hetzner-api-key
+                zoneName: claiv.de
+                apiUrl: https://dns.hetzner.com/api/v1
+
+certificate:
+  name: auth-ctl-claiv-de-tls-certs 
+  namespace: kube-system
+  organization: 
+    - Claivolution GmbH
+  dnsNames: 
+    - 'auth.CC_CLUSTER_SUBDOMAIN'
+  clusterissuer: prod-acme-cluster-issuer-claiv-de

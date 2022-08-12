@@ -1,0 +1,32 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: allow-all-origin
+  namespace: kube-system
+spec:
+  headers:
+    accessControlAllowOriginList: 
+      - "*"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-forward-auth
+  namespace: kube-system
+spec:
+  forwardAuth:
+    address: http://traefik-forward-auth:4181
+    authResponseHeaders:
+      - X-Forwarded-User
+---
+# Redirect to https
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-to-https
+  namespace: kube-system
+spec:
+  redirectScheme:
+    scheme: https
+    port: "443"
+    permanent: true

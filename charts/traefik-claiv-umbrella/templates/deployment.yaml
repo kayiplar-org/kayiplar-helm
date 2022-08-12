@@ -1,0 +1,23 @@
+#
+# Traefik Forward Auth Deployment
+#
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik-forward-auth
+  namespace: kube-system
+  labels:
+    app: traefik-forward-auth
+spec:
+  replicas: {{ .Values.forwardauth.deployment.replicas }}
+  selector:
+    matchLabels:
+      app: traefik-forward-auth
+  strategy:
+    type: {{ .Values.forwardauth.deployment.strategy }}
+  template:
+    metadata:
+      labels:
+        app: traefik-forward-auth
+    {{ toYaml .Values.forwardauth.deployment }}
+

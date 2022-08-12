@@ -1,0 +1,24 @@
+---
+{{- if .Values.forwardauth.ingressRoutes.claiv.enable }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-forward-auth-ingressroute-websecure
+  namespace: kube-system
+  labels:
+    app: traefik
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`auth.CC_CLUSTER_SUBDOMAIN`)
+    kind: Rule
+    services:
+    - name: traefik-forward-auth
+      namespace: kube-system
+      port: 4181
+  tls:
+    secretName: auth-ctl-claiv-de-tls-certs
+    domains: 
+    - main: auth.CC_CLUSTER_SUBDOMAIN
+{{- end}}

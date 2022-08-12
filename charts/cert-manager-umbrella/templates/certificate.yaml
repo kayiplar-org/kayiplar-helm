@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name:  {{ .Values.certificate.name }}
+  namespace: {{ .Values.certificate.namespace }}
+spec:
+  # Secret names are always required.
+  secretName:  {{ .Values.certificate.name }}
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  organization:
+    {{ toYaml .Values.certificate.organization }}
+  # At least one of a DNS Name, URI, or IP address is required.
+  dnsNames: 
+    {{ toYaml .Values.certificate.dnsNames }}
+  # Issuer references are always required.
+  issuerRef:
+    name: {{ .Values.certificate.clusterissuer }}
+    # We can reference ClusterIssuers by changing the kind here.
+    # The default value is Issuer (i.e. a locally namespaced Issuer)
+    kind: ClusterIssuer

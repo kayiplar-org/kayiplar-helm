@@ -1,0 +1,101 @@
+---
+{{- if .Values.forwardauth.ingressRoutes.claiv.enable }}
+#=========================================
+# HTTP Section
+#=========================================
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: qi-annotator-ingressroute-web
+  namespace: kube-system
+spec:
+  entryPoints:
+    - web
+  routes:
+  #=================================================================================
+  # QiAnnotator Project Page
+  #
+  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`)
+    kind: Rule
+    services:
+    - name: qiadocs
+      namespace: qia-cloud
+      port: 3000
+    middlewares:
+    - name: redirect-to-https
+    - name: traefik-forward-auth
+  #
+  #
+  #=================================================================================
+  # qia_components java script components css and fonts
+  #    
+  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/qia-components`)
+    kind: Rule
+    services:
+    - name: qiac
+      namespace: qia-cloud
+      port: 3031
+    middlewares:
+    - name: traefik-forward-auth
+    - name: redirect-to-https
+  #
+  #
+  #=================================================================================
+  # qia_components provided image assets
+  #    
+  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/img`)
+    kind: Rule
+    services:
+    - name: qiac
+      namespace: qia-cloud
+      port: 3031
+    middlewares:
+    - name: traefik-forward-auth
+    - name: redirect-to-https    
+  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/img`) && Method(`HEAD`)
+    kind: Rule
+    services:
+    - name: qiac
+      namespace: qia-cloud
+      port: 3031
+    middlewares:  
+    - name: redirect-to-https
+  #  
+  #
+  #=================================================================================
+  # Backend Service to provide multidimensional images (zarr) format
+  #
+  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/raw_data`)
+    kind: Rule
+    services:
+    - name: clarence
+      namespace: qia-cloud
+      port: 8080
+    middlewares:
+    - name: traefik-forward-auth
+    - name: redirect-to-https
+  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/raw_data`) && Method(`HEAD`)
+    kind: Rule
+    services:
+    - name: clarence
+      namespace: qia-cloud
+      port: 8080
+    middlewares:
+    - name: redirect-to-https
+  #
+  #
+  #=================================================================================
+  # Jupyter HUB
+  #
+  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/hub`)
+    kind: Rule
+    services:
+    - name: proxy-public
+      namespace: jhub
+      port: 80
+    middlewares:
+    - name: traefik-forward-auth
+    - name: redirect-to-https
+  #
+  #---------------------------------------------------------------------------------  
+{{- end}}

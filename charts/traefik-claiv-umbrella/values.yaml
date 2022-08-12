@@ -1,0 +1,73 @@
+traefik:
+  providers:
+    kubernetesCRD:
+      enabled: true
+      allowCrossNamespace: true
+
+secrets:
+  - name: traefik-forward-auth-secrets
+    namespace: kube-system
+    encryptedData:
+      traefik-forward-auth-oidc-client-id: AgCS3/mI93p1odWwsPMBkb7rpfGk6maEY1cwvMI1QNYW8DM/p10NlvNm9hu+6NBbpGfsuWfVXp9kc78Vjhaz8HGpahu05CGxA2H0/fc28lIXJXK5bDj1SL5WmLs/F73K+ntG8UmCPGAzVnbmQmdX5rJfEDQVDfnnZPxm415GPk02QEodkQsy7gPkXgjI4nLOMDXvj9dd8LrwA2DtG72pUna9UPaVgTWaeih/ggrkCs+CN3lP9t/VLjqFRHmLZGaXuGr6Fvz1SxQvgB/wSrCPTi1t3BwxzEWZnCjpiHGmeQd9EjfWAN/1tAcgjlLMEsRsgWXc/eYTuaCaX82lGdCqEe8cU+m4w2NwVve6ovjXelf5Y/BgxpPHDr7cQI7HNGthD3KZgVkDQzJvDhGLjBFrP5hy1pzWfHKXC9YJ7giYFv7+8RgFQA0DKP+uizx7kPqGJZxrb8qeuxAyWfDx+jnvG+6berSDJ9p0dCS6zWb+c5dYpf4zlyjWV3Oh1calWZhEK2RwOUu/2LMzmB+TzGXzeLHTTD5xsv7EceQ7MiRt3jRlYaJEH306nbN+XoEiTmJ87dadkkd6TqlHI/D3WfQSnEkKgAY1xfsUJPO6ci3643JPGGZnCS2dpfzWqU/auDSAabMkKCfBkhLglkQkvwOxLZzJ961HlNc3p1qfwyHScGjJTaJ3QyCdx7l4vBdjXOfTMKERcWiqf3AvK8TCdCvxwZcBMJZo
+      traefik-forward-auth-oidc-client-secret: AgAD1WC8Qyx8PqZhxm8BzJrTOgHQosdgD6fp6RsGsq8y497wOIwMVHeiBhahbd14GQXvMC05zhnh4mwrDWMX4FbhYMwCDW390CTiAJEggbvLY45xBQjkh1GkGH2ppfi1+bd8jbRLRLWEnIC3ywmwBbE2jbDRGl8F5ULBCOGfk3kXA/r1WuCOaP9YfwQpDFmgMEyu1MvuE6VYfahF0y3ZelWT0hHi8bnHzklDHKPvqL/PKKrMQxuqU3ufTGtm6VnbwuFPZN1qkniNA2sVgnGNOjN/rst4H6/h4eQj5rTo1Y+RA1AvoNox6vA/yVDkGmyXZCLBON1WuP1erumws1LzcTvDVSL4H9/X+m/20ylNo6NIc4Z43qE9Xvnun0od9uSzYpoJyDUcAJ+nC3H6urdzM3ZWUMHeHT6s/918zzIYfhX9bQ+mIPmFB4F7Zjk47pLfLlpqdtU2ycdgsnscj+BkU3S7ZuXuWZfn4wd1ltEXwLnb7Yg9NBDvskiuSGwpu7WSHAK3QrxuJvGQQ4enkuHwJHPbN2CRKkB9XXhpqMm382GZcxkN33QOCV4mSs9aLRQdXg/3KAoRAte9e1/tMe2+oqv4ueJqtYnblDj2MYvQp/zGcDjcyo8wBR25LAFp8GvUKtVI1zzZsrXQZ7xWja13wpw7O8Jq/v+VRMnzvGb3kx53t3O7posnsGrDqKZh0/9yHESnuHfK50uI3MtUwkf9a9Ar5kmfd1KJitusJ+AXo/IjQlqqECA=
+      traefik-forward-auth-oidc-issuer-url: AgCjK+o3L0MlIbulTJ/wTeZG317hGQHkZ14WRAvyD+uzVPviqIW9Ss6c1ANrGZqUVCkEq3iGJehd0v8GVvS3ASiG4gufgeZO8ZHWJro9Dx16vpcbLwegSZqoWEIn0/jmtHQkskq0+TdXt3GGiKM3aMjrhhj3F8409lN89JOu9YazWKnXDxpfE88vnMJ1WME4BBc12zeUuMhcZ29DgsoKtfEpqW+blvj8kndhiukx0WXtD4oVtaVjoQCRSgM4mqLAwVlC3uGIECUrU8yoE2nTwlbakCA5hQZZ1arq6/CpBoqELuIW99U6+IselwRmdvhIJiUzA3PXN/S1d77ATSDwNsZic2YuWzSJaiT27zfUElPTw0x6/BPW/KWFvTrC8lVDb6mlGm4Z6bbWpMjmvia7aARrlUBKVQgsuvhJD59O98wt1A4zVIsgMs4YOcPOE2DKofowtmirwALmC8aXFaUrZCXtT9xgF6ASQxKtJXAUNeQO55JTygIVvo3fa6tB3ik5jIWHaHC0Ms2N5jDqFrtE01odMKHP8UlMqBtotALKgg+r33RT6c/SGlgP9NVpTAhB2dGt/HW/PZb/6IhGHwdTDMnecXOsBAyg8VTDJ2sBcpIHLMVtLDR4AhQ8MFuBaE0H+7Fq7UyvXfWls8xubMDeFvIGN730UIzUikIrMBmStE0k7ZYALVTobWFsvj73QUERvQe9on3CQ+Y6Dt2TzJg2m9ixkVQUNcS9N/X7KgiGHZr29uXtpwV52ggs7Y4=
+      traefik-forward-auth-secret: AgBrtTtUd0Siu0jyhKoCeky9Z2LVGXGIh8KzfHSr4FKfFgAPl98Tiq55woASBKs+/AJTrbWn1lg3ekbUVytQFhokNLcfq/DiuvWBcM1DgBNkqubu0FPWyszQVav0PQ0FSnA154XuAMir37MhImphkVHSgGqcuExz69MJnIPGhiaGySrMIA4oQ3ivABjPioA8EsKmfjklCkTZnYojduhNGMomk7o4U3qPNiGEdPB5mz2xyVR4FDv8kzd7McL99RIpAXuNvP3OPXZvLSXYyCrP0EuNcpdTs0Ga41RQUSp0yWte4lH+ssWnJCXVeW2+DcPTwZIhr4+IMMfbWJ88vmF8v1u6zXTuAQqRzmRil/CKMb4MvdrXBtKvw7sMAVLfm8PfdEvZFMt0azZw7A6oX9xnUG3/TIEtiazA/e9QrK31sDRlS1BMc/fpLoZGPNpr4k9640gtnTUxf+o9++eOdSn5qRY/1D4GpIASmPaOUax7TX1oRgK0StB2nWaYzR/sAPte/jGn6mWS/rz6gqbuQ/dNH6Ltsk19lx3IHWTlOcqm3uCPYKtDYblu+vq8iSGIPfMUhcOvMaKb5AK3KQ4rMmVeLqNX23CQYOAumEYK88+L/Hl3O25wSVUx3h0IblozqBagixmedGsgENEp/vKgJCW+hb41jXGBaVi0uBhUcGt0oa5B6POU53KOYn+5y3K3/XGuhGPbsPTpZrB1imYnmZLMc1aKRZXSYLHvXjMncU3SriDlZDk2sVfPD0ockCbH1kvdU5i8+Q2kfD5qNqlS7jcYQre3KF+AePe1zl6Tpe68q4UsSLvF187An8irI/NjFb2wh9LO1ELBG6bWzQeDitTdqPxwt18kHuwXp/ydgqg9UQfXLQ==
+    type: Opaque
+    labels:
+      app: traefik-forward-auth
+
+# example forward-auth config
+forwardauth:
+  enable: true
+
+  ## secrets and env vars for deployment. Secrets in this case are oidc secrets
+  deployment:
+    replicas: 1
+    strategy: Recreate
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - image: thomseddon/traefik-forward-auth:2
+        name: traefik-forward-auth
+        ports:
+        - containerPort: 4181
+          protocol: TCP
+        env:
+        # INSECURE_COOKIE is required unless using https entrypoint
+        - name: DOMAIN
+          value: "claiv.de,claivolution.de,qitissue.com"
+        - name: COOKIE_DOMAIN
+          value: "claiv.de"
+        - name: AUTH_HOST
+          value: "https://kc.claiv.de/auth/realms/claiv-auth"
+        - name: DEFAULT_PROVIDER
+          value: oidc
+        - name: INSECURE_COOKIE
+          value: "false"
+        - name: LOG_LEVEL
+          value: "debug"
+        - name: PROVIDERS_OIDC_ISSUER_URL
+          valueFrom:
+            secretKeyRef:
+              name: traefik-forward-auth-secrets
+              key: traefik-forward-auth-oidc-issuer-url
+        - name: PROVIDERS_OIDC_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: traefik-forward-auth-secrets
+              key: traefik-forward-auth-oidc-client-id
+        - name: PROVIDERS_OIDC_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: traefik-forward-auth-secrets
+              key: traefik-forward-auth-oidc-client-secret
+        - name: SECRET
+          valueFrom:
+            secretKeyRef:
+              name: traefik-forward-auth-secrets
+              key: traefik-forward-auth-secret
+
+  ## defined routes
+  ingressRoutes:
+    claiv:
+      enable: true
