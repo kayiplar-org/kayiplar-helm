@@ -2,6 +2,25 @@ apiVersion: v1
 entries:
   cert-manager-umbrella:
   - apiVersion: v2
+    created: "2022-08-12T17:47:45.903214742Z"
+    dependencies:
+    - alias: cert-manager
+      condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.9.1
+    - alias: cert-manager-webhook-hetzner
+      name: cert-manager-webhook-hetzner
+      repository: https://vadimkim.github.io/cert-manager-webhook-hetzner
+      version: 1.1.0
+    description: A Helm chart with cert-manager as subchart
+    digest: e2edafb33021bc0cc8b1d49cdaa4b408c87c8f603a93a6d1236c3653c2575b6e
+    name: cert-manager-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/cert-manager-umbrella-0.1.13/cert-manager-umbrella-0.1.13.tgz
+    version: 0.1.13
+  - apiVersion: v2
     created: "2022-08-11T16:02:22.660167134Z"
     dependencies:
     - alias: cert-manager
@@ -298,4 +317,19 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/kayiplar-generic-0.0.2/kayiplar-generic-0.0.2.tgz
     version: 0.0.2
+  traefik-claiv-umbrella:
+  - apiVersion: v2
+    created: "2022-08-12T17:47:46.085682762Z"
+    dependencies:
+    - alias: traefik
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.0
+    description: A Helm chart with traefik as subchart
+    digest: eb87d37ac52edb1cda2bbddc5fc9c3e94396ff2c79b4c4696dd7967d76d559af
+    name: traefik-claiv-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
+    version: 0.1.0
 generated: "2022-08-05T21:12:18.840974273Z"
