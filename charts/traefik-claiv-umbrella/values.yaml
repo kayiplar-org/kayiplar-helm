@@ -20,53 +20,6 @@ secrets:
 forwardauth:
   enable: true
 
-  ## secrets and env vars for deployment. Secrets in this case are oidc secrets
-  deployment:
-    replicas: 1
-    strategy: Recreate
-    spec:
-      terminationGracePeriodSeconds: 60
-      containers:
-      - image: thomseddon/traefik-forward-auth:2
-        name: traefik-forward-auth
-        ports:
-        - containerPort: 4181
-          protocol: TCP
-        env:
-        # INSECURE_COOKIE is required unless using https entrypoint
-        - name: DOMAIN
-          value: "claiv.de,claivolution.de,qitissue.com"
-        - name: COOKIE_DOMAIN
-          value: "claiv.de"
-        - name: AUTH_HOST
-          value: "https://kc.claiv.de/auth/realms/claiv-auth"
-        - name: DEFAULT_PROVIDER
-          value: oidc
-        - name: INSECURE_COOKIE
-          value: "false"
-        - name: LOG_LEVEL
-          value: "debug"
-        - name: PROVIDERS_OIDC_ISSUER_URL
-          valueFrom:
-            secretKeyRef:
-              name: traefik-forward-auth-secrets
-              key: traefik-forward-auth-oidc-issuer-url
-        - name: PROVIDERS_OIDC_CLIENT_ID
-          valueFrom:
-            secretKeyRef:
-              name: traefik-forward-auth-secrets
-              key: traefik-forward-auth-oidc-client-id
-        - name: PROVIDERS_OIDC_CLIENT_SECRET
-          valueFrom:
-            secretKeyRef:
-              name: traefik-forward-auth-secrets
-              key: traefik-forward-auth-oidc-client-secret
-        - name: SECRET
-          valueFrom:
-            secretKeyRef:
-              name: traefik-forward-auth-secrets
-              key: traefik-forward-auth-secret
-
   ## defined routes
   ingressRoutes:
     claiv:
