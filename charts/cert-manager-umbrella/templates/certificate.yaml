@@ -12,7 +12,7 @@ spec:
   {{ toYaml .Values.certificate.organization }}
   # At least one of a DNS Name, URI, or IP address is required.
   dnsNames: 
-  {{ toYaml .Values.certificate.dnsNames }}
+  {{ toYaml .Values.certificate.dnsNames | squote }}
   # Issuer references are always required.
   issuerRef:
     name: {{ .Values.certificate.clusterissuer }}
