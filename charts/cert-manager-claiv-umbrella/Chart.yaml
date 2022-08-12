@@ -2,7 +2,7 @@ apiVersion: v2
 name: cert-manager-claiv-umbrella
 description: A Helm chart with cert-manager as subchart for Claivolution Applications.
 type: application
-version: 0.1.2
+version: 0.1.21
 dependencies:
   - name: cert-manager
     version: v1.9.1
