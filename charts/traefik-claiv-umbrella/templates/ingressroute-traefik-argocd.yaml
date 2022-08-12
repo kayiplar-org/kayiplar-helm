@@ -1,5 +1,5 @@
 ---
-{{- if .Values.forwardauth.ingressRoutes.claiv.enable }}
+{{- if .Values.forwardauth.ingressRoutes.argocd.enable }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -14,9 +14,9 @@ spec:
   - match: Host(`auth.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/argocd`)
     kind: Rule
     services:
-    - name: traefik-forward-auth
-      namespace: kube-system
-      port: 4181
+    - name: {{ .Values.forwardauth.ingressRoutes.argocd.service.name }}
+      namespace: {{ .Values.forwardauth.ingressRoutes.argocd.service.namespace }}
+      port: {{ .Values.forwardauth.ingressRoutes.argocd.service.port }}
   tls:
     secretName: auth-ctl-claiv-de-tls-certs
     domains: 

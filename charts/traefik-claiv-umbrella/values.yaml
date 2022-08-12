@@ -20,7 +20,13 @@ secrets:
 forwardauth:
   enable: true
 
-  ## defined routes
+  ## pre-defined routes
   ingressRoutes:
     claiv:
       enable: true
+    argocd:
+      enable: true
+      service:
+        name: argocd-claiv-argo-cd-server
+        namespace: argocd
+        port: 80
