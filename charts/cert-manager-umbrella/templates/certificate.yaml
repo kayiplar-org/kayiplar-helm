@@ -9,10 +9,10 @@ spec:
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   organization:
-    {{ toYaml .Values.certificate.organization }}
+  {{ toYaml .Values.certificate.organization }}
   # At least one of a DNS Name, URI, or IP address is required.
   dnsNames: 
-    {{ toYaml .Values.certificate.dnsNames }}
+  {{ toYaml .Values.certificate.dnsNames }}
   # Issuer references are always required.
   issuerRef:
     name: {{ .Values.certificate.clusterissuer }}
