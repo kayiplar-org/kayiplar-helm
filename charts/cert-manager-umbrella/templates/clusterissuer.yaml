@@ -1,5 +1,0 @@
-apiVersion: cert-manager.io/v1 #cert-manager.io/v1alpha2
-kind: ClusterIssuer
-metadata:
-  name: prod-acme-cluster-issuer-claiv-de
-{{ toYaml .Values.clusterissuer.config }}
