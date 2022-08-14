@@ -486,7 +486,37 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/minio-umbrella-0.1.0/minio-umbrella-0.1.0.tgz
     version: 0.1.0
+  qia-apps:
+  - apiVersion: v2
+    created: "2022-08-14T16:30:33.841457513Z"
+    description: A Helm chart for all qia application deployments.
+    digest: ae08fdfb9cb83de2b5ab36db88271757c58086cdc8b2d6fd2f16e23cfe02ee55
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-apps
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-apps-0.0.1/qia-apps-0.0.1.tgz
+    version: 0.0.1
   traefik-claiv-umbrella:
+  - apiVersion: v2
+    created: "2022-08-14T16:30:34.005794632Z"
+    dependencies:
+    - alias: traefik
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.0
+    description: A Helm chart with traefik as subchart for Claivolution Applications.
+    digest: f475dd21ef3077c8e7bc317100d5bb3abad0043ce2c695f7cca7287703698b33
+    name: traefik-claiv-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.2/traefik-claiv-umbrella-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     created: "2022-08-12T20:16:12.420830273Z"
     dependencies:
@@ -515,4 +545,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-14T15:28:54.501321685Z"
+generated: "2022-08-14T16:30:34.00594764Z"
