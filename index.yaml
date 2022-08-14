@@ -517,6 +517,21 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-apps-0.0.1/qia-apps-0.0.1.tgz
     version: 0.0.1
+  qia-argocd-system-install:
+  - apiVersion: v2
+    created: "2022-08-14T18:38:46.190488097Z"
+    dependencies:
+    - alias: argo-cd
+      name: argo-cd
+      repository: https://argoproj.github.io/argo-helm
+      version: 4.10.6
+    description: A Helm chart to install qia system components.
+    digest: 0f1b3f933c1974d46797c5474d3ee587cb284200a63f78d568d6c7317b200641
+    name: qia-argocd-system-install
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-system-install-0.1.0/qia-argocd-system-install-0.1.0.tgz
+    version: 0.1.0
   traefik-claiv-umbrella:
   - apiVersion: v2
     created: "2022-08-14T16:30:34.005794632Z"
@@ -560,4 +575,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-14T16:38:56.782324874Z"
+generated: "2022-08-14T18:38:46.190701797Z"
