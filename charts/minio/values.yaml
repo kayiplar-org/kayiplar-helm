@@ -1,0 +1,38 @@
+#minio:
+#  persistence:
+#    enabled: true
+#    size: 1Ti
+#
+#  buckets:
+#      # Name of the bucket
+#    - name: qi-tissue
+#      # Policy to be set on the
+#      # bucket [none|download|upload|public]
+#      policy: none
+#      # Purge if bucket exists already
+#      purge: false
+#      # set versioning for
+#      # bucket [true|false]
+#      versioning: true
+#
+#  serviceAccount:
+#    create: true
+#    ## The name of the service account to use. If 'create' is 'true', a service account with that name
+#    ## will be created.
+#    name: "minio-sa"
+#
+#  replicas: 5 #CC_CLUSTER_SIZE
+#
+#  resources:
+#    requests:
+#      memory: 2Gi
+#
+#  existingSecret: minio-root-credentials
+#
+#secrets:
+#  - name: minio-root-credentials
+#    namespace: minio
+#    encryptedData:
+#      rootPassword: AgAdB5/e/xuDOD4h7/Mub+e9hzx+rt5HR1AgH7M7kFxCl2jwrAnuAa5jFUaCGYzo5whv42fOOYRrSvPCk8ZETOI7+NvSHlxsXvZYx/X0fX+V8pey86tm7Gxg9g4VvAWZ7Q2029SxPpxstszPp+ypuLB8dr0FXnnvGG09Onwo2I0u0kyUVZG1oWRUO+qfDrWFaBh0jsYHv5BDBKljfvKKAPDhjGI5XFGehh0VKiYjbfV4gKW89IuwZFJ5fausTo7H1g18/QiR8+04YtTBs9bvdKeJOIhdJoOpI/3kDyh/HXPIkDLnnliuLSls8LjmV1rAmgO7WXptQWiVUdagp0DqVcxm7ZgrlKuZdXc1OtcXtdoBo9DfBXRqs41YA/dcmPVxyrt6m5Dmdd3DIvWpVVtKklB5NempKOOZREi8WrS26nYA3U3a0H4DrZA7SH9RQQfRj6zYhye1EpWEsbIZ6THChIc0iGRHT1hm/JnKn9GfnDt3Qb8vGQkb3+GyQHm7kfAvtcNX+dIIzv0lc3/0F5mwTiDkUjZMXWaCnXpcHjSd3dG11Hv1TX3JzLg+YOb7cwfw5o8SVsBf2uFLlF6vduFHs+RSDyh9PPhwEq9TrfuLb7sk6+2DMDEt7RId2jtTvFSGFnzt42h5qJUzstyKoAhTqD+2mKLty/f9H+vaPnlNodWePNEH94FxO0EE9HVZU36Cr3Opf4aQjYA1/0XLDwwaAl2GUC43By5GAoL0ntAaADYMlCCYIn++/nUv
+#      rootUser: AgC8QETkeUaGaeWwQEKtWdYR3vGL5YGj0Z4pIjbXH3ejTgj7dFWDpzyWaH9tnYQC4M+N2Wjnhu+168uhGCP/RBT9VDxD1TwI0pebwWj7lZgJLYxngp//pUlNGGbv56olBQcUXy4y49k1oxkkFk5ciruz2M6Exl+9+2fjVoIj6taUF1YxYGUH4GxfYo93UMhOIkyYUnvlSOW3LvDYAwuPHppyl4TTXBGuO7VBPZLj7AqCtdgm7E9wlDQWNRcJpI7MpPibAsOZpxIS8Kv4s6li8xyY/hTJ3OCtsl20Dm0VYeYN1QZzSnRQVlnTgQB2vaU4W8TAxopgwJCIKrPHlwT2ZcH9aB0pXAEwx/7OTQP3HC+3v3bfBfkt3O9r57qYGw4Kl/lZ4Uc64+iidzZ3NWUIC6BfErl/ozIOBt6tbhf1E4vx1X6qesOwQ6Ju+FEn0Pqse5TuGg3Qy+ECXpmQ3STvKWLAuk7GiTqjy8Ecf6bp2U82+UvFJ6duxh5GyZjMCwNGzPzbcYOgWdgh6JGID8s0nGX0bdUBPhodel9KDKc0ZWE1TAwDjYmN01j6YcD32/qnpoDHLeBFeJW6B6gGstvCLjv/IFAci+CTpt2ghUQmEt9tZi9DwPxvIHzbbBkpu3nyEjTFm/7iZc2/M24ZCIGxC4NddUBCDpBD2ygc2/zSWxEcwnyOMV1frSpQKSxNTJIbUN+t9HDoz8BPU2pvi61J6eNOl4oYMw==
+#    type: Opaque

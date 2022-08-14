@@ -1,0 +1,10 @@
+apiVersion: v2
+name: minio-umbrella
+description: A Helm chart with minio as subchart.
+type: application
+version: 0.1.0
+dependencies:
+  - name: minio
+    version: 4.0.12
+    repository: https://charts.min.io/
+    alias: minio
