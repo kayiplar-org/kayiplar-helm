@@ -471,6 +471,21 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/kayiplar-generic-0.0.2/kayiplar-generic-0.0.2.tgz
     version: 0.0.2
+  minio-umbrella:
+  - apiVersion: v2
+    created: "2022-08-14T15:28:54.50096758Z"
+    dependencies:
+    - alias: minio
+      name: minio
+      repository: https://charts.min.io/
+      version: 4.0.12
+    description: A Helm chart with minio as subchart.
+    digest: 6f05fe76d3c0b27bd354a896bf7608f1bad32ae508841898c29d9e253d018f81
+    name: minio-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/minio-umbrella-0.1.0/minio-umbrella-0.1.0.tgz
+    version: 0.1.0
   traefik-claiv-umbrella:
   - apiVersion: v2
     created: "2022-08-12T20:16:12.420830273Z"
@@ -500,4 +515,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-14T15:06:04.576002076Z"
+generated: "2022-08-14T15:28:54.501321685Z"
