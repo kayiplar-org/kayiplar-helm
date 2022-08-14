@@ -34,7 +34,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
         - name: clarence
-          image: registry.claiv.de/qi/services/qia_explorations/clarence/clarence:0.0.0-36-9c9da118-20220607-1707
+          image: registry.claiv.de/qi/services/qia_explorations/clarence/clarence:latest
           # remove for real clusters, useful for minikube
           imagePullPolicy: Always
           readinessProbe:
