@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitlab-runner
+    meta.helm.sh/release-namespace: gitlab-runner
+  creationTimestamp: "2020-08-27T15:17:09Z"
+  labels:
+    app: gitlab-runner-gitlab-runner
+    app.kubernetes.io/managed-by: Helm
+    heritage: Helm
+    release: gitlab-runner
+  name: gitlab-runner-gitlab-runner
+  namespace: gitlab-runner
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: gitlab-runner-gitlab-runner
+subjects:
+- kind: ServiceAccount
+  name: gitlab-runner-gitlab-runner
+  namespace: gitlab-runner
+

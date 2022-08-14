@@ -1,0 +1,23 @@
+gitlab-runner:
+  ## https://docs.gitlab.com/runner/install/kubernetes.html
+  gitlabUrl: https://gitlab.com/
+  concurrent: 10
+  checkInterval: 30
+  rbac:
+    create: true
+    clusterWideAccess: true
+  runners:
+    config: |
+      [[runners]]
+        dns_search = ["gitlab.com"]
+    image: debian:latest
+    serviceAccountName: default
+    secret: gitlab-runner-secret
+
+
+secrets:
+  - name: gitlab-runner-secret
+    encryptedData:
+      runner-registration-token: AgCEIVBN3hWCNkmIC/fSLOOJOZDADlZ3yKyL2EbaMlbXbKQbIo5jpoXSuTbUZNX34FOJGI07LfI8tNzf22A1WoTiKEQLjdAv0xbc+G3JeHB7Yjgy8dP6KorGgS9n0sCgR/sWiP2bN023hupBCbkr09SYQCPBzTyBFkFQRpB+5wevDMMsZLsKm3tQ1pB5hE8uvmhS48NL5WeNdSkr0vuhevtlZLd3m6dy/9BL9s6jXufNW/6U0UkzUtTjmr1UzYbF648ARo3tVp2/YAnGiL+W1AUlu+JyvFTPRVTXNNay0FUXfaIucrcCz+DTXuhF/YDioul9ojKnRzYOYnpqYkRQL8ATcpLvsdmfSx4sxRfy0UkpWIMTGqO7OJZuTvlKduA9I4Lp2TkcyMmthFWetYdLK2a8LXzEFW9tsXEJewXen/Y65DfP0NHAYlN3bqDvjAsJp9jZFq2EGNWQFogR6PSbzGaNVyncdU+KjKdZLoBuhQeaR9PZa67lkKpUjmEmBMYcLsGM9jcKR847sEgNMawq7x7pmvAXcFQlURu2VVKQmYDXJCOfkWTzXFUm8OaKBTAa7QVYTwXSoDbiia1BHxhFDBZwfv7hJVPLohgdDHBEv7x2/ATPDxN5Ijw7zJ30ajnUpIbxYnmRdeir1hjmi115CLFBhD+4SAQxViDxvPHjk12Eh9/7xFS85QUWvcnpweEhvYCUXLFNf4/F9cHYBKDzkZMVCd/W5g==
+      runner-token: AgC/caO4kHe644pkyf2tC8rpzhOOijnmhdqlS7AVJcxLk0IwmbO3ygaJvjEINrNrRRqyFh+50mKHe7CfeMW7ICn8TubxVT8Fe4zZwgoKWzLaC8nO8zR5b2QGjq13E6HD43EFKmw3gMxVNnNQDbE8AuqaJRzzkltVZJfOKMQ+ESWSP/92eqtUlzkjZz8+YaWK1WthxWnUsjz80JtyuJT+yCJFuZOFoWP+o56kjCsOC10T407Xt8l/1bk77mYr/D5KBofLN9vcZErwOz0Y4uHXUFtVQt4NdklEzkPpH+Dc5wHuoSHE83SHWuM3x5ToRBZj+NArtYXMsE7EcIiL/EYx87rUHbMyZef8dVAKdUuwLE/ks8mszHxr7yeDxLb7yA+3xTJwFIsIkY205kvFeqxkPEWbIgNY2IJ2ERHN/iwuiotzUBaQIsy4YhTHOzdVjfz4VFHXns7y9hRZiUMaA1NpCjdUA3zO7csWEkXitX2a2ED2IehHY3hTexEypk4CHGV8dx2QRitRMxam9Lb6Ze0uxqps6NBQG1+dTD3AOZLqB9fZeeJZuoKAJrhHypItrOty3ygb93596R7GiZT5PzGB/diRygGn2oSkWz7B98frpuC5aMFb/KuaavE0CQbcqmlaT7hUxkMpHDfGbHg3PE0wskPRvEMGqY5eaDGr4Ip0EnXUijJG+TbSA4Kcq48yGfui47E=
+    type: Opaque
