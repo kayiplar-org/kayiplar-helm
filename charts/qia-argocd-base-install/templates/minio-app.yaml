@@ -1,0 +1,71 @@
+---
+{{- if .Values.apps.minio.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: minio-umbrella
+    repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
+    targetRevision: "0.1.0"
+    helm:
+      releaseName: minio
+      values: |
+
+        minio:
+          persistence:
+            enabled: true
+            size: 1Ti
+
+          buckets:
+              # Name of the bucket
+            - name: qi-tissue
+              # Policy to be set on the
+              # bucket [none|download|upload|public]
+              policy: none
+              # Purge if bucket exists already
+              purge: false
+              # set versioning for
+              # bucket [true|false]
+              versioning: true
+
+          serviceAccount:
+            create: true
+            ## The name of the service account to use. If 'create' is 'true', a service account with that name
+            ## will be created.
+            name: "minio-sa"
+
+          replicas: 5 #CC_CLUSTER_SIZE
+
+          resources:
+            requests:
+              memory: 2Gi
+
+          existingSecret: minio-root-credentials
+
+        secrets:
+          - name: minio-root-credentials
+            namespace: minio
+            {{- with index .Values "apps" "minio" "spec" "secrets" "minio-root-credentials" "encryptedData"  }}
+            encryptedData:
+              {{- range $key, $value := . }}
+              {{ $key }}: {{ $value }}
+              {{- end }}
+            {{- end}}
+            type: Opaque
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: minio
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+{{- end }}

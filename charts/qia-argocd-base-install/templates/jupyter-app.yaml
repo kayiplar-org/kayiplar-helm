@@ -1,0 +1,71 @@
+---
+{{- if .Values.apps.jupyterhub.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jupyterhub
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: jupyterhub-umbrella
+    repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
+    targetRevision: "0.1.0"
+    helm:
+      releaseName: jupyterhub-umbrella
+      values: |
+
+        jupyterhub:
+          proxy:
+            service:
+              type: ClusterIP
+          singleuser:
+            defaultUrl: "/lab"
+            uid: 0
+            cmd: start-singleuser.sh
+            image:
+              name: jupyter/tensorflow-notebook
+              tag: latest #6d42503c684f
+            extraEnv:
+              - name: GITLAB_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: gitlab-token
+                    key: gitlab-token
+              - name: GRANT_SUDO
+                value: "yes"
+              - name: NOTEBOOK_ARGS
+                value: "--allow-root"
+          hub:
+            config:
+              Authenticator:
+                admin_users:
+                  - admin
+              DummyAuthenticator:
+                password: admin
+              JupyterHub:
+                authenticator_class: dummy
+
+        secrets:
+          - name: gitlab-token
+            namespace: jhub
+            {{- with index .Values "apps" "jupyterhub" "spec" "secrets" "gitlab-token" "encryptedData" }}
+            encryptedData:
+              {{- range $key, $value := . }}
+              {{ $key }}: {{ $value }}
+              {{- end }}
+            {{- end}}
+            type: Opaque
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: jhub
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+{{- end }}

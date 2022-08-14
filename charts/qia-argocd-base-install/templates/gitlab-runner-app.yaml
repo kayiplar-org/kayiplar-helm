@@ -1,0 +1,57 @@
+---
+{{- if index .Values "apps" "gitlab-runner" "enabled" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitlab-runner
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: gitlab-runner-umbrella
+    repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
+    targetRevision: "0.1.2"
+    helm:
+      releaseName: gitlab-runner-umbrella
+      values: |
+
+        gitlab-runner:
+          ## https://docs.gitlab.com/runner/install/kubernetes.html
+          gitlabUrl: https://gitlab.claiv.de/
+          concurrent: 10
+          checkInterval: 30
+          rbac:
+            create: true
+            clusterWideAccess: true
+          runners:
+            config: |
+
+              [[runners]]
+                dns_search = ["gitlab.claiv.de"]
+
+            image: debian:latest
+            serviceAccountName: default
+            secret: gitlab-runner-secret
+
+        secrets:
+          - name: gitlab-runner-secret
+            {{- with index .Values "apps" "gitlab-runner" "spec" "secrets" "gitlab-runner-secret" "encryptedData" }}
+            encryptedData:
+              {{- range $key, $value := . }}
+              {{ $key }}: {{ $value }}
+              {{- end }}
+            {{- end}}
+            type: Opaque
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: gitlab-runner
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+{{- end }}

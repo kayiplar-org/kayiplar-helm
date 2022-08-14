@@ -1,0 +1,15 @@
+apiVersion: v2
+name: qia-argocd-base-install
+description: A Helm chart for all qia base-install application deployments.
+
+type: application
+
+version: 0.0.1
+
+sources:
+  - https://github.com/kayiplar-org/kayiplar-helm
+
+maintainers:
+  - name: Salih Kayiplar
+    email: salih.kayiplar@gmail.com
+    url: https://github.com/kayiplar

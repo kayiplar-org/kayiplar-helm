@@ -1,0 +1,45 @@
+---
+{{- if .Values.apps.nats.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nats
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: nats
+    repoURL: https://nats-io.github.io/k8s/helm/charts/
+    targetRevision: 0.17.4
+    helm:
+      releaseName: nats
+      values: |
+
+        nats:
+          image: nats:alpine
+
+          jetstream:
+            enabled: true
+
+            memStorage:
+              enabled: true
+              size: 2Gi
+
+            fileStorage:
+              enabled: true
+              size: 1Gi
+              storageDirectory: /data/
+              storageClassName: local-path
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: nats
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+{{- end }}

@@ -1,0 +1,56 @@
+# example for claiv test cluster
+
+apps:
+  cert-manager:
+    enabled: true
+    spec:
+      secrets:
+        hetzner-api-key:
+        # => namespace: cert-manager, type: Opaque, name: hetzner-api-key
+          encryptedData:
+            api-key: AgAWyMdpvrlg6WgK9FazGqecvjvqZa6GfT/QrByRIYbLK5e8tZfWRBjKzIhcMgeIC+J/2B3oxwmZHh8kdmIm44uj1ctDKJDn7RcgRnmadUpmlcE0K79Nyc7O+RvIYVCAAKFT/8qh4u0lhJ79mVUxD/1bufhNuQ2aFYPEZL8NSJmc0x7sVhrrYQzi7HXtFBVueViqtKDJyad7kTsr0tsQfnOreDbyMMKqpMhlTcgbY+F3ocUt8JPfA/aDHGDt7AAZV1k3f+HlwP2pQicxRBBt3Z+kXbR1hmNzO3cLFMzGcMkyW0l1YG+6McWba2ltkuZPYOAyBm/wO2hm6Ze/m55XHodWByywTDK2VQv2Y0I6pLwqDlarg7TAjSm8NJQw8LNC3rQYzQXWYCUNnC7eF3JT9pfJr6VfBuHFNMbm8ewS8k0NRvGNpB/TVFR0GkvmPk1ah/aNdQZiFnTG5pAoAmzaxxIT6zfXRSaiMaruWvAXj90iwDTHyEB/CDaFpEFBuwYntPR5TOnZZ6FzZx5g3cqIT0G6M1s38+U3IE5+ZW4UAJunYhoVh9VGl2kTx8RsIk/b7WERGERaABgPgKtIWgAbM2SNR8+2rWjZ55QuMzbyj3hvW6TqesGlZGiGRPMe/FwHg+soOMpyomxnqY7U5+cbPXt5sGgRSVWehfRn5SPqFMyThGU3t0ACRfiFRRgl1rTQoSrqUXzabEjCG0aeKxLEQldVygQssxRiZUfb0J5efdiKRA== 
+
+  gitlab-runner:
+    enabled: true
+    spec:
+      secrets:
+        gitlab-runner-secret:
+        # => namespace: gitlab-runner-secret, type: Opaque, name: gitlab-runner-secret
+          encryptedData:
+            runner-registration-token: AgBbA2C1SS2aDXBJ/5DoFEOdRYGSDKmBhiXc2ngX0RZ1iYGxLx723kPlOeE/VPOa9Ex/HT+ozYzT7gckkT3NIrfvxa0B3Nijv5a3jnEMmObDtun3hFKOUoy4BpeePNlRFgtuvJJ+qHT/gd+ZlCB7ZejuJkE4XGcIiTHrwGTyXPqfq8fcM3dvXWTDpV2CcUE2iXcVcJW5NikFSY7sUfxN2RwT+F0PMqtByacBOeGL7NUwCIr26UdWAMFTZzJxTQzfkPYEOPUUmjp5dtag8FE5lgLxcg9aEJOUmVr6dp2bN3TJOHWqTmIPR60sdqOfm6exL6QWKrUpNzJ0X4IFx/y+6DTfT55beypWFdx7bbj3kh0WT6ym99olnPbRToFdn5Y30AIlNT06dS8GCRATBb8MSB8ViOnoQGeP797qlI/fJW1XIvErpozLs9mZLy6lVtPWnxkeLpVitLYqn6Oz6Pp+7MJiWnqtjdLXl71/9z7yuc+vXpXMKJQzEpKt6rvyqHy9StueK1dEXpOFoYgiwYiDZAHE/cHsSRpSzGvIHsvA4dHBEfWk8Obssg3v4H3olurOeBSe5bJuHeKAO43yVSPNUkc4rOOysQtuwDaxzHcb4A6rF8ulodFVV3ImLAAyrgbiCqSl6sLaCPhFvQ5vZOHJ0XWEOz9esRn/VgmFjmGKwvbdUR+lsvoYs7mTD9/H7rVBECf0Me0DIIlLCe0CThrAX1h+4ZCeIw==
+            runner-token: AgBNg/I7/FT5jZF9IA8nRtfA0j2h64V1MZmS1RmdOPHyS0UQn1OfeNMBgUYlQ92Q2oo0AFzRJqE4qOWVptdL89oIhB/AMPrnWI6zbprqf5CDuzAM799yS/5vXY74iRgzjftfG41HjiaW52+BBN+IkrM4J9CyjYosf8Uh5ddNCcNalYixTkK78URSAABLK+m0aUf9wTpuY6SSb2EmvMWbyqTydQN+iaHIcy2v0S8KrUrAfxvZfZM+xVXPgonh5aV61eaOU8HuoDSq48uIybNVQ3mv1+4GMjc0dWFBbFmPuo74ipWFamKnc8BtNa4LXaSM3K1ta/gHAS/wlDXzfMBddUKVARcGRnBMQiJAyquC4f2dRuIr0DZ6tgEEBdwO+9lBCgv6jJGkHjWROi30TdE7eSJR2oV7kbC/SpvOY+U90bDsgFsh5k3FrAw4bXlqRRrdqnOJbOrSbKK3SWSZSBFhaXF1BNcLqox3Prph72lePEJ/0fRu2N8i4KTdfVdh+mNt7jK6LcR2gOP6T2p3NlGas8/PruNKIa0cRdVsN2H/6z5GMcAqDLA2XHHe5xJi+QrKC+vK18uNrVs+Xi7YK6jTHbfiypMAi2q0YXcAx1b56fVuJsgjinPxp+hgjv5N7A9cDk3HViVH5TpJiTlybwb8TMx0sPZEHEOIpPAKZCr6cEGkx0944MpM49Xqvq8Rk2iy0SQ=
+            
+  jupyterhub:
+    enabled: true
+    spec:
+      secrets:
+        gitlab-token:
+        # => namespace: jhub, type: Opaque, name: gitlab-token
+          encryptedData:
+            gitlab-token: AgDF9W+87ECbx9PuSrSKeu+4T44d8nMHOhuCwq26qg+UBGooAOKNXzk9BJ/z2t1S5E2vL8Aton/A7IlyTcrDT+yjW7kOi+40gg1uy5J1ZaKg1LknhLTuFKxoJritqq+XxWJItOAyp4nkxoDZlz78ehPYOLu87WXMaP+6q5CEZkDHrm3c7/7TByT4I6GHdXuPbbglGpFjOBltQp2JkAGoQO8gYcIcPTQ8Mdbs8aNE4DRbMoBe89Om28EPyhbQqn9BF5aXFZFfQf/lN/A7NtPyNnSIUGFLwprUYmUDPYwRjnTOIGhm+i/8K2wgFlbNyqIFvMab2eQwV7xQa+UUw1aGxG6NHn1jcVtn2cWDLaX7n4FUVZTfGiZTq2GpkNt6mod0Qdv2qqh5B17v/TFatPlEnDC4Jg5T6FwAIeqbe9nLi5CPoMPWMmfl5OnPta5gr5fLu22ElbaalPrUOwCB3mo5vQyhPX3EEtOb6ZDxMlvSzVJU2ejzfaFj6v+ofLTJFPZc3yTHfq6CGIUQ8F7zAYoBUw0o29M2OmOov8BDtTMG3F/OmGPejIx3wWpX5uP+ewsxTftOFmq6cIe7RRp7ZK7qAw41bgXZRgMUyREYNDa34aYPnY1q1p+7COkgFjso5m0d8vsHfiZib0FPJhPt4n1zF8H/Xu2hKO04ulSWQnzFtJPGNN2B4/Fi3sfN6R1BYgM9gLNc+GBv6WoQszzi+F0Ux5M0FWNx2wg=
+            
+  minio:
+    enabled: true
+    spec:
+      secrets:
+        minio-root-credentials:
+        # => namespace: minio, type: Opaque, name: minio-root-credentials
+          encryptedData:
+            rootPassword: AgAdB5/e/xuDOD4h7/Mub+e9hzx+rt5HR1AgH7M7kFxCl2jwrAnuAa5jFUaCGYzo5whv42fOOYRrSvPCk8ZETOI7+NvSHlxsXvZYx/X0fX+V8pey86tm7Gxg9g4VvAWZ7Q2029SxPpxstszPp+ypuLB8dr0FXnnvGG09Onwo2I0u0kyUVZG1oWRUO+qfDrWFaBh0jsYHv5BDBKljfvKKAPDhjGI5XFGehh0VKiYjbfV4gKW89IuwZFJ5fausTo7H1g18/QiR8+04YtTBs9bvdKeJOIhdJoOpI/3kDyh/HXPIkDLnnliuLSls8LjmV1rAmgO7WXptQWiVUdagp0DqVcxm7ZgrlKuZdXc1OtcXtdoBo9DfBXRqs41YA/dcmPVxyrt6m5Dmdd3DIvWpVVtKklB5NempKOOZREi8WrS26nYA3U3a0H4DrZA7SH9RQQfRj6zYhye1EpWEsbIZ6THChIc0iGRHT1hm/JnKn9GfnDt3Qb8vGQkb3+GyQHm7kfAvtcNX+dIIzv0lc3/0F5mwTiDkUjZMXWaCnXpcHjSd3dG11Hv1TX3JzLg+YOb7cwfw5o8SVsBf2uFLlF6vduFHs+RSDyh9PPhwEq9TrfuLb7sk6+2DMDEt7RId2jtTvFSGFnzt42h5qJUzstyKoAhTqD+2mKLty/f9H+vaPnlNodWePNEH94FxO0EE9HVZU36Cr3Opf4aQjYA1/0XLDwwaAl2GUC43By5GAoL0ntAaADYMlCCYIn++/nUv
+            rootUser: AgC8QETkeUaGaeWwQEKtWdYR3vGL5YGj0Z4pIjbXH3ejTgj7dFWDpzyWaH9tnYQC4M+N2Wjnhu+168uhGCP/RBT9VDxD1TwI0pebwWj7lZgJLYxngp//pUlNGGbv56olBQcUXy4y49k1oxkkFk5ciruz2M6Exl+9+2fjVoIj6taUF1YxYGUH4GxfYo93UMhOIkyYUnvlSOW3LvDYAwuPHppyl4TTXBGuO7VBPZLj7AqCtdgm7E9wlDQWNRcJpI7MpPibAsOZpxIS8Kv4s6li8xyY/hTJ3OCtsl20Dm0VYeYN1QZzSnRQVlnTgQB2vaU4W8TAxopgwJCIKrPHlwT2ZcH9aB0pXAEwx/7OTQP3HC+3v3bfBfkt3O9r57qYGw4Kl/lZ4Uc64+iidzZ3NWUIC6BfErl/ozIOBt6tbhf1E4vx1X6qesOwQ6Ju+FEn0Pqse5TuGg3Qy+ECXpmQ3STvKWLAuk7GiTqjy8Ecf6bp2U82+UvFJ6duxh5GyZjMCwNGzPzbcYOgWdgh6JGID8s0nGX0bdUBPhodel9KDKc0ZWE1TAwDjYmN01j6YcD32/qnpoDHLeBFeJW6B6gGstvCLjv/IFAci+CTpt2ghUQmEt9tZi9DwPxvIHzbbBkpu3nyEjTFm/7iZc2/M24ZCIGxC4NddUBCDpBD2ygc2/zSWxEcwnyOMV1frSpQKSxNTJIbUN+t9HDoz8BPU2pvi61J6eNOl4oYMw==
+          
+  nats:
+    enabled: true
+
+  traefik:
+    enabled: false
+    spec:
+      secrets:
+        traefik-forward-auth:
+        # => namespace: kube-system, type: Opaque, name: traefik-forward-auth-secrets, labels: app: traefik-forward-auth
+          encryptedData:
+            traefik-forward-auth-oidc-client-id: AgAJ/CzKiOtv/uogLqYX4ECtDWEcQ5a03VHucdi5d/pmQ4w/+bof4Euw4GJZ6zWsn1YCeEvdAs9+SeYaVkq+aKR3NH/hYgJwWhzcLBMVfc7Vbh5QR2qfo3RrXt72y7M/nut9neh11dcOzc8OnCb2f+FHzcOIpaMpjW3SxLHeA1gQ7YgZQl+/tbBg1eQTPYwc2b7tk9gj4d0GcdI0wgCDq+MLZra/2O6IBRBkHfDYyKEvS5S1RCcmzkVevLCZkmOrzHCI5s1J6PFQscaFpccm0zcX9YWXPy31zp7bWhpaI7IKIA5gT4barupbthjeVbmKe7l6Kk731WBxV3qh9QUeSRL7MNMkCa5oCFKMkWZtfGAHp35bXZLsfQ9KJ1bfK4/YU7AZYqAwCTX/O2UZva+zFBmzTiWyLOTMJjsOG3ce9fcMd35D/77Di4CV4R5rHeLRX67VCQx5h8VY11knPWVdgqB3DIFzYr439YTPkMjDwEgqxqGtQZPgxoZsMItCfVHAIrshD+UpOqe0GJlufcnEoajfBj0DD1bRk+pN2L044UEM5dcvoT0NOW56O11ZMb2uRKZ7qN2/8T8IaL7xjNy7t8HV92iBF2Ms4GDnV412smymUHISCzUo+aJv/OKoi2njnpimLv1mJr2q1ys6kg6dPYHY8CQ8NXRe5o+tHW70B9UdWt014oLZ5LPVwWZkDnzsqXufXTu43Vju4Edk8v7JV3YKX3I3
+            traefik-forward-auth-oidc-client-secret: AgAFyT6PCEftbizY7zh2xAqIfrFZup4Ek1i3hJP1lnLhyjjhzNJEvTrzZvnS1N3jOLb7R0XDVI83F9oNn5e+8+drEDPp8Hni/g/dyNtjEdUcxmfJ8K7CsOf18+MXCBN1a1xtIZ6OisiQaziqnZkz04DOlRt94wp0cIU6l7Kfjjlqq2Mp7x2ycrJthJ7ZmVGWGm7ahkbPMqUynlwf0M1NMChKTnDYhFjgPkxPzrclE8jLaehAPNi068Sce4jlG7xUAWgTt/ORKrDO0TlImCXW1enXio81r+BrLpaywnxk4Qhn5fPk8Xe382asPgmuBffO92fgVZde1xCAasQ20uFm0t74OWAmfKCytMD53zCwl1EZnd8oK4FL1uVUt5FbpZ33AOme9gJBBf9K/NWbGIdcyKtX5Kv0qK1JoRU2pVghYS4CrO+KUfMooIhPfuc7heHmd2h5nZ4mlZuvJ1x4RJ086rEuUFcD1FYeYKIaiYhLa7V54lG0Rg/7BtJHFXNJLkuJViR9+k5EwdQJK1UIgDcLNJGplI7+nPcVblZsYu8NAaUGo48ohNdIYmDijHujruzXz5qjY6dhycD6TkshCoUaq4F0SJfwMtFlMtmQLOEuRtJ1YTeZd/FJVDsdV7/7KuU+XPXKE+k+sOXBQWHV1BgYHS0K/NAWvWBGYBsp33A9dF0HIm1auGKydjEZsnzrBA690Hx108ogCZo07RxPVi/MqT5z8HreQzwLh/PrVDC5JG6g1yfryWA=
+            traefik-forward-auth-oidc-issuer-url: AgBo1wxswzbNm4qkOOGXBYqEZfTW5BNM+BcqBbeuZtos5kKISQP10HB0BjND+uDnOoM1D8TkAxuJE8rYNCOraic90v7MNv2ovrB/peW8UGdBO566zUBeXvbftIiA4Gfc9/7iEp3/nvvWzmZ8zD/IUDoJ12WAuDGAg/zx2JcrQD1QfUkoyLIh/9/WXDcdK5hLH87CYFLwYZA5tsUibJt1diEVe0N+8LYaKixaP35x0AWx9giJ4OY0RcL5fehxlfLL5qfeS4JtIyM8euBHQMO7DFeJD8zNpMBITmTIVa0CjzL18vV9IRVCkU1RVyOhqJopkaBFHm8FMD0EfiE5xZ0TlccYxEYnLv3YLS3EoRGcpirUKT+Op6UPkdJuoqDBSyyGqMqGcEInNANTajUTraMesG24xsPAwf9jUMqH2vNPTM4lQJB1McTXJH172gOnps5x5wtD3aY5tAB6P5KwoQX74WlNXAgWuJh11mZJ50Y3yTu/wOALUVHbG7yffsH07bW0P8c1zBsbXduLtpu6G3Pxv76VRnBb5fYkfdyfMgfa44OVNhhKI3vtDeDqEDoyIK39vpLe3HhrsEtRN+mA8sTnpA1NT/+L99gJxbnekhK5GjOFu8yPpbaulhHZFFe06yg+LWea/t1Zc74tZJ/e5Pd53UcqRl5BSzU9DQv+dBo/wB5qY2mK2TBDdOTI+NPPrDeUsUHOWfCBvXx3GXqyQKuyN4zFkBIG4/k91Hb5jrQSlIAYzEr1uOt859G1RcI=
+            traefik-forward-auth-secret: AgBQFnMv7HRwxZs1/0AtNCqA4vvB1zKMQ9SfXEhvFULiBcaIPW+60kWnLyvdQ2FlwgkAMje+bqYCHRObla3n68301jsVTdpkbK1LE6oZuUjBhJclvTs7iGwjNxcxRPmABdG5WCQK3xhXSprqeacyUjvcQ2+e9wIw4mrXilzDJPyRrMAVTad3OUNr6ZQ88oLSUM2ZscQtxnM/ksnHo1tABf7y/aYAU0zZpXimuCQxuOgZBSku8fm6lLlpMAdwWPvcVtVlRMaqJxnU1YLUm9Ss1GmtBb07WN1XUxsieAF534tKywgZN6JKghAApXEKCyohuV56kRWmH0WuYw7NQRsonAyfGeWXkl31ZAug5PQ7VGxzbKB7bSta9AsvikrgxL8nw3/X6XgWosWaFBFIEYbjtn6U4cJANq/72LGNaLMiuRMR6xB7R5DbVYEPN5oRBLos3g4W6Vr44pieVCLXRe4g6elNSL5Mngsihkb8mdhDPcKhZ3WYQKL62K35M+O+/7XztyiJCS+KwatS8ZhKKUDErn2W8D2/4xwXP1YeMHdSyTsKaDjE8zuItF2JZMmYP1+8ybsrbm1XU2E+O9W4CVHAO564gvsT/7J/RfpWuRmOgCZrDn2Wz/NGdgGRNJKdywARASSk6uJgrJKpFVgiLSTqzQlKAOQUXX0bDHiF7nXeeO3zonLqtPL3HHifXXqzGAlqAyY7v493zd6AKKIW3FMgSdB0PbwFwCxaltR5ep8XjUhl/K5BFHmanU6eAUj2DdYEaCir8m4nOEGnhQEAICaekb+SuGdNpvsQbholprtTzoXMN+DR60hNk/AZD0gK5ETVftBT8Rg9G7sBNAUiQYivzjxV9P6cIpwGkkGfjXmwI9A6iw==
+            
