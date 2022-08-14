@@ -324,6 +324,20 @@ entries:
     version: 0.1.0
   gitlab-runner-umbrella:
   - apiVersion: v2
+    created: "2022-08-14T14:30:12.290567051Z"
+    dependencies:
+    - alias: gitlab-runner
+      name: gitlab-runner
+      repository: https://charts.gitlab.io
+      version: 0.43.1
+    description: A Helm chart with gitlab-runner as subchart.
+    digest: 963a7c2c2ff68aa28f89ea9a65bdec820d3322140b72c60bd96743d3c83c0e50
+    name: gitlab-runner-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/gitlab-runner-umbrella-0.1.2/gitlab-runner-umbrella-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2022-08-14T14:04:05.367637165Z"
     dependencies:
     - alias: gitlab-runner
@@ -471,4 +485,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-14T14:04:05.368068669Z"
+generated: "2022-08-14T14:30:12.290841759Z"
