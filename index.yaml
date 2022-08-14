@@ -322,6 +322,21 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/cert-manager-umbrella-0.1.0/cert-manager-umbrella-0.1.0.tgz
     version: 0.1.0
+  gitlab-runner-umbrella:
+  - apiVersion: v2
+    created: "2022-08-14T13:04:35.386913559Z"
+    dependencies:
+    - alias: gitlab-runner
+      name: gitlab-runner
+      repository: https://charts.gitlab.io
+      version: 0.43.1
+    description: A Helm chart with gitlab-runner as subchart.
+    digest: 58a102f6e76645aba2e734cbd60908cab99c9eb88826e7f6828b902ccdf38a12
+    name: gitlab-runner-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/gitlab-runner-umbrella-0.1.0/gitlab-runner-umbrella-0.1.0.tgz
+    version: 0.1.0
   kayiplar-generic:
   - apiVersion: v2
     created: "2022-08-07T20:05:10.409094316Z"
@@ -442,4 +457,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-12T20:16:12.420935773Z"
+generated: "2022-08-14T13:04:35.386974058Z"
