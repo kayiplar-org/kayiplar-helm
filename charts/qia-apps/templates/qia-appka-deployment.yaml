@@ -1,5 +1,5 @@
 ---
-{{- if .Values.qia.apps.appka.enable }}
+{{- if .Values.qia.apps.appka.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:

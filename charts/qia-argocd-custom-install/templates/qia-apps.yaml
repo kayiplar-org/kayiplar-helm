@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: qia-apps
+  namespace: argocd
+#  annotations:
+#    argocd-image-updater.argoproj.io/image-list: claiv=registry.claiv.de/claiv/documentation/claivdocs
+#    argocd-image-updater.argoproj.io/claiv.update-strategy: latest
+#    argocd-image-updater.argoproj.io/claiv.pull-secret: pullsecret:argocd/gitlab-registry-login
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  source:
+    chart: qia-apps
+    repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
+    targetRevision: {{ .Values.targetRevision }}
+    helm:
+      values: |
+        {{ toYaml .Values | indent 8 | trim}}
+
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: qia-cloud
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+      - PruneLast=true # Allow the ability for resource pruning to happen as a final, implicit wave of a sync operation

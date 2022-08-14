@@ -1,5 +1,5 @@
 ---
-{{- if .Values.qia.apps.clarence.enable }}
+{{- if .Values.qia.apps.clarence.enabled }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:

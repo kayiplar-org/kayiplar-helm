@@ -1,5 +1,5 @@
 ---
-{{- if .Values.qia.apps.clarence.enable }}
+{{- if .Values.qia.apps.clarence.enabled }}
 apiVersion: v1
 kind: Service
 metadata:

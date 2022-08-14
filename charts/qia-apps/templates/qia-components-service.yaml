@@ -1,5 +1,5 @@
 ---
-{{- if .Values.qia.apps.components.enable }}
+{{- if .Values.qia.apps.components.enabled }}
 apiVersion: v1
 kind: Service
 metadata:

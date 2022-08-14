@@ -1,10 +1,10 @@
 apiVersion: v2
-name: qia-apps
-description: A Helm chart for all qia application deployments.
+name: qia-argocd-custom-install
+description: A Helm chart for all qia custom-install application deployments.
 
 type: application
 
-version: 0.0.3
+version: 0.0.1
 
 sources:
   - https://github.com/kayiplar-org/kayiplar-helm
