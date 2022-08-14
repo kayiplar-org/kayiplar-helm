@@ -1,0 +1,14 @@
+argo-cd:
+  nameOverride: argocd-claiv
+  fullnameOverride: argocd-claiv
+  dex:
+    enabled: false # we can connect argocd with keycloak if we want
+
+
+apps:
+  replicator:
+    enabled: true
+    targetRevision: v2.7.3
+  sealed-secrets-controller:
+    enabled: true
+    targetRevision: 2.6.0
