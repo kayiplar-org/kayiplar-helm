@@ -1,6 +1,7 @@
+
 #gitlab-runner:
 #  ## https://docs.gitlab.com/runner/install/kubernetes.html
-#  gitlabUrl: https://gitlab.com/
+#  gitlabUrl: https://gitlab.claiv.de/
 #  concurrent: 10
 #  checkInterval: 30
 #  rbac:
@@ -8,16 +9,20 @@
 #    clusterWideAccess: true
 #  runners:
 #    config: |
+#
 #      [[runners]]
-#        dns_search = ["gitlab.com"]
+#        dns_search = ["gitlab.claiv.de"]
+#        [runners.kubernetes]
+#          namespace = gitlab-runner
+#    
 #    image: debian:latest
 #    serviceAccountName: default
 #    secret: gitlab-runner-secret
 #
-#
+## secret will be in namepsace 'gitlab-runner'
 #secrets:
 #  - name: gitlab-runner-secret
 #    encryptedData:
-#      runner-registration-token: AgCEIVBN3hWCNkmIC/fSLOOJOZDADlZ3yKyL2EbaMlbXbKQbIo5jpoXSuTbUZNX34FOJGI07LfI8tNzf22A1WoTiKEQLjdAv0xbc+G3JeHB7Yjgy8dP6KorGgS9n0sCgR/sWiP2bN023hupBCbkr09SYQCPBzTyBFkFQRpB+5wevDMMsZLsKm3tQ1pB5hE8uvmhS48NL5WeNdSkr0vuhevtlZLd3m6dy/9BL9s6jXufNW/6U0UkzUtTjmr1UzYbF648ARo3tVp2/YAnGiL+W1AUlu+JyvFTPRVTXNNay0FUXfaIucrcCz+DTXuhF/YDioul9ojKnRzYOYnpqYkRQL8ATcpLvsdmfSx4sxRfy0UkpWIMTGqO7OJZuTvlKduA9I4Lp2TkcyMmthFWetYdLK2a8LXzEFW9tsXEJewXen/Y65DfP0NHAYlN3bqDvjAsJp9jZFq2EGNWQFogR6PSbzGaNVyncdU+KjKdZLoBuhQeaR9PZa67lkKpUjmEmBMYcLsGM9jcKR847sEgNMawq7x7pmvAXcFQlURu2VVKQmYDXJCOfkWTzXFUm8OaKBTAa7QVYTwXSoDbiia1BHxhFDBZwfv7hJVPLohgdDHBEv7x2/ATPDxN5Ijw7zJ30ajnUpIbxYnmRdeir1hjmi115CLFBhD+4SAQxViDxvPHjk12Eh9/7xFS85QUWvcnpweEhvYCUXLFNf4/F9cHYBKDzkZMVCd/W5g==
-#      runner-token: AgC/caO4kHe644pkyf2tC8rpzhOOijnmhdqlS7AVJcxLk0IwmbO3ygaJvjEINrNrRRqyFh+50mKHe7CfeMW7ICn8TubxVT8Fe4zZwgoKWzLaC8nO8zR5b2QGjq13E6HD43EFKmw3gMxVNnNQDbE8AuqaJRzzkltVZJfOKMQ+ESWSP/92eqtUlzkjZz8+YaWK1WthxWnUsjz80JtyuJT+yCJFuZOFoWP+o56kjCsOC10T407Xt8l/1bk77mYr/D5KBofLN9vcZErwOz0Y4uHXUFtVQt4NdklEzkPpH+Dc5wHuoSHE83SHWuM3x5ToRBZj+NArtYXMsE7EcIiL/EYx87rUHbMyZef8dVAKdUuwLE/ks8mszHxr7yeDxLb7yA+3xTJwFIsIkY205kvFeqxkPEWbIgNY2IJ2ERHN/iwuiotzUBaQIsy4YhTHOzdVjfz4VFHXns7y9hRZiUMaA1NpCjdUA3zO7csWEkXitX2a2ED2IehHY3hTexEypk4CHGV8dx2QRitRMxam9Lb6Ze0uxqps6NBQG1+dTD3AOZLqB9fZeeJZuoKAJrhHypItrOty3ygb93596R7GiZT5PzGB/diRygGn2oSkWz7B98frpuC5aMFb/KuaavE0CQbcqmlaT7hUxkMpHDfGbHg3PE0wskPRvEMGqY5eaDGr4Ip0EnXUijJG+TbSA4Kcq48yGfui47E=
-#    type: Opaque
+#      runner-registration-token: AgA00RSwjavcf0LKsA1TH6yn/xdXfhVB7kpWBfXT8bMj/cR+lVkR1P3kzSKsly9WO3wb580dYg9WBidu4u/PdFAE2cba4CL18N6BLH5CFG0rUvRNFGzzD/lDc2d5V0X1K8v450aGOR+AFr6F/IBIToCjArNboT/bUTkXPurzcM1fOl+OgYMlesTxI7HHNtxakQ5DYQbIhbPF/dnhl/ABUJ72ywGI2v2Bxjc1p2rdeU28HzDmV+ibBhitw+KMbWt8iToQJsgahvRyAKBgy5yPURMV5/sd5EYOkR/jRy13MwHJiZEQkuxEWHzi2rmcxFBobWJrsu5dhCl6V6NchL8YV3gSQUAOacnzcym4QTQCfeglYI423VaQB/So0DkcT2jKButGF5vwSKAqy2n3TOm2O41WqyZzlU0A9WWr7Jxtv+QJ4D4qKWKZ6j+wx2KKFrLcZwqahXaErNpOBV9lOAE6lCo8L36rmmFrwJXoWCaMHnMmBQv6rctal01iOBzu07UgHPghOR7chZO+8j2gZDF/alTnEWHHrPk8EkYiMx2kdPYoVTvLh8LSzydqLvUMFFfFlcogM3RjNKYn4zHNtPh7oFYXvJvn0l4KRXJMVuZF2S8tAJoG9X/QWGq+6eVwyLgbkU8ociLbDRJ2u/wnVZR75lvOf/0EfhrM8XI3nPX54wCuaD6BaXEbbO46tgvtxpcuz6TNQs4NzZrdhGa5xjX+i29DwC+fHA==
+#      runner-token: AgCEQFrzekHTbNdloLGFLXTNhtGxqXTSdgPdKdvolutecnUdlhAvgBzppHmQsGCNT0NYbaSEp63axASy2a1H+Dq+DpEa/Cf1DoC6ssKLU+ELidFVxtNFcudt1wX882NIbjlL+LwBLbxbtzG98siqmRYV29sciTZ0UAjPsMyBeYm7VBhRFkwrdp0vgdWrFWlSwEPx/QCkn49ObWlk1gm2tTV00k1rwRJgxvnKEq8rNvr+Ey+Y1xCtXZI3mzi2RI1B8UtG3v4IYeTx3w8c12Zf/fldUZIpJfYou9oKfskdM+5zZl9wOHrtwFv0n+HatP4I5g6vc1xZJFSn8LMig+Ap3W9AaUIbSSg9RmiTQ0H8jTym2ukIJ+c+70yZsWwbkDOX0eLuc2nBgGqSrf4K7j3naMsmAqn7TCaiZiw5ZuQZCBZRP60EP550r8QZxznSZ8aqRgMCInZ3aWlRCRUgI7zX5AD9XyUrr/CZarojg+n0VF0OmSu752Ct6HikSKukvCwopyUbwoW55B1pfLPjE7TbrMbkc2hruWRjNfysCCYAJkfTQDwsB7cmxCSZkAu50bH8uQl5x3z6nRe23z7kePkxFg7pGNmoo6QMJKuGwLN4N354ZPKHE+EWtHDI6Ri+aREuyReqVU7H1+7XOuISug0bzWUUBaiUXe5Ad0hkfp1WpNhHW6tvz+kb1MRmw+hBS5pOlWw=
+#
