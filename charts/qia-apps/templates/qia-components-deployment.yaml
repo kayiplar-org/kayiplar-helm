@@ -1,0 +1,36 @@
+---
+{{- if .Values.qia.apps.components.enable }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qiac
+  labels:
+    app: qiac
+  namespace: qia-cloud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qiac
+  template:
+    metadata:
+      labels:
+        app: qiac
+        isSeed: "true"
+        version: "0.1.0"
+        appNameVersion: qiac-v0-1-0
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: qiac
+          image: registry.claiv.de/qi/services/qia_explorations/qia_components/qiac-nginx:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3031
+              name: web
+          env:
+            - name: ENV_URL # To be implemented
+              value: "https://qia.CC_CLUSTER_SUBDOMAIN"
+{{- end }}

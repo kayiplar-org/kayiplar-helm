@@ -1,0 +1,18 @@
+---
+{{- if .Values.qia.apps.clarence.enable }}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: clarence
+  name: clarence
+  namespace: qia-cloud
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: clarence
+{{- end }}

@@ -1,0 +1,38 @@
+---
+{{- if .Values.qia.apps.doc.enable }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qiadocs
+  labels:
+    app: qiadocs
+  namespace: qia-cloud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qiadocs
+  template:
+    metadata:
+      labels:
+        app: qiadocs
+        isSeed: "true"
+        version: "0.1.0"
+        appNameVersion: qiadocs-v0-1-0
+    spec:
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: qiadocs
+          image: registry.claiv.de/qi/services/qia_explorations/documentation/qiadocs:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+              name: web
+          env:
+            - name: SRV_LIVE_DOMAIN
+              value: "qia.CC_CLUSTER_SUBDOMAIN"
+            - name: SRV_LIVE_PROTOCOL
+              value: "https://"
+{{- end }}

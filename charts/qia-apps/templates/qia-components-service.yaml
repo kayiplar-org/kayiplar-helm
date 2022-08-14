@@ -1,0 +1,18 @@
+---
+{{- if .Values.qia.apps.components.enable }}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: qiac
+  name: qiac
+  namespace: qia-cloud
+spec:
+  ports:
+    - name: web
+      protocol: TCP
+      port: 3031
+      targetPort: 3031
+  selector:
+    app: qiac
+{{- end }}
