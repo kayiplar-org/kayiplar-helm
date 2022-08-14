@@ -365,6 +365,21 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/gitlab-runner-umbrella-0.1.0/gitlab-runner-umbrella-0.1.0.tgz
     version: 0.1.0
+  jupyterhub-umbrella:
+  - apiVersion: v2
+    created: "2022-08-14T15:06:04.575922171Z"
+    dependencies:
+    - alias: jupyterhub
+      name: jupyterhub
+      repository: https://jupyterhub.github.io/helm-chart/
+      version: 1.2.0
+    description: A Helm chart with jupyterhub as subchart.
+    digest: 64820c4e358298eef9f493ce950a1b81924d1a4b24caeda7b78ae41ace1729c3
+    name: jupyterhub-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/jupyterhub-umbrella-0.1.0/jupyterhub-umbrella-0.1.0.tgz
+    version: 0.1.0
   kayiplar-generic:
   - apiVersion: v2
     created: "2022-08-07T20:05:10.409094316Z"
@@ -485,4 +500,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-14T14:30:12.290841759Z"
+generated: "2022-08-14T15:06:04.576002076Z"
