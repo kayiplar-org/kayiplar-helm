@@ -7,10 +7,6 @@ cert-manager-webhook-hetzner:
 
 # Add a cluster issuer. Example for hetzner
 
-# example for claiv.de
-hetznerwebhook:
-  enable: true
-
 # for hetzner api key
 secrets:
   - name: hetzner-api-key
@@ -19,6 +15,26 @@ secrets:
       api-key: AgAetfD4uAX3efVNB5IXNIi/WhOAnezbpCaLRAF6Q0n98gJtDfXCuB9KgDWTiqAQ00J0a7Lo7vLvgvrTKLByHCzvRE5TtXKHFauwhAiFcbkNJqFFNddpczm+4X/EzjDCJvAvz7Hg71Ja+1IzVx/BLK5j8N9TxRtBy71ThTJqU6KJs5Co1tl2SuzIfAFqJKVuH8bogZmcopfklwIP5EoWyccZRuLGtfS7q8EKbrqN3PAwbpsCO8c132HALYvt70k/JZHzlRAM0wcvE5OQKfyTYhif6FYzczjfuzrdCTGom4mXXrGlj+UysBQMnukyeXtOPwrq+oSibqsz8SBd0+4K4Ro7rA/uEXP0ELA8qEaGYNR19zeBDgxM513B9bfCOAoH/5/Dps9O5U3TLIzrLLfeimsFuHfd3noXMAU6/KnzXWFveYN3mU4ysxIrFfBS4XJDoq1sLu5wMroFBxtZx1BNZ/uv+oiAlFmN2q8f8Kk2Swi4cf9PEIkcMMtk8mFAOFSPIx9xfbYKtX3V1Fe8nlQoJoDsjzIcLrCdOCNWl7mcH3m12Xdom0XqDsgQcPMJQwyu/W5iFncHawBAEs7max11VyiwCCY7vvapOpkM3WbNQ44eaM5/y62zG3S7TCGNWdotjvym9P4AcecHLlrweY+KAvEFjAcTDLbe2abJiRGOtWNHhjRtvPYcZTzNbZqhgmnzgzsUDn1RZHVb1i12DM4RIg19AfUmmicVNmh89QmHlWre9A==
     type: Opaque
 
-certificate:
-  claiv:
-    issue: true
+cluster-issuer:
+  - type: letsencrypt
+    name: prod-acme-cluster-issuer-claiv-de
+    email: le@claiv.de
+    hetznerwebhook:
+      enabled: true
+      name: cert-manager-webhook-hetzner
+    solvers:
+      - dns01:
+          webhook:
+            groupName: acme.claiv.de
+            solverName: hetzner
+            config:
+              secretName: hetzner-api-key
+              zoneName: claiv.de
+              apiUrl: https://dns.hetzner.com/api/v1
+    certificates:
+      - name: auth-ctl-claiv-de-tls-certs
+        subject:
+          organizations:
+            - Claivolution GmbH
+        dnsNames:
+          - 'auth.CC_CLUSTER_SUBDOMAIN'
