@@ -12,7 +12,7 @@ spec:
   source:
     chart: cert-manager-claiv-umbrella
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.1.21"
+    targetRevision: "0.2.0"
     helm:
       releaseName: cert-manager-claiv-umbrella
       values: |
@@ -23,10 +23,6 @@ spec:
 
         cert-manager-webhook-hetzner:
           groupName: acme.claiv.de
-
-        # enable hetzner webhook
-        hetznerwebhook:
-          enable: true
 
         # for hetzner api key
         secrets:
@@ -41,9 +37,29 @@ spec:
             type: Opaque
 
         # issue certificate for claiv.de
-        certificate:
-          claiv:
-            issue: true
+          cluster-issuer:
+            - type: letsencrypt
+              name: prod-acme-cluster-issuer-claiv-de
+              email: {{ index .Values "apps" "cert-manager" "spec" "issuer" "letsencrypt" "contact" "email" }}
+              hetznerwebhook:
+                enabled: true
+                name: cert-manager-webhook-hetzner
+              solvers:
+                - dns01:
+                    webhook:
+                      groupName: {{ index .Values "apps" "cert-manager" "spec" "issuer" "letsencrypt" "groupName" }}
+                      solverName: hetzner
+                      config:
+                        secretName: hetzner-api-key
+                        zoneName: {{ index .Values "apps" "cert-manager" "spec" "issuer" "letsencrypt" "zoneName" }}
+                        apiUrl: https://dns.hetzner.com/api/v1
+              certificates:
+                - name: auth-ctl-claiv-de-tls-certs
+                  subject:
+                    organizations:
+                      - Claivolution GmbH
+                  dnsNames:
+                    - 'auth.CC_CLUSTER_SUBDOMAIN'
 
   destination:
     server: "https://kubernetes.default.svc"

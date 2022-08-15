@@ -9,6 +9,12 @@ apps:
         # => namespace: cert-manager, type: Opaque, name: hetzner-api-key
           encryptedData:
             api-key: AgAWyMdpvrlg6WgK9FazGqecvjvqZa6GfT/QrByRIYbLK5e8tZfWRBjKzIhcMgeIC+J/2B3oxwmZHh8kdmIm44uj1ctDKJDn7RcgRnmadUpmlcE0K79Nyc7O+RvIYVCAAKFT/8qh4u0lhJ79mVUxD/1bufhNuQ2aFYPEZL8NSJmc0x7sVhrrYQzi7HXtFBVueViqtKDJyad7kTsr0tsQfnOreDbyMMKqpMhlTcgbY+F3ocUt8JPfA/aDHGDt7AAZV1k3f+HlwP2pQicxRBBt3Z+kXbR1hmNzO3cLFMzGcMkyW0l1YG+6McWba2ltkuZPYOAyBm/wO2hm6Ze/m55XHodWByywTDK2VQv2Y0I6pLwqDlarg7TAjSm8NJQw8LNC3rQYzQXWYCUNnC7eF3JT9pfJr6VfBuHFNMbm8ewS8k0NRvGNpB/TVFR0GkvmPk1ah/aNdQZiFnTG5pAoAmzaxxIT6zfXRSaiMaruWvAXj90iwDTHyEB/CDaFpEFBuwYntPR5TOnZZ6FzZx5g3cqIT0G6M1s38+U3IE5+ZW4UAJunYhoVh9VGl2kTx8RsIk/b7WERGERaABgPgKtIWgAbM2SNR8+2rWjZ55QuMzbyj3hvW6TqesGlZGiGRPMe/FwHg+soOMpyomxnqY7U5+cbPXt5sGgRSVWehfRn5SPqFMyThGU3t0ACRfiFRRgl1rTQoSrqUXzabEjCG0aeKxLEQldVygQssxRiZUfb0J5efdiKRA== 
+      issuer:
+        letsencrypt:
+          groupName: acme.claiv.de
+          zoneName: claiv.de
+          contact:
+            email: le@claiv.de
 
   gitlab-runner:
     enabled: true
