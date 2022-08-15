@@ -37,4 +37,4 @@ cluster-issuer:
           organizations:
             - Claivolution GmbH
         dnsNames:
-          - 'auth.CC_CLUSTER_SUBDOMAIN'
+        - 'auth.CC_CLUSTER_SUBDOMAIN'
