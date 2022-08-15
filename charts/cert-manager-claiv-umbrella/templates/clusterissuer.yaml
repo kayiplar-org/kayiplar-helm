@@ -18,7 +18,7 @@ spec:
     # Add a single challenge solver, HTTP01 using nginx
     {{- with $issuer.solvers }}
     solvers:
-      {{- toYaml . | nindent 2 | indent 4 }}
+      {{- toYaml . | indent 4 | nindent 1 }}
     {{- end }}
 {{- end }}
 {{- end }}
