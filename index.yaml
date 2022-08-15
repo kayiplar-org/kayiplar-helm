@@ -2,25 +2,6 @@ apiVersion: v1
 entries:
   cert-manager-claiv-umbrella:
   - apiVersion: v2
-    created: "2022-08-15T18:36:02.170821228Z"
-    dependencies:
-    - alias: cert-manager
-      condition: cert-manager.enabled
-      name: cert-manager
-      repository: https://charts.jetstack.io
-      version: v1.9.1
-    - alias: cert-manager-webhook-hetzner
-      name: cert-manager-webhook-hetzner
-      repository: https://vadimkim.github.io/cert-manager-webhook-hetzner
-      version: 1.1.0
-    description: A Helm chart with cert-manager as subchart for Claivolution Applications.
-    digest: 6b4976429b5f5018eb2d5d0715534b04e0981366daf7383adac88b0c58953ab3
-    name: cert-manager-claiv-umbrella
-    type: application
-    urls:
-    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/cert-manager-claiv-umbrella-0.2.3/cert-manager-claiv-umbrella-0.2.3.tgz
-    version: 0.2.3
-  - apiVersion: v2
     created: "2022-08-15T18:20:29.478308947Z"
     dependencies:
     - alias: cert-manager
@@ -610,6 +591,21 @@ entries:
     version: 0.0.1
   qia-argocd-base-install:
   - apiVersion: v2
+    created: "2022-08-15T18:36:12.466269225Z"
+    description: A Helm chart for all qia base-install application deployments.
+    digest: ebeb94860fc3a806a039651e917b6245364889d4bf4bb526a7e0bc7115cd7cc4
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-base-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-base-install-0.1.2/qia-argocd-base-install-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2022-08-15T18:22:58.021513086Z"
     description: A Helm chart for all qia base-install application deployments.
     digest: f6cb528240b24c150845270f44f9d4dddb66024c4f0672f7137e0884baec184a
@@ -758,4 +754,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-15T18:36:02.450343607Z"
+generated: "2022-08-15T18:36:12.466451524Z"
