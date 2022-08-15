@@ -8,16 +8,28 @@ rules:
   resources: ["*"]
   verbs: ["*"]
 ---
-{{- range $issuer := index .Values "cluster-issuer" }}
-{{if $issuer.hetznerwebhook.enabled }}
+{{if index .Values "hetzner-webhook" "enabled" }}
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
  namespace: cert-manager
- name: {{ $issuer.hetznerwebhook.name}}
+ name: {{ index .Values "hetzner-webhook" "name"}}
 rules:
 - apiGroups: [""]
   resources: ["secrets"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 {{- end}}
-{{- end}}
+#---
+#{{- range $issuer := index .Values "cluster-issuer" }}
+#{{if $issuer.hetznerwebhook.enabled }}
+#kind: Role
+#apiVersion: rbac.authorization.k8s.io/v1
+#metadata:
+# namespace: cert-manager
+# name: {{ $issuer.hetznerwebhook.name}}
+#rules:
+#- apiGroups: [""]
+#  resources: ["secrets"]
+#  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+#{{- end}}
+#{{- end}}

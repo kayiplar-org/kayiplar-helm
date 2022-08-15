@@ -12,20 +12,36 @@ roleRef:
  name: cert-manager-allow-kube-sytem-role
  apiGroup: rbac.authorization.k8s.io
 ---
-{{- range $issuer := index .Values "cluster-issuer" }}
-{{if $issuer.hetznerwebhook.enabled }}
+{{if index .Values "hetzner-webhook" "enabled" }}
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
- name: {{ $issuer.hetznerwebhook.name}}
+ name: {{ index .Values "hetzner-webhook" "name"}}
  namespace: cert-manager
 subjects:
 - kind: ServiceAccount
-  name: {{ $issuer.hetznerwebhook.name}}
+  name: {{ index .Values "hetzner-webhook" "name"}}
   namespace: cert-manager
 roleRef:
  kind: Role
- name: {{ $issuer.hetznerwebhook.name}}
+ name: {{ index .Values "hetzner-webhook" "name"}}
  apiGroup: rbac.authorization.k8s.io
 {{- end }}
-{{- end }}
+#---
+#{{- range $issuer := index .Values "cluster-issuer" }}
+#{{if $issuer.hetznerwebhook.enabled }}
+#kind: RoleBinding
+#apiVersion: rbac.authorization.k8s.io/v1
+#metadata:
+# name: {{ $issuer.hetznerwebhook.name}}
+# namespace: cert-manager
+#subjects:
+#- kind: ServiceAccount
+#  name: {{ $issuer.hetznerwebhook.name}}
+#  namespace: cert-manager
+#roleRef:
+# kind: Role
+# name: {{ $issuer.hetznerwebhook.name}}
+# apiGroup: rbac.authorization.k8s.io
+#{{- end }}
+#{{- end }}
