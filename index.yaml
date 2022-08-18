@@ -648,6 +648,21 @@ entries:
     version: 0.0.1
   qia-argocd-base-install:
   - apiVersion: v2
+    created: "2022-08-18T20:27:55.921688829Z"
+    description: A Helm chart for all qia base-install application deployments.
+    digest: 8937d3dd78a9b9687dc976c6020883f7b5c4516d9831261e76f30942cae6b63b
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-base-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-base-install-0.1.7/qia-argocd-base-install-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
     created: "2022-08-18T20:12:37.208439824Z"
     description: A Helm chart for all qia base-install application deployments.
     digest: 3bb95a39d940f32f6274c221ea648dde253583316ed27bd2680bcad3b8641aed
@@ -885,4 +900,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-18T20:12:37.208590622Z"
+generated: "2022-08-18T20:27:55.921977446Z"
