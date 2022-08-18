@@ -11,7 +11,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`auth.CC_CLUSTER_SUBDOMAIN`)
+  - match: Host(`{{ .Values.host }}`)
     kind: Rule
     services:
     - name: traefik-forward-auth
@@ -20,5 +20,5 @@ spec:
   tls:
     secretName: auth-ctl-claiv-de-tls-certs
     domains: 
-    - main: auth.CC_CLUSTER_SUBDOMAIN
+    - main: {{ .Values.host }}
 {{- end}}

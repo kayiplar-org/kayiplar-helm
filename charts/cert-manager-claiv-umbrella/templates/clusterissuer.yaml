@@ -8,7 +8,11 @@ spec:
     # Let's Encrypt will use this to contact you about expiring
     # certificates, and issues related to your account.
     email: le@claiv.de
-    server: https://acme-v02.api.letsencrypt.org/directory #https://acme-staging-v02.api.letsencrypt.org/directory
+    {{- if eq .Values.environment "staging" }}
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    {{- else }}
+    server: https://acme-v02.api.letsencrypt.org/directory
+    {{- end }}
     privateKeySecretRef:
       # Secret resource that will be used to store the account's private key.
       name: prod-acme-cluster-issuer-claiv-de-key

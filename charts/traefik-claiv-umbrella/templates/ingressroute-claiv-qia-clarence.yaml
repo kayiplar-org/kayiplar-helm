@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/qia_ui_state.UiStateManager`)
+    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_ui_state.UiStateManager`)
       kind: Rule
       services:
         - name: clarence
@@ -16,7 +16,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/qia_ui_state.UiStateManager`) && Method(`HEAD`)
+    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_ui_state.UiStateManager`) && Method(`HEAD`)
       kind: Rule
       services:
         - name: clarence
@@ -25,7 +25,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/qia_annotations.Annotations`)
+    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_annotations.Annotations`)
       kind: Rule
       services:
         - name: clarence
@@ -34,7 +34,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/qia_annotations.Annotations`) && Method(`HEAD`)
+    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_annotations.Annotations`) && Method(`HEAD`)
       kind: Rule
       services:
         - name: clarence
@@ -43,7 +43,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/audio`)
+    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/audio`)
       kind: Rule
       services:
         - name: clarence
@@ -52,7 +52,7 @@ spec:
           scheme: h2c
       middlewares:
         - name: traefik-forward-auth
-    - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/audio`) && Method(`HEAD`)
+    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/audio`) && Method(`HEAD`)
       kind: Rule
       services:
         - name: clarence
@@ -65,5 +65,5 @@ spec:
   tls:
     secretName: qia-ctl-claiv-de-tls-certs
     domains:
-      - main: qia.CC_CLUSTER_SUBDOMAIN
+      - main: {{ .Values.host }}
 

@@ -15,7 +15,7 @@ spec:
   #=================================================================================
   # QiAnnotator Project Page
   #
-  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`)
+  - match: Host(`{{ .Values.host }}`)
     kind: Rule
     services:
     - name: qiadocs
@@ -29,7 +29,7 @@ spec:
   #=================================================================================
   # qia_components java script components css and fonts
   #    
-  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/qia-components`)
+  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia-components`)
     kind: Rule
     services:
     - name: qiac
@@ -43,7 +43,7 @@ spec:
   #=================================================================================
   # qia_components provided image assets
   #    
-  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/img`)
+  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/img`)
     kind: Rule
     services:
     - name: qiac
@@ -52,7 +52,7 @@ spec:
     middlewares:
     - name: traefik-forward-auth
     - name: redirect-to-https    
-  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/img`) && Method(`HEAD`)
+  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/img`) && Method(`HEAD`)
     kind: Rule
     services:
     - name: qiac
@@ -65,7 +65,7 @@ spec:
   #=================================================================================
   # Backend Service to provide multidimensional images (zarr) format
   #
-  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/raw_data`)
+  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/raw_data`)
     kind: Rule
     services:
     - name: clarence
@@ -74,7 +74,7 @@ spec:
     middlewares:
     - name: traefik-forward-auth
     - name: redirect-to-https
-  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/raw_data`) && Method(`HEAD`)
+  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/raw_data`) && Method(`HEAD`)
     kind: Rule
     services:
     - name: clarence
@@ -87,7 +87,7 @@ spec:
   #=================================================================================
   # Jupyter HUB
   #
-  - match: Host(`qia.CC_CLUSTER_SUBDOMAIN`) && PathPrefix(`/hub`)
+  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/hub`)
     kind: Rule
     services:
     - name: proxy-public

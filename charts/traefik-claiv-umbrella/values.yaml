@@ -30,3 +30,7 @@ forwardauth:
         name: argocd-claiv-argo-cd-server
         namespace: argocd
         port: 80
+      path:
+        prefix: /argocd
+
+host: kayi.claiv.de

@@ -13,7 +13,7 @@ spec:
     - Claivolution GmbH
   # At least one of a DNS Name, URI, or IP address is required.
   dnsNames:
-  - 'auth.CC_CLUSTER_SUBDOMAIN'
+  - {{ .Values.dnsName }}
   # Issuer references are always required.
   issuerRef:
     name: prod-acme-cluster-issuer-claiv-de
