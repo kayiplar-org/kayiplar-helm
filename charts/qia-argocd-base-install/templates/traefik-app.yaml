@@ -48,7 +48,7 @@ spec:
             argocd:
               enable: true
               service:
-                name: argocd-claiv-argo-cd-server
+                name: argocd-claiv-server
                 namespace: argocd
                 port: 80
               path:
