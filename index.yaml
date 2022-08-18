@@ -2,6 +2,25 @@ apiVersion: v1
 entries:
   cert-manager-claiv-umbrella:
   - apiVersion: v2
+    created: "2022-08-18T19:50:33.674308826Z"
+    dependencies:
+    - alias: cert-manager
+      condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.9.1
+    - alias: cert-manager-webhook-hetzner
+      name: cert-manager-webhook-hetzner
+      repository: https://vadimkim.github.io/cert-manager-webhook-hetzner
+      version: 1.1.0
+    description: A Helm chart with cert-manager as subchart for Claivolution Applications.
+    digest: 91d34ce8d4455204aef45bea75811a39281800ee2d921fe4ada46a5b7cd205ed
+    name: cert-manager-claiv-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/cert-manager-claiv-umbrella-0.2.6/cert-manager-claiv-umbrella-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
     created: "2022-08-15T18:48:29.336762994Z"
     dependencies:
     - alias: cert-manager
@@ -781,6 +800,20 @@ entries:
     version: 0.1.0
   traefik-claiv-umbrella:
   - apiVersion: v2
+    created: "2022-08-18T19:50:34.05992776Z"
+    dependencies:
+    - alias: traefik
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.0
+    description: A Helm chart with traefik as subchart for Claivolution Applications.
+    digest: a211ffd55773c6556befd1b45f6222de6d7bbbc79252e0a0d4d19cf19d4a79f0
+    name: traefik-claiv-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.3/traefik-claiv-umbrella-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2022-08-14T16:30:34.005794632Z"
     dependencies:
     - alias: traefik
@@ -822,4 +855,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-15T18:48:29.501362379Z"
+generated: "2022-08-18T19:50:34.060047359Z"
