@@ -10,9 +10,16 @@ metadata:
 spec:
   entryPoints:
     - websecure
+    - web
   routes:
   - match: Host(`{{ .Values.host }}`) && PathPrefix(`/argocd`)
     kind: Rule
+    services:
+    - name: {{ .Values.forwardauth.ingressRoutes.argocd.service.name }}
+      namespace: {{ .Values.forwardauth.ingressRoutes.argocd.service.namespace }}
+      port: {{ .Values.forwardauth.ingressRoutes.argocd.service.port }}
+    - match: HostRegexp(`{catchall:.*}`)
+      kind: Rule 
     services:
     - name: {{ .Values.forwardauth.ingressRoutes.argocd.service.name }}
       namespace: {{ .Values.forwardauth.ingressRoutes.argocd.service.namespace }}
