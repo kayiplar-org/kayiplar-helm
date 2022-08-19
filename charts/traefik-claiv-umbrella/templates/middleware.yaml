@@ -8,6 +8,7 @@ spec:
     accessControlAllowOriginList: 
       - "*"
 ---
+{{- if .Values.forwardauth.enabled }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -18,7 +19,9 @@ spec:
     address: http://traefik-forward-auth:4181
     authResponseHeaders:
       - X-Forwarded-User
+{{- end}}
 ---
+{{- if .Values.forwardauth.enabled }}
 # Redirect to https
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -30,3 +33,4 @@ spec:
     scheme: https
     port: "443"
     permanent: true
+{{- end}}

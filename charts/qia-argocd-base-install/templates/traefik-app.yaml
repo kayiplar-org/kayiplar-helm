@@ -39,12 +39,12 @@ spec:
 
         # example forward-auth config
         forwardauth:
-          enabled: true
+          enabled: false
 
         ## pre-defined routes
         ingressRoutes:
           claiv:
-            enabled: true
+            enabled: false
           argocd:
             enabled: true
             service:

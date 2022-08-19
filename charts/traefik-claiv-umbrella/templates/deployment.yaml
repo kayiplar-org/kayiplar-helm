@@ -1,6 +1,8 @@
 #
 # Traefik Forward Auth Deployment
 #
+---
+{{- if .Values.forwardauth.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -61,5 +63,4 @@ spec:
             secretKeyRef:
               name: traefik-forward-auth-secrets
               key: traefik-forward-auth-secret
-
-
+{{- end}}
