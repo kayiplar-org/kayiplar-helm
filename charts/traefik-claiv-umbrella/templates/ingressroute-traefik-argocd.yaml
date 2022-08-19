@@ -8,18 +8,9 @@ metadata:
   labels:
     app: traefik
 spec:
-  entryPoints:
-    - websecure
-    - web
   routes:
   - match: Host(`{{ .Values.host }}`) && PathPrefix(`/argocd`)
     kind: Rule
-    services:
-    - name: {{ .Values.ingressRoutes.argocd.service.name }}
-      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
-      port: {{ .Values.ingressRoutes.argocd.service.port }}
-    - match: HostRegexp(`{catchall:.*}`)
-      kind: Rule 
     services:
     - name: {{ .Values.ingressRoutes.argocd.service.name }}
       namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
@@ -28,4 +19,28 @@ spec:
     secretName: {{ .Values.certificate.name}}
     domains: 
     - main: {{ .Values.host }}
+{{- end}}
+---
+{{- if .Values.ingressRoutes.argocd.enabled }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-forward-auth-ingressroute-websecure
+  namespace: kube-system
+  labels:
+    app: traefik
+spec:
+  routes:
+  - match: HostRegexp(`{catchall:.*}`)
+    kind: Rule 
+    services:
+    - name: {{ .Values.ingressRoutes.argocd.service.name }}
+      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
+      port: {{ .Values.ingressRoutes.argocd.service.port }}
+  - match: PathPrefix(`/`)
+    kind: Rule 
+    services:
+    - name: {{ .Values.ingressRoutes.argocd.service.name }}
+      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
+      port: {{ .Values.ingressRoutes.argocd.service.port }}
 {{- end}}

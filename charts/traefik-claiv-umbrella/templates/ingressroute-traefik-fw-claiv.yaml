@@ -1,5 +1,5 @@
 ---
-{{- if .Values.ingressRoutes.claiv.enable }}
+{{- if .Values.ingressRoutes.claiv.enabled }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:

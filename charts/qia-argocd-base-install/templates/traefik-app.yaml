@@ -12,7 +12,7 @@ spec:
   source:
     chart: traefik-claiv-umbrella
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.1.6"
+    targetRevision: "0.1.7"
     helm:
       releaseName: traefik-claiv-umbrella
       values: |
@@ -53,6 +53,11 @@ spec:
               port: 80
             path:
               prefix: /argocd
+
+        certificate:
+          name: auth-ctl-claiv-de-tls-certs
+          issuer: prod-acme-cluster-issuer-claiv-de-key
+
 
   destination:
     server: "https://kubernetes.default.svc"
