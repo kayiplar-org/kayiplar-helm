@@ -23,9 +23,9 @@ forwardauth:
   ## pre-defined routes
   ingressRoutes:
     claiv:
-      enable: true
+      enabled: true
     argocd:
-      enable: true
+      enabled: true
       service:
         name: argocd-claiv-argo-cd-server
         namespace: argocd
@@ -34,3 +34,7 @@ forwardauth:
         prefix: /argocd
 
 host: kayi.claiv.de
+
+certificate:
+  name: auth-ctl-claiv-de-tls-certs
+  issuer: prod-acme-cluster-issuer-claiv-de-key

@@ -20,7 +20,6 @@ hetzner-webhook:
   name: cert-manager-webhook-hetzner
 
 environment: prod
-dnsName: kayi.claiv.de
 
 # did not work - this should be fixed s.t. more certificates can be issued
 #cluster-issuer:

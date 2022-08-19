@@ -5,7 +5,6 @@ apps:
     enabled: true
     spec:
       environment: staging
-      dnsName: kayi.claiv.de
       secrets:
         hetzner-api-key:
         # => namespace: cert-manager, type: Opaque, name: hetzner-api-key
@@ -47,6 +46,7 @@ apps:
   traefik:
     enabled: false
     spec:
+      host: kayi.claiv.de
       secrets:
         traefik-forward-auth:
         # => namespace: kube-system, type: Opaque, name: traefik-forward-auth-secrets, labels: app: traefik-forward-auth

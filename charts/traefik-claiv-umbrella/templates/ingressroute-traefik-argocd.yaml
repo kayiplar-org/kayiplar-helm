@@ -1,5 +1,5 @@
 ---
-{{- if .Values.forwardauth.ingressRoutes.argocd.enable }}
+{{- if .Values.forwardauth.ingressRoutes.argocd.enabled }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -18,7 +18,7 @@ spec:
       namespace: {{ .Values.forwardauth.ingressRoutes.argocd.service.namespace }}
       port: {{ .Values.forwardauth.ingressRoutes.argocd.service.port }}
   tls:
-    secretName: auth-ctl-claiv-de-tls-certs
+    secretName: {{ .Values.certificate.name}}
     domains: 
     - main: {{ .Values.host }}
 {{- end}}

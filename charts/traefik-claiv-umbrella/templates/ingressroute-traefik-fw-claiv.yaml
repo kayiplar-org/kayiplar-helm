@@ -18,7 +18,7 @@ spec:
       namespace: kube-system
       port: 4181
   tls:
-    secretName: auth-ctl-claiv-de-tls-certs
+    secretName: {{ .Values.certificate.name}}
     domains: 
     - main: {{ .Values.host }}
 {{- end}}

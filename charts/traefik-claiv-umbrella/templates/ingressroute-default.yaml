@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1 
+kind: IngressRoute 
+metadata: 
+  name: default-route 
+spec: 
+  entrypoints: 
+    - web 
+    - websecure 
+  routes: 
+    - match: HostRegexp(`{catchall:.*}`)
+      kind: Rule 
+    services:
+    - name: {{ .Values.forwardauth.ingressRoutes.argocd.service.name }}
+      namespace: {{ .Values.forwardauth.ingressRoutes.argocd.service.namespace }}
+      port: {{ .Values.forwardauth.ingressRoutes.argocd.service.port }}

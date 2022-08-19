@@ -12,12 +12,12 @@ spec:
   source:
     chart: traefik-claiv-umbrella
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.1.3"
+    targetRevision: "0.1.4"
     helm:
       releaseName: traefik-claiv-umbrella
       values: |
 
-        host: kayi.claiv.de
+        host: {{ index .Values "apps" "traefik" "spec" "host" }}
 
         traefik:
           providers:
