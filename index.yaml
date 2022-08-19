@@ -621,6 +621,21 @@ entries:
     version: 0.1.0
   qia-apps:
   - apiVersion: v2
+    created: "2022-08-19T10:13:12.636032431Z"
+    description: A Helm chart for all qia application deployments.
+    digest: 4d88f212dda4f8a5167a5d104a1c6b2c6bd0b3f0f2f041060e76a54ee40a964c
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-apps
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-apps-0.0.5/qia-apps-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
     created: "2022-08-19T10:08:35.435120336Z"
     description: A Helm chart for all qia application deployments.
     digest: 9bed32aec45a061276acb1c43646b23dbd1c52bd3f37ed0ebcab8d8eb2ca3f8d
@@ -1123,4 +1138,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-19T10:08:35.557563683Z"
+generated: "2022-08-19T10:13:12.636301674Z"
