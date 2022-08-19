@@ -3,7 +3,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: traefik-forward-auth-ingressroute-websecure
+  name: argocd-ingressroute
   namespace: kube-system
   labels:
     app: traefik
@@ -25,7 +25,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: traefik-forward-auth-ingressroute-websecure
+  name: ingressroute-default
   namespace: kube-system
   labels:
     app: traefik
