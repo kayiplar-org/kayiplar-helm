@@ -12,7 +12,7 @@ spec:
   source:
     chart: traefik-claiv-umbrella
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.1.5"
+    targetRevision: "0.1.6"
     helm:
       releaseName: traefik-claiv-umbrella
       values: |
@@ -39,20 +39,20 @@ spec:
 
         # example forward-auth config
         forwardauth:
-          enable: true
+          enabled: true
 
-          ## pre-defined routes
-          ingressRoutes:
-            claiv:
-              enable: true
-            argocd:
-              enable: true
-              service:
-                name: argocd-claiv-server
-                namespace: argocd
-                port: 80
-              path:
-                prefix: /argocd
+        ## pre-defined routes
+        ingressRoutes:
+          claiv:
+            enabled: true
+          argocd:
+            enabled: true
+            service:
+              name: argocd-claiv-server
+              namespace: argocd
+              port: 80
+            path:
+              prefix: /argocd
 
   destination:
     server: "https://kubernetes.default.svc"
