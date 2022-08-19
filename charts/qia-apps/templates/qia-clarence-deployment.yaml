@@ -34,23 +34,9 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
         - name: clarence
-          image: registry.claiv.de/qi/services/qia_explorations/clarence/clarence:latest
+          image: registry.claiv.de/qi/services/qia_explorations/clarence/clarence:0.0.0-36-9c9da118-20220607-1707
           # remove for real clusters, useful for minikube
           imagePullPolicy: Always
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: management
-            periodSeconds: 10
-            failureThreshold: 3
-            initialDelaySeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /alive
-              port: management
-            periodSeconds: 10
-            failureThreshold: 5
-            initialDelaySeconds: 20
           ports:
             # akka-management and bootstrap
             - name: management
