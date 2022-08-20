@@ -697,6 +697,21 @@ entries:
     version: 0.0.1
   qia-argocd-base-install:
   - apiVersion: v2
+    created: "2022-08-20T10:03:43.887109133Z"
+    description: A Helm chart for all qia base-install application deployments.
+    digest: 048a0d5e266ee5565fabc1358d0db46f191e42c7e52caa3c65efa24cfd2d7bc7
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-base-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-base-install-0.1.19/qia-argocd-base-install-0.1.19.tgz
+    version: 0.1.19
+  - apiVersion: v2
     created: "2022-08-20T09:51:18.311033642Z"
     description: A Helm chart for all qia base-install application deployments.
     digest: 90d49360a49ba567ec3e54483fc9c9a83edb490e47ab027488ce5de117c85f54
@@ -1103,6 +1118,20 @@ entries:
     version: 0.0.1
   traefik-claiv-umbrella:
   - apiVersion: v2
+    created: "2022-08-20T10:03:44.016637751Z"
+    dependencies:
+    - alias: traefik
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.0
+    description: A Helm chart with traefik as subchart for Claivolution Applications.
+    digest: c9ab29b9161fde69761ba43de6fe1d7a09345bcccb09e34e6e0549923f720076
+    name: traefik-claiv-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.95/traefik-claiv-umbrella-0.1.95.tgz
+    version: 0.1.95
+  - apiVersion: v2
     created: "2022-08-20T09:51:18.624413633Z"
     dependencies:
     - alias: traefik
@@ -1270,4 +1299,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-20T09:51:18.625287129Z"
+generated: "2022-08-20T10:03:44.016969563Z"
