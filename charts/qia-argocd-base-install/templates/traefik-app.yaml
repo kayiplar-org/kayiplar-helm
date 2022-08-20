@@ -12,7 +12,7 @@ spec:
   source:
     chart: traefik-claiv-umbrella
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.1.92"
+    targetRevision: "0.1.93"
     helm:
       releaseName: traefik-claiv-umbrella
       values: |
