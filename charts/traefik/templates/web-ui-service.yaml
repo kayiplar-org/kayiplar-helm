@@ -1,5 +1,5 @@
 ---
-{{- if index .Values "web-ui" "enabled" }}
+{{- if .Values.webui.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,4 +12,5 @@ spec:
   - name: web
     port: 80
     targetPort: 8080
-{{ - end }}
+  
+{{- end }}
