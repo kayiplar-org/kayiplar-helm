@@ -45,6 +45,7 @@ apps:
 
   traefik:
     enabled: false
+    targetRevision: "0.1.95"
     spec:
       host: kayi.claiv.de
       secrets:
