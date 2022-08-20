@@ -30,10 +30,8 @@ metadata:
   labels:
     app: traefik
 spec:
-  tls: {}
   entryPoints:
     - web
-    - websecure
   routes:
   - match: PathPrefix(`/`)
     kind: Rule 
