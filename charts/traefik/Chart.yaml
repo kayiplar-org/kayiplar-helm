@@ -1,0 +1,5 @@
+apiVersion: v2
+name: traefik
+description: A Helm chart to deploy traefik ingress-controller.
+type: application
+version: 0.0.1
