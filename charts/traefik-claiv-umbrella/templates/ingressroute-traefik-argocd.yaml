@@ -31,7 +31,7 @@ metadata:
     app: traefik
 spec:
   tls: {}
-  entrypoints:
+  entryPoints:
     - web
     - websecure
   routes:
