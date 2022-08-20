@@ -1,2 +1,5 @@
-webui:
-  enabled: true
+traefik:
+  providers:
+    kubernetesCRD:
+      enabled: true
+      allowCrossNamespace: true
