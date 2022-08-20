@@ -20,8 +20,8 @@
 #    domains: 
 #    - main: {{ .Values.host }}
 #{{- end}}
-#---
-#{{- if .Values.ingressRoutes.argocd.enabled }}
+---
+{{- if .Values.ingressRoutes.argocd.enabled }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
