@@ -2,9 +2,9 @@ apiVersion: v2
 name: traefik-claiv-umbrella
 description: A Helm chart with traefik as subchart for Claivolution Applications.
 type: application
-version: 0.1.9
+version: 0.1.91
 dependencies:
   - name: traefik
-    version: 10.24.0
+    version: '^10'
     repository: https://helm.traefik.io/traefik
     alias: traefik

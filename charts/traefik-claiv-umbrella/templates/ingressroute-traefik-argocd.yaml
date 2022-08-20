@@ -31,7 +31,7 @@ metadata:
     app: traefik
 spec:
   routes:
-  - match: HostRegexp(`{catchall:.*}`)
+  - match: HostRegexp(`168.119.184.63`)
     kind: Rule 
     services:
     - name: {{ .Values.ingressRoutes.argocd.service.name }}
