@@ -42,3 +42,4 @@ spec:
       port: {{ .Values.ingressRoutes.argocd.service.port }}
   tls: {}
 {{- end}}
+

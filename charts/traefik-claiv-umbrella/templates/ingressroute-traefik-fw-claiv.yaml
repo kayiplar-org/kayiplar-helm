@@ -22,3 +22,4 @@ spec:
     domains: 
     - main: {{ .Values.host }}
 {{- end}}
+

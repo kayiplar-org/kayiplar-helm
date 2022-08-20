@@ -41,6 +41,7 @@ spec:
         forwardauth:
           enabled: false
 
+
         ## pre-defined routes
         ingressRoutes:
           claiv:
