@@ -999,6 +999,15 @@ entries:
     version: 0.1.0
   traefik:
   - apiVersion: v2
+    created: "2022-08-20T08:44:44.171796327Z"
+    description: A Helm chart to deploy traefik ingress-controller.
+    digest: 451765f53113a40912e4dccefe3819f3177b4bffa7f22ce6303a4f4a5754b87c
+    name: traefik
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-0.0.3/traefik-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2022-08-20T08:38:24.973639882Z"
     description: A Helm chart to deploy traefik ingress-controller.
     digest: 9d550f00b34a415afb6ee5568415603b2105414b93e700481f18d2a55c62e065
@@ -1157,4 +1166,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-20T08:38:24.974192976Z"
+generated: "2022-08-20T08:44:44.17217203Z"
