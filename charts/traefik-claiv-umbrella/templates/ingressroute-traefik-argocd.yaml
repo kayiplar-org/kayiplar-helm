@@ -30,7 +30,6 @@ metadata:
   labels:
     app: traefik
 spec:
-  tls: {}
   entryPoints:
     - web
     - websecure
@@ -41,4 +40,5 @@ spec:
     - name: {{ .Values.ingressRoutes.argocd.service.name }}
       namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
       port: {{ .Values.ingressRoutes.argocd.service.port }}
+  tls: {}
 {{- end}}
