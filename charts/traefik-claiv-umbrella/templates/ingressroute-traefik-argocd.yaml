@@ -20,20 +20,22 @@
 #    domains: 
 #    - main: {{ .Values.host }}
 #{{- end}}
----
 {{- if .Values.ingressRoutes.argocd.enabled }}
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: ingressroute-default
+  name: ingressroute-argocd
   namespace: kube-system
   labels:
     app: traefik
 spec:
+  tls: {}
   entryPoints:
     - web
+    - websecure
   routes:
-  - match: PathPrefix(`/`)
+  - match: PathPrefix(`{{ .Values.ingressRoutes.argocd.path.prefix }}`)
     kind: Rule 
     services:
     - name: {{ .Values.ingressRoutes.argocd.service.name }}
