@@ -1,27 +1,27 @@
----
-{{- if .Values.ingressRoutes.argocd.enabled }}
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: argocd-ingressroute
-  namespace: kube-system
-  labels:
-    app: traefik
-spec:
-  routes:
-  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/argocd`)
-    kind: Rule
-    services:
-    - name: {{ .Values.ingressRoutes.argocd.service.name }}
-      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
-      port: {{ .Values.ingressRoutes.argocd.service.port }}
-  tls:
-    secretName: {{ .Values.certificate.name}}
-    domains: 
-    - main: {{ .Values.host }}
-{{- end}}
----
-{{- if .Values.ingressRoutes.argocd.enabled }}
+#---
+#{{- if .Values.ingressRoutes.argocd.enabled }}
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: IngressRoute
+#metadata:
+#  name: argocd-ingressroute
+#  namespace: kube-system
+#  labels:
+#    app: traefik
+#spec:
+#  routes:
+#  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/argocd`)
+#    kind: Rule
+#    services:
+#    - name: {{ .Values.ingressRoutes.argocd.service.name }}
+#      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
+#      port: {{ .Values.ingressRoutes.argocd.service.port }}
+#  tls:
+#    secretName: {{ .Values.certificate.name}}
+#    domains: 
+#    - main: {{ .Values.host }}
+#{{- end}}
+#---
+#{{- if .Values.ingressRoutes.argocd.enabled }}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -30,13 +30,11 @@ metadata:
   labels:
     app: traefik
 spec:
+  tls: {}
+  entrypoints:
+    - web
+    - websecure
   routes:
-  - match: HostRegexp(`168.119.184.63`)
-    kind: Rule 
-    services:
-    - name: {{ .Values.ingressRoutes.argocd.service.name }}
-      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
-      port: {{ .Values.ingressRoutes.argocd.service.port }}
   - match: PathPrefix(`/`)
     kind: Rule 
     services:
