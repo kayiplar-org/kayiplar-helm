@@ -1178,6 +1178,20 @@ entries:
     version: 0.0.1
   traefik-claiv-umbrella:
   - apiVersion: v2
+    created: "2022-08-21T10:22:26.799735051Z"
+    dependencies:
+    - alias: traefik
+      name: traefik
+      repository: https://helm.traefik.io/traefik
+      version: 10.24.0
+    description: A Helm chart with traefik as subchart for Claivolution Applications.
+    digest: 9e0f553537f5554b51a217bf6bf1aec80fcd1230cf5c787123b14743e215c9b2
+    name: traefik-claiv-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.2.2/traefik-claiv-umbrella-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     created: "2022-08-21T08:45:28.208809432Z"
     dependencies:
     - alias: traefik
@@ -1443,4 +1457,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-21T08:45:28.209607234Z"
+generated: "2022-08-21T10:22:26.800194174Z"
