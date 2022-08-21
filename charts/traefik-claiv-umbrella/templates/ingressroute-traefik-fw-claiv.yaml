@@ -9,17 +9,15 @@ metadata:
     app: traefik
 spec:
   entryPoints:
+    - web
     - websecure
   routes:
-  - match: Host(`{{ .Values.host }}`)
+  - match: PathPrefix(`/`)
     kind: Rule
     services:
     - name: traefik-forward-auth
       namespace: kube-system
       port: 4181
-  tls:
-    secretName: {{ .Values.certificate.name}}
-    domains: 
-    - main: {{ .Values.host }}
+  tls: {}
 {{- end}}
 
