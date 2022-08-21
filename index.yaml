@@ -697,6 +697,21 @@ entries:
     version: 0.0.1
   qia-argocd-base-install:
   - apiVersion: v2
+    created: "2022-08-21T08:38:16.742401906Z"
+    description: A Helm chart for all qia base-install application deployments.
+    digest: 16e7337d294b3aa91501b5e013e3fadd8f06a9869e318a9f0dbb98f9a76bb8c7
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-base-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-base-install-0.2.2/qia-argocd-base-install-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
     created: "2022-08-20T12:07:38.518980341Z"
     description: A Helm chart for all qia base-install application deployments.
     digest: ebfc05e8f13ee0605e0df5f27a4e5034b986f5c528a9bfe914e2dbfd0938d9cd
@@ -1042,6 +1057,21 @@ entries:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-base-install-0.0.1/qia-argocd-base-install-0.0.1.tgz
     version: 0.0.1
   qia-argocd-custom-install:
+  - apiVersion: v2
+    created: "2022-08-21T08:38:16.942646618Z"
+    description: A Helm chart for all qia custom-install application deployments.
+    digest: ba4164557621e1248dcec0a68e1a2c0aa3751cb8921908e862699f4c45666c95
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-custom-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-custom-install-0.0.2/qia-argocd-custom-install-0.0.2.tgz
+    version: 0.0.2
   - apiVersion: v2
     created: "2022-08-14T19:47:46.558636887Z"
     description: A Helm chart for all qia custom-install application deployments.
@@ -1399,4 +1429,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-20T12:07:38.519410475Z"
+generated: "2022-08-21T08:38:16.942962639Z"
