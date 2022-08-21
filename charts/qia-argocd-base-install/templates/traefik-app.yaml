@@ -38,10 +38,10 @@ spec:
               app: traefik-forward-auth
 
         # example forward-auth config
+        {{- with index .Values "apps" "traefik" "spec" "forward-auth" }}
         forwardauth:
-          enabled: true
-
-
+          enabled: {{ index .Values "apps" "traefik" "spec" "forward-auth" "enabled" }}
+        {{- end}}
         ## pre-defined routes
         ingressRoutes:
           claiv:
