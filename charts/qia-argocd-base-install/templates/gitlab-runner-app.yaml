@@ -14,7 +14,7 @@ spec:
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
     targetRevision: "0.1.2"
     helm:
-      releaseName: gitlab-runner-umbrella
+      releaseName: gitlab-runner
       values: |
 
         gitlab-runner:

@@ -14,7 +14,7 @@ spec:
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
     targetRevision: "0.1.0"
     helm:
-      releaseName: jupyterhub-umbrella
+      releaseName: jupyterhub
       values: |
 
         jupyterhub:

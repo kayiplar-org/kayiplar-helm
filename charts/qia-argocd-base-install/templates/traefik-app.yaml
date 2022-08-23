@@ -14,7 +14,7 @@ spec:
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
     targetRevision: {{ index .Values "apps" "traefik" "targetRevision" }}
     helm:
-      releaseName: traefik-claiv-umbrella
+      releaseName: traefik
       values: |
 
         host: {{ index .Values "apps" "traefik" "spec" "host" }}
