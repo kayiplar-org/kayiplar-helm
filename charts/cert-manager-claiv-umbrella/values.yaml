@@ -5,7 +5,7 @@ cert-manager:
 
 cert-manager-webhook-hetzner:
   groupName: acme.claiv.de
-  fullnameOverride: cert-manager-webhook-hetzner
+  fullnameOverride: webhook-hetzner
 
 # Add a cluster issuer. Example for hetzner
 
@@ -19,7 +19,7 @@ secrets:
 
 hetzner-webhook:
   enabled: true
-  name: cert-manager-webhook-hetzner
+  name: webhook-hetzner
 
 environment: prod
 

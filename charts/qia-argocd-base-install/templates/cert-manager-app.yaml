@@ -23,6 +23,7 @@ spec:
 
         cert-manager-webhook-hetzner:
           groupName: acme.claiv.de
+          fullnameOverride: webhook-hetzner
 
         # for hetzner api key
         secrets:
@@ -38,7 +39,7 @@ spec:
 
         hetzner-webhook:
           enabled: true
-          name: cert-manager-webhook-hetzner
+          name: webhook-hetzner
         {{- with index .Values "apps" "cert-manager" "spec" "environment" }}
         environment: staging
         {{- end}}
