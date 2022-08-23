@@ -1,9 +1,11 @@
 cert-manager:
   installCRDs: true
   namespace: cert-manager
+  fullnameOverride: cert-manager
 
 cert-manager-webhook-hetzner:
   groupName: acme.claiv.de
+  fullnameOverride: cert-manager-webhook-hetzner
 
 # Add a cluster issuer. Example for hetzner
 
