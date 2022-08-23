@@ -59,7 +59,7 @@ spec:
 
         certificate:
           name: auth-ctl-claiv-de-tls-certs
-          issuer: prod-acme-cluster-issuer-claiv-de-key
+          issuer: prod-acme-cluster-issuer-claiv-de
 
 
   destination:
