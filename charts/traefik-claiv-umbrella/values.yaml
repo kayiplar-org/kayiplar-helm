@@ -21,7 +21,7 @@ forward-auth:
   enabled: true
 
 # example base domain
-base-domain: kayi-test.claiv.de
+base-domain: kayi.claiv.de
 
 ## pre-defined routes
 ingressRoutes:
