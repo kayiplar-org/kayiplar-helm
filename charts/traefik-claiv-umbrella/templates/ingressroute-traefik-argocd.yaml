@@ -21,12 +21,6 @@ spec:
     - name: {{ .Values.ingressRoutes.argocd.service.name }}
       namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
       port: {{ .Values.ingressRoutes.argocd.service.port }}
-  - match: Host(`{{ $argocdDomainPrefix}}.{{ $baseDomain}}`) && PathPrefix(`/`)
-    kind: Rule 
-    services:
-    - name: {{ .Values.ingressRoutes.argocd.service.name }}
-      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
-      port: {{ .Values.ingressRoutes.argocd.service.port }}
   tls:
     secretName: {{ $argocdDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
     domains: 

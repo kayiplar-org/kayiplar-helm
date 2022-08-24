@@ -25,8 +25,8 @@ spec:
     - name: qiadocs
       namespace: qia-cloud
       port: 3000
-    middlewares:
-    - name: traefik-forward-auth # This needs to be created aswell (usually by traefik installation)
+    #middlewares:
+    #- name: traefik-forward-auth # This needs to be created aswell (usually by traefik installation)
   #
   #=================================================================================
   # qia_components java script components css and fonts
