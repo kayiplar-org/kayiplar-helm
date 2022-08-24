@@ -1,11 +1,11 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name:  {{ .Values.certificate.name}}
+  name:  qia-claiv-certificate
   namespace: kube-system
 spec:
   # Secret names are always required.
-  secretName:  {{ .Values.certificate.name }}
+  secretName: qia-claiv-certificate
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   subject:

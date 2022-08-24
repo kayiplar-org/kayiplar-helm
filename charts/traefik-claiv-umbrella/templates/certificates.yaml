@@ -1,0 +1,62 @@
+{{- $baseDomain := index .Values "base-domain" }}
+{{- $baseDomainSafeName := index .Values "base-domain" | replace "." "-" }}
+---
+{{- $fauthDomainPrefix :=  index .Values "ingressRoutes" "forward-auth" "domain-prefix"}}
+{{- $fauthDomainPrefixSafeName :=  index .Values "ingressRoutes" "forward-auth" "domain-prefix"}}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $fauthDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+  namespace: kube-system
+spec:
+  secretName: {{ $fauthDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+    - Claivolution GmbH
+  dnsNames:
+  - {{ $fauthDomainPrefix }}.{{ $baseDomain }}
+  issuerRef:
+    name: {{ .Values.certificate.issuer }}
+    kind: ClusterIssuer
+---
+{{- $argocdDomainPrefix :=  index .Values "ingressRoutes" "argocd" "domain-prefix" }}
+{{- $argocdDomainPrefixSafeName :=  index .Values "ingressRoutes" "argocd" "domain-prefix" | replace "." "_"}}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $argocdDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+  namespace: kube-system
+spec:
+  secretName: {{ $argocdDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+    - Claivolution GmbH
+  dnsNames:
+  - {{ $argocdDomainPrefix }}.{{ $baseDomain }}
+  issuerRef:
+    name: {{ .Values.certificate.issuer }}
+    kind: ClusterIssuer
+---
+{{- $qiaDomainPrefix :=  index .Values "ingressRoutes" "claiv" "domain-prefix" }}
+{{- $qiaDomainPrefixSafeName :=  index .Values "ingressRoutes" "claiv" "domain-prefix" | replace "." "_"}}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $qiaDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+  namespace: kube-system
+spec:
+  secretName: {{ $qiaDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+    - Claivolution GmbH
+  dnsNames:
+  - {{ $qiaDomainPrefix }}.{{ $baseDomain }}
+  issuerRef:
+    name: {{ .Values.certificate.issuer }}
+    kind: ClusterIssuer

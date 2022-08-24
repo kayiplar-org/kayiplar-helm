@@ -49,7 +49,7 @@ apps:
     forward-auth:
       enabled: false
     spec:
-      host: kayi.claiv.de
+      host: kayi-test.claiv.de
       secrets:
         traefik-forward-auth:
         # => namespace: kube-system, type: Opaque, name: traefik-forward-auth-secrets, labels: app: traefik-forward-auth

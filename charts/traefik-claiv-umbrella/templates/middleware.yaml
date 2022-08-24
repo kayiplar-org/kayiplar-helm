@@ -7,7 +7,7 @@ spec:
   headers:
     accessControlAllowOriginList: 
       - "*"
-{{- if .Values.forwardauth.enabled }}
+{{- if index .Values "forward-auth" "enabled" }}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -20,7 +20,7 @@ spec:
     authResponseHeaders:
       - X-Forwarded-User
 {{- end}}
-{{- if .Values.forwardauth.enabled }}
+{{- if index .Values "forward-auth" "enabled" }}
 ---
 # Redirect to https
 apiVersion: traefik.containo.us/v1alpha1

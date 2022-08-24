@@ -1,5 +1,9 @@
----
 {{- if .Values.ingressRoutes.claiv.enabled }}
+{{- $baseDomain := index .Values "base-domain"}}
+{{- $baseDomainSafeName := index .Values "base-domain" | replace "." "-" }}
+{{- $qiaDomainPrefix :=  index .Values "ingressRoutes" "claiv" "domain-prefix" }}
+{{- $qiaDomainPrefixSafeName :=  index .Values "ingressRoutes" "claiv" "domain-prefix" | replace "." "_"}}
+---
 #=========================================
 # HTTP Section
 #=========================================
@@ -15,7 +19,7 @@ spec:
   #=================================================================================
   # QiAnnotator Project Page
   #
-  - match: Host(`{{ .Values.host }}`)
+  - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`)
     kind: Rule
     services:
     - name: qiadocs
@@ -29,7 +33,7 @@ spec:
   #=================================================================================
   # qia_components java script components css and fonts
   #    
-  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia-components`)
+  - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/qia-components`)
     kind: Rule
     services:
     - name: qiac
@@ -43,7 +47,7 @@ spec:
   #=================================================================================
   # qia_components provided image assets
   #    
-  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/img`)
+  - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/img`)
     kind: Rule
     services:
     - name: qiac
@@ -52,7 +56,7 @@ spec:
     middlewares:
     - name: traefik-forward-auth
     - name: redirect-to-https    
-  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/img`) && Method(`HEAD`)
+  - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/img`) && Method(`HEAD`)
     kind: Rule
     services:
     - name: qiac
@@ -65,7 +69,7 @@ spec:
   #=================================================================================
   # Backend Service to provide multidimensional images (zarr) format
   #
-  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/raw_data`)
+  - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/raw_data`)
     kind: Rule
     services:
     - name: clarence
@@ -74,7 +78,7 @@ spec:
     middlewares:
     - name: traefik-forward-auth
     - name: redirect-to-https
-  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/raw_data`) && Method(`HEAD`)
+  - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/raw_data`) && Method(`HEAD`)
     kind: Rule
     services:
     - name: clarence
@@ -87,7 +91,7 @@ spec:
   #=================================================================================
   # Jupyter HUB
   #
-  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/hub`)
+  - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/hub`)
     kind: Rule
     services:
     - name: proxy-public

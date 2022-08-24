@@ -1,26 +1,8 @@
-#---
-#{{- if .Values.ingressRoutes.argocd.enabled }}
-#apiVersion: traefik.containo.us/v1alpha1
-#kind: IngressRoute
-#metadata:
-#  name: argocd-ingressroute
-#  namespace: kube-system
-#  labels:
-#    app: traefik
-#spec:
-#  routes:
-#  - match: Host(`{{ .Values.host }}`) && PathPrefix(`/argocd`)
-#    kind: Rule
-#    services:
-#    - name: {{ .Values.ingressRoutes.argocd.service.name }}
-#      namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
-#      port: {{ .Values.ingressRoutes.argocd.service.port }}
-#  tls:
-#    secretName: {{ .Values.certificate.name}}
-#    domains: 
-#    - main: {{ .Values.host }}
-#{{- end}}
 {{- if .Values.ingressRoutes.argocd.enabled }}
+{{- $baseDomain := index .Values "base-domain"}}
+{{- $baseDomainSafeName := index .Values "base-domain" | replace "." "-" }}
+{{- $argocdDomainPrefix :=  index .Values "ingressRoutes" "argocd" "domain-prefix" }}
+{{- $argocdDomainPrefixSafeName :=  index .Values "ingressRoutes" "argocd" "domain-prefix" | replace "." "_"}}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -34,12 +16,14 @@ spec:
     - web
     - websecure
   routes:
-  - match: PathPrefix(`{{ .Values.ingressRoutes.argocd.path.prefix }}`)
+  - match: Host(`{{ $argocdDomainPrefix}}.{{ $baseDomain}}`)
     kind: Rule 
     services:
     - name: {{ .Values.ingressRoutes.argocd.service.name }}
       namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
       port: {{ .Values.ingressRoutes.argocd.service.port }}
-  tls: {}
+  tls:
+    secretName: {{ $argocdDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+    domains: 
+    - main: {{ $argocdDomainPrefix }}.{{ $baseDomain }}
 {{- end}}
-

@@ -2,7 +2,7 @@
 # Traefik Forward Auth Deployment
 #
 ---
-{{- if .Values.forwardauth.enabled }}
+{{- if index .Values "forward-auth" "enabled" }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:

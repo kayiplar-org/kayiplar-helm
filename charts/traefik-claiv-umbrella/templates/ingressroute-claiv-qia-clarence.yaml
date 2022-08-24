@@ -1,5 +1,9 @@
----
 {{- if .Values.ingressRoutes.claiv.enabled }}
+{{- $baseDomain := index .Values "base-domain"}}
+{{- $baseDomainSafeName := index .Values "base-domain" | replace "." "-" }}
+{{- $qiaDomainPrefix :=  index .Values "ingressRoutes" "claiv" "domain-prefix" }}
+{{- $qiaDomainPrefixSafeName :=  index .Values "ingressRoutes" "claiv" "domain-prefix" | replace "." "_"}}
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -9,7 +13,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_ui_state.UiStateManager`)
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/qia_ui_state.UiStateManager`)
       kind: Rule
       services:
         - name: clarence
@@ -18,7 +22,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_ui_state.UiStateManager`) && Method(`HEAD`)
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/qia_ui_state.UiStateManager`) && Method(`HEAD`)
       kind: Rule
       services:
         - name: clarence
@@ -27,7 +31,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_annotations.Annotations`)
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain}}`) && PathPrefix(`/qia_annotations.Annotations`)
       kind: Rule
       services:
         - name: clarence
@@ -36,7 +40,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/qia_annotations.Annotations`) && Method(`HEAD`)
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/qia_annotations.Annotations`) && Method(`HEAD`)
       kind: Rule
       services:
         - name: clarence
@@ -45,7 +49,7 @@ spec:
           scheme: h2c
       middlewares:
       - name: traefik-forward-auth
-    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/audio`)
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/audio`)
       kind: Rule
       services:
         - name: clarence
@@ -54,7 +58,7 @@ spec:
           scheme: h2c
       middlewares:
         - name: traefik-forward-auth
-    - match: Host(`{{ .Values.host }}`) && PathPrefix(`/audio`) && Method(`HEAD`)
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`) && PathPrefix(`/audio`) && Method(`HEAD`)
       kind: Rule
       services:
         - name: clarence
@@ -65,8 +69,8 @@ spec:
         - name: traefik-forward-auth
 
   tls:
-    secretName: {{ .Values.certificate.name}}
-    domains:
-      - main: {{ .Values.host }}
+    secretName: {{ $qiaDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+    domains: 
+    - main: {{ $qiaDomainPrefix }}.{{ $baseDomain }}
 
 {{- end }}

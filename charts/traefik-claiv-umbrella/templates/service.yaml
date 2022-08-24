@@ -1,5 +1,5 @@
 ---
-{{- if .Values.forwardauth.enabled }}
+{{- if index .Values "forward-auth" "enabled" }}
 apiVersion: v1
 kind: Service
 metadata:

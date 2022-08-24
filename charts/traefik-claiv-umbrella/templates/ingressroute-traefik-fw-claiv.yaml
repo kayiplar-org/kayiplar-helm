@@ -1,5 +1,10 @@
+{{- if index .Values "forward-auth" "enabled" }}
+{{- $baseDomain := index .Values "base-domain"}}
+{{- $baseDomainSafeName := index .Values "base-domain" | replace "." "-" }}
+{{- $fauthDomainPrefix :=  index .Values "ingressRoutes" "forward-auth" "domain-prefix" }}
+{{- $fauthDomainPrefixSafeName :=  index .Values "ingressRoutes" "forward-auth" "domain-prefix" | replace "." "-" }}
 ---
-{{- if .Values.forwardauth.enabled }}
+
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -12,12 +17,15 @@ spec:
     - web
     - websecure
   routes:
-  - match: PathPrefix(`/`)
+  - match: Host(`{{ $fauthDomainPrefix }}.{{ $baseDomain}}`)
     kind: Rule
     services:
     - name: traefik-forward-auth
       namespace: kube-system
       port: 4181
-  tls: {}
+  tls:
+    secretName: {{ $fauthDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+    domains: 
+    - main: {{ $fauthDomainPrefix }}.{{ $baseDomain }}
 {{- end}}
 

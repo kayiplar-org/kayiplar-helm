@@ -17,8 +17,6 @@ spec:
       releaseName: traefik
       values: |
 
-        host: {{ index .Values "apps" "traefik" "spec" "host" }}
-
         traefik:
           providers:
             kubernetesCRD:
@@ -38,28 +36,30 @@ spec:
               app: traefik-forward-auth
 
         # example forward-auth config
-        #{{- with index .Values "apps" "traefik" "spec" "forward-auth" }}
-        #forwardauth:
-        #  enabled: {{ index .Values "apps" "traefik" "spec" "forward-auth" "enabled" }}
-        #{{- end}}
-        forwardauth:
+        forward-auth:
           enabled: true
+
+        # example base domain
+        base-domain: {{ index .Values "apps" "traefik" "spec" "host" }}
+
         ## pre-defined routes
         ingressRoutes:
+          forward-auth:
+            enabled: true
+            domain-prefix: auth
           claiv:
             enabled: true
+            domain-prefix: qia  # domain for claiv apps => qia.kayi.claiv.de
           argocd:
             enabled: true
+            domain-prefix: argocd # domain for argocd => argocd.kayi.claiv.de
             service:
               name: argocd-claiv-server
               namespace: argocd
               port: 80
-            path:
-              prefix: /argocd
 
         certificate:
-          name: auth-ctl-claiv-de-tls-certs
-          issuer: prod-acme-cluster-issuer-claiv-de
+          issuer: prod-acme-cluster-issuer-claiv-de # ClusterIssuer of your cert-manager instance
 
 
   destination:
