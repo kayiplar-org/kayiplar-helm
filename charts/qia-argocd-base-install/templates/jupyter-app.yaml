@@ -17,36 +17,35 @@ spec:
       releaseName: jupyterhub
       values: |
 
-        jupyterhub:
-          proxy:
-            service:
-              type: ClusterIP
-          singleuser:
-            defaultUrl: "/lab"
-            uid: 0
-            cmd: start-singleuser.sh
-            image:
-              name: jupyter/tensorflow-notebook
-              tag: latest #6d42503c684f
-            extraEnv:
-              - name: GITLAB_TOKEN
-                valueFrom:
-                  secretKeyRef:
-                    name: {{ index .Values "apps" "jupyterhub" "spec" "secretKeyRef" "name" }}
-                    key: {{ index .Values "apps" "jupyterhub" "spec" "secretKeyRef" "key" }}
-              - name: GRANT_SUDO
-                value: "yes"
-              - name: NOTEBOOK_ARGS
-                value: "--allow-root"
-          hub:
-            config:
-              Authenticator:
-                admin_users:
-                  - admin
-              DummyAuthenticator:
-                password: admin
-              JupyterHub:
-                authenticator_class: dummy
+        proxy:
+          service:
+            type: ClusterIP
+        singleuser:
+          defaultUrl: "/lab"
+          uid: 0
+          cmd: start-singleuser.sh
+          image:
+            name: jupyter/tensorflow-notebook
+            tag: latest #6d42503c684f
+          extraEnv:
+            - name: GITLAB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ index .Values "apps" "jupyterhub" "spec" "secretKeyRef" "name" }}
+                  key: {{ index .Values "apps" "jupyterhub" "spec" "secretKeyRef" "key" }}
+            - name: GRANT_SUDO
+              value: "yes"
+            - name: NOTEBOOK_ARGS
+              value: "--allow-root"
+        hub:
+          config:
+            Authenticator:
+              admin_users:
+                - admin
+            DummyAuthenticator:
+              password: admin
+            JupyterHub:
+              authenticator_class: dummy
 
   destination:
     server: "https://kubernetes.default.svc"
