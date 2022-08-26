@@ -40,7 +40,7 @@ spec:
             ## will be created.
             name: "minio-sa"
 
-          replicas: 5 #CC_CLUSTER_SIZE
+          replicas: 2 #CC_CLUSTER_SIZE
 
           resources:
             requests:
