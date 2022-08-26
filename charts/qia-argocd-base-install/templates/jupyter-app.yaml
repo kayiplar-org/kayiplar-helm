@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    chart: jupyterhub-umbrella
+    chart: jupyterhub
     repoURL: 'https://jupyterhub.github.io/helm-chart/'
     targetRevision: "1.2.0"
     helm:
