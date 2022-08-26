@@ -17,36 +17,36 @@ spec:
       releaseName: minio
       values: |
 
-        minio:
-          persistence:
-            enabled: true
-            size: 1Ti
 
-          buckets:
-              # Name of the bucket
-            - name: qi-tissue
-              # Policy to be set on the
-              # bucket [none|download|upload|public]
-              policy: none
-              # Purge if bucket exists already
-              purge: false
-              # set versioning for
-              # bucket [true|false]
-              versioning: true
+        persistence:
+          enabled: true
+          size: 1Ti
 
-          serviceAccount:
-            create: true
-            ## The name of the service account to use. If 'create' is 'true', a service account with that name
-            ## will be created.
-            name: "minio-sa"
+        buckets:
+            # Name of the bucket
+          - name: qi-tissue
+            # Policy to be set on the
+            # bucket [none|download|upload|public]
+            policy: none
+            # Purge if bucket exists already
+            purge: false
+            # set versioning for
+            # bucket [true|false]
+            versioning: true
 
-          replicas: 2 #CC_CLUSTER_SIZE
+        serviceAccount:
+          create: true
+          ## The name of the service account to use. If 'create' is 'true', a service account with that name
+          ## will be created.
+          name: "minio-sa"
 
-          resources:
-            requests:
-              memory: 1Gi
+        replicas: 5 #CC_CLUSTER_SIZE
 
-          existingSecret: {{ index .Values "apps" "minio" "spec" "secretKeyRef" "name" }}
+        resources:
+          requests:
+            memory: 2Gi
+
+        existingSecret: {{ index .Values "apps" "minio" "spec" "secretKeyRef" "name" }}
 
   destination:
     server: "https://kubernetes.default.svc"
