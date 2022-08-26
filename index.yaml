@@ -683,6 +683,21 @@ entries:
     version: 0.1.0
   qia-apps:
   - apiVersion: v2
+    created: "2022-08-26T17:37:43.269423053Z"
+    description: A Helm chart for all qia application deployments.
+    digest: 5c94b3191706b103511ed066419d8eaf8691b63535609c23633f8168df6f925c
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-apps
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-apps-0.0.7/qia-apps-0.0.7.tgz
+    version: 0.0.7
+  - apiVersion: v2
     created: "2022-08-26T05:59:54.862414885Z"
     description: A Helm chart for all qia application deployments.
     digest: 288129d7b7493cfa1bbfc7e271d6c97fcb8736a0b5fc006a9747a4fdf2f8975f
@@ -1375,6 +1390,21 @@ entries:
     version: 0.0.1
   qia-argocd-custom-install:
   - apiVersion: v2
+    created: "2022-08-26T17:37:43.413342172Z"
+    description: A Helm chart for all qia custom-install application deployments.
+    digest: f75ac979c231d132507371b082e7c342e49749770d9b62f36459456ef6ef46cf
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-custom-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-custom-install-0.0.4/qia-argocd-custom-install-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
     created: "2022-08-26T05:59:55.183484609Z"
     description: A Helm chart for all qia custom-install application deployments.
     digest: 90f07a9fbab798013c9bf078f1c16541aaa45f3b1709f6de264a75ef8fa6d454
@@ -1887,4 +1917,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-26T17:18:26.515546264Z"
+generated: "2022-08-26T17:37:43.414465583Z"
