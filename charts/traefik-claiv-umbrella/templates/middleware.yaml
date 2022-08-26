@@ -1,3 +1,4 @@
+{{- $qiaDomainPrefix :=  index .Values "ingressRoutes" "claiv" "domain-prefix" }}
 {{- if index .Values "middlewares" "allow-all-origin" "enabled" }}
 ---
 apiVersion: traefik.containo.us/v1alpha1
