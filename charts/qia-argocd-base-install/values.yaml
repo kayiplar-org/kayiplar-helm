@@ -37,6 +37,6 @@ apps:
 
   traefik:
     enabled: false
-    targetRevision: "0.2.3"
+    targetRevision: "0.2.44"
     spec:
-      host: kayi-test.claiv.de
+      host: kayi.claiv.de

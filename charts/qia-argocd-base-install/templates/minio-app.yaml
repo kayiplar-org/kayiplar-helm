@@ -17,7 +17,6 @@ spec:
       releaseName: minio
       values: |
 
-
         persistence:
           enabled: true
           size: 1Ti
