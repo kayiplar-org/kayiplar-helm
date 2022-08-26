@@ -2,6 +2,25 @@ apiVersion: v1
 entries:
   cert-manager-claiv-umbrella:
   - apiVersion: v2
+    created: "2022-08-26T05:59:54.228028207Z"
+    dependencies:
+    - alias: cert-manager
+      condition: cert-manager.enabled
+      name: cert-manager
+      repository: https://charts.jetstack.io
+      version: v1.9.1
+    - alias: cert-manager-webhook-hetzner
+      name: cert-manager-webhook-hetzner
+      repository: https://vadimkim.github.io/cert-manager-webhook-hetzner
+      version: 1.1.0
+    description: A Helm chart with cert-manager as subchart for Claivolution Applications.
+    digest: 60a533071c5989605ea88833a8cacbdf4e305778a5ec2d0ad46d16c8fdb35d60
+    name: cert-manager-claiv-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/cert-manager-claiv-umbrella-0.2.8/cert-manager-claiv-umbrella-0.2.8.tgz
+    version: 0.2.8
+  - apiVersion: v2
     created: "2022-08-19T06:16:42.82207269Z"
     dependencies:
     - alias: cert-manager
@@ -457,6 +476,20 @@ entries:
     version: 0.1.0
   gitlab-runner-umbrella:
   - apiVersion: v2
+    created: "2022-08-26T05:59:54.388401829Z"
+    dependencies:
+    - alias: gitlab-runner
+      name: gitlab-runner
+      repository: https://charts.gitlab.io
+      version: 0.43.1
+    description: A Helm chart with gitlab-runner as subchart.
+    digest: a7425152f6437de1072ba0ba63a906be198eb26592cde710d9d796dba0dd97b2
+    name: gitlab-runner-umbrella
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/gitlab-runner-umbrella-0.1.3/gitlab-runner-umbrella-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     created: "2022-08-14T14:30:12.290567051Z"
     dependencies:
     - alias: gitlab-runner
@@ -604,6 +637,16 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/kayiplar-generic-0.0.2/kayiplar-generic-0.0.2.tgz
     version: 0.0.2
+  memgraph:
+  - apiVersion: v2
+    created: "2022-08-26T05:59:54.703869391Z"
+    description: A Helm chart for memgraph.
+    digest: 9a0c4b8cf0133080969826c480fa5e218e9c7dbda4ceaa0364b977ef92da5f01
+    name: memgraph
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/memgraph-0.0.1/memgraph-0.0.1.tgz
+    version: 0.0.1
   minio-umbrella:
   - apiVersion: v2
     created: "2022-08-14T15:28:54.50096758Z"
@@ -620,6 +663,21 @@ entries:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/minio-umbrella-0.1.0/minio-umbrella-0.1.0.tgz
     version: 0.1.0
   qia-apps:
+  - apiVersion: v2
+    created: "2022-08-26T05:59:54.862414885Z"
+    description: A Helm chart for all qia application deployments.
+    digest: 288129d7b7493cfa1bbfc7e271d6c97fcb8736a0b5fc006a9747a4fdf2f8975f
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-apps
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-apps-0.0.6/qia-apps-0.0.6.tgz
+    version: 0.0.6
   - apiVersion: v2
     created: "2022-08-19T10:13:12.636032431Z"
     description: A Helm chart for all qia application deployments.
@@ -696,6 +754,21 @@ entries:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-apps-0.0.1/qia-apps-0.0.1.tgz
     version: 0.0.1
   qia-argocd-base-install:
+  - apiVersion: v2
+    created: "2022-08-26T05:59:55.034771496Z"
+    description: A Helm chart for all qia base-install application deployments.
+    digest: e72b47cc7b3dee3f71c6057d5afb8d3bd58a590277f3ddc2a2679b1b02d1e895
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-base-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-base-install-0.3.3/qia-argocd-base-install-0.3.3.tgz
+    version: 0.3.3
   - apiVersion: v2
     created: "2022-08-24T17:58:54.696356266Z"
     description: A Helm chart for all qia base-install application deployments.
@@ -1193,6 +1266,21 @@ entries:
     version: 0.0.1
   qia-argocd-custom-install:
   - apiVersion: v2
+    created: "2022-08-26T05:59:55.183484609Z"
+    description: A Helm chart for all qia custom-install application deployments.
+    digest: 90f07a9fbab798013c9bf078f1c16541aaa45f3b1709f6de264a75ef8fa6d454
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: qia-argocd-custom-install
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/qia-argocd-custom-install-0.0.3/qia-argocd-custom-install-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
     created: "2022-08-21T08:38:16.942646618Z"
     description: A Helm chart for all qia custom-install application deployments.
     digest: ba4164557621e1248dcec0a68e1a2c0aa3751cb8921908e862699f4c45666c95
@@ -1648,4 +1736,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-24T17:58:54.696909579Z"
+generated: "2022-08-26T05:59:55.335788087Z"
