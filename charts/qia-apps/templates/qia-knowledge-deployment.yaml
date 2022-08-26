@@ -1,0 +1,102 @@
+{{- if index .Values "qia" "apps" "qik" "enabled" }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: "qik"
+  name: qik
+  namespace: qia-cloud
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "qik"
+  template:
+    metadata:
+      labels:
+        app: "qik"
+        actorSystemName: qik
+    spec:
+      imagePullSecrets:
+        - name: "regcred"
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: "app"
+                      operator: In
+                      values:
+                        - qik
+                topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: qik
+          image: registry.claiv.de/qi/services/qik/qik:{{ index .Values "qia" "apps" "qik" "image-tag" }}
+          # remove for real clusters, useful for minikube
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: management
+            periodSeconds: 10
+            failureThreshold: 3
+            initialDelaySeconds: 10
+          livenessProbe:
+            httpGet:
+              path: "/alive"
+              port: management
+            periodSeconds: 10
+            failureThreshold: 5
+            initialDelaySeconds: 20
+          ports:
+            # akka-management and bootstrap
+            - name: management
+              containerPort: 8558
+              protocol: TCP
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: GRPC_PORT
+              value: "8080"
+            - name: GRPC_HOST
+              value: "0.0.0.0"
+            - name: AKKA_PORT
+              value: "25501"
+            - name: REQUIRED_CONTACT_POINT_NR
+              value: "2"
+            - name: S3_URL
+              value: "http://minio.svc.cluster.local:9000"
+            - name: S3_ACCESS_KEY
+              value: "w4rg7YWeF4ovavtUiWre"
+            - name: S3_SECRET_KEY
+              value: "dINWdTxDXaBAgszGx6Oa87TGi58om1YBPr0VpWVP"
+            - name: NATS_HOST
+              value: "nats.nats.svc.cluster.local"
+            - name: NATS_PORT
+              value: "4222"
+            - name: PREDICT_JOB_STREAM_NAME
+              value: "model_job_stream"
+            - name: GRAPH_URI
+              value: "bolt://memgraph.memgraph.svc.cluster.local:7687"
+            - name: KEYCLOAK_URI
+              value: "https://kc.claiv.de"
+            - name: KEYCLOAK_REALM
+              value: "claiv-auth"
+            - name: QIK_HOST
+              value: "qik.qia-cloud.svc.cluster.local"
+            - name: QIK_PORT
+              value: "8080"
+            - name: ALLOWED_CORS_ORIGINS
+              value: "https://qia.CC_CLUSTER_SUBDOMAIN"
+            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+{{- end }}

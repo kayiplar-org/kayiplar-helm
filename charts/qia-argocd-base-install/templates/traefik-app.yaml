@@ -23,21 +23,15 @@ spec:
               enabled: true
               allowCrossNamespace: true
 
-        secrets:
-          - name: traefik-forward-auth-secrets
-            namespace: kube-system
-            {{- with index .Values "apps" "traefik" "spec" "secrets" "traefik-forward-auth-secrets" "encryptedData"  }}
-            encryptedData:
-              {{- range $key, $value := . }}
-              {{ $key }}: {{ $value }}
-              {{- end }}
-            {{- end}}
-            labels:
-              app: traefik-forward-auth
-
         # example forward-auth config
         forward-auth:
           enabled: true
+
+        middlewares:
+          allow-all-origin:
+            enabled: true
+          allow-cors:
+            enabled: true # origin will be https://qia.{base-domain} . If needed, a list should be passed here
 
         # example base domain
         base-domain: {{ index .Values "apps" "traefik" "spec" "host" }}

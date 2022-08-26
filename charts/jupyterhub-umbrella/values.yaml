@@ -28,10 +28,3 @@ jupyterhub:
         password: admin
       JupyterHub:
         authenticator_class: dummy
-
-secrets:
-  - name: gitlab-token
-    namespace: jhub
-    encryptedData:
-      gitlab-token: AgDF9W+87ECbx9PuSrSKeu+4T44d8nMHOhuCwq26qg+UBGooAOKNXzk9BJ/z2t1S5E2vL8Aton/A7IlyTcrDT+yjW7kOi+40gg1uy5J1ZaKg1LknhLTuFKxoJritqq+XxWJItOAyp4nkxoDZlz78ehPYOLu87WXMaP+6q5CEZkDHrm3c7/7TByT4I6GHdXuPbbglGpFjOBltQp2JkAGoQO8gYcIcPTQ8Mdbs8aNE4DRbMoBe89Om28EPyhbQqn9BF5aXFZFfQf/lN/A7NtPyNnSIUGFLwprUYmUDPYwRjnTOIGhm+i/8K2wgFlbNyqIFvMab2eQwV7xQa+UUw1aGxG6NHn1jcVtn2cWDLaX7n4FUVZTfGiZTq2GpkNt6mod0Qdv2qqh5B17v/TFatPlEnDC4Jg5T6FwAIeqbe9nLi5CPoMPWMmfl5OnPta5gr5fLu22ElbaalPrUOwCB3mo5vQyhPX3EEtOb6ZDxMlvSzVJU2ejzfaFj6v+ofLTJFPZc3yTHfq6CGIUQ8F7zAYoBUw0o29M2OmOov8BDtTMG3F/OmGPejIx3wWpX5uP+ewsxTftOFmq6cIe7RRp7ZK7qAw41bgXZRgMUyREYNDa34aYPnY1q1p+7COkgFjso5m0d8vsHfiZib0FPJhPt4n1zF8H/Xu2hKO04ulSWQnzFtJPGNN2B4/Fi3sfN6R1BYgM9gLNc+GBv6WoQszzi+F0Ux5M0FWNx2wg=
-    type: Opaque

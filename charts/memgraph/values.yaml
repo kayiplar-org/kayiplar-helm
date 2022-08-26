@@ -1,0 +1,12 @@
+replicas: 1
+
+deployment:
+  spec:
+    containers:
+      - name: memgraph
+        image: memgraph/memgraph-platform
+        command: ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf" ]
+        ports:
+          - containerPort: 7444
+          - containerPort: 3000
+          - containerPort: 7687

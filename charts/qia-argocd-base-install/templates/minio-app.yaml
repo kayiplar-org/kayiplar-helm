@@ -10,9 +10,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: minio-umbrella
-    repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.1.0"
+    chart: minio
+    repoURL: 'https://charts.min.io/'
+    targetRevision: "4.0.12"
     helm:
       releaseName: minio
       values: |
@@ -46,18 +46,7 @@ spec:
             requests:
               memory: 2Gi
 
-          existingSecret: minio-root-credentials
-
-        secrets:
-          - name: minio-root-credentials
-            namespace: minio
-            {{- with index .Values "apps" "minio" "spec" "secrets" "minio-root-credentials" "encryptedData"  }}
-            encryptedData:
-              {{- range $key, $value := . }}
-              {{ $key }}: {{ $value }}
-              {{- end }}
-            {{- end}}
-            type: Opaque
+          existingSecret: {{ index .Values "apps" "minio" "spec" "secretKeyRef" "name" }}
 
   destination:
     server: "https://kubernetes.default.svc"

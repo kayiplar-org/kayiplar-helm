@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: memgraph
+  namespace: memgraph
+spec:
+  ports:
+    - port: 7687
+      targetPort: 7687
+      protocol: TCP
+      name: bolt
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: gui
+  selector:
+    app: "memgraph"

@@ -20,34 +20,9 @@ spec:
     solvers:
     - dns01:
         webhook:
-          groupName: acme.claiv.de
+          groupName: {{ index .Values "hetzner-webhook" "groupName" }}
           solverName: hetzner
           config:
-            secretName: hetzner-api-key
-            zoneName: claiv.de
+            secretName: {{ index .Values "hetzner-webhook" "secretKeyRef" "name" }}
+            zoneName: {{ index .Values "hetzner-webhook" "zoneName" }}
             apiUrl: https://dns.hetzner.com/api/v1
-
-#{{- range $issuer := index .Values "cluster-issuer" }}
-#{{- if eq $issuer.type "letsencrypt" }}
-#---
-#apiVersion: cert-manager.io/v1 #cert-manager.io/v1alpha2
-#kind: ClusterIssuer
-#metadata:
-#  name: {{$issuer.name}}
-#spec:
-#  acme:
-#    # You must replace this email address with your own.
-#    # Let's Encrypt will use this to contact you about expiring
-#    # certificates, and issues related to your account.
-#    email: {{ $issuer.email }}
-#    server: https://acme-v02.api.letsencrypt.org/directory #https://acme-staging-v02.api.letsencrypt.org/directory
-#    privateKeySecretRef:
-#      # Secret resource that will be used to store the account's private key.
-#      name: {{ $issuer.name }}-key
-#    # Add a single challenge solver, HTTP01 using nginx
-#    {{- with $issuer.solvers }}
-#    solvers:
-#      {{- toYaml . | indent 4 | nindent 1 }}
-#    {{- end }}
-#{{- end }}
-#{{- end }}

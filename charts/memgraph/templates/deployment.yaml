@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memgraph
+  namespace: memgraph
+spec:
+  selector:
+    matchLabels:
+      app: "memgraph"
+  replicas: {{ .Values.replicas }} # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: "memgraph"
+    spec:
+      containers:
+        - name: memgraph
+          image: memgraph/memgraph-platform
+          command: ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf" ]
+          ports:
+            - containerPort: 7444
+            - containerPort: 3000
+            - containerPort: 7687

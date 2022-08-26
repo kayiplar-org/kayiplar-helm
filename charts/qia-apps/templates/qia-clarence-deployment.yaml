@@ -1,5 +1,5 @@
----
 {{- if .Values.qia.apps.clarence.enabled }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -34,7 +34,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
         - name: clarence
-          image: registry.claiv.de/qi/services/qia_explorations/clarence/clarence:latest
+          image: registry.claiv.de/qi/services/qia_explorations/clarence/clarence:{{ index .Values "qia" "apps" "clarence" "image-tag" }}
           # remove for real clusters, useful for minikube
           imagePullPolicy: Always
           ports:
@@ -75,5 +75,8 @@ spec:
             - name: GRPC_PORT
               value: "8080"
             - name: ALLOWED_CORS_ORIGIN
-              value: "https://qia.CC_CLUSTER_SUBDOMAIN"
+              value: "https://{{ .Values.qia.fullyQualifiedDomainName }}"
+            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
 {{- end }}

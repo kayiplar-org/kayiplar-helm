@@ -25,14 +25,17 @@ spec:
         - name: regcred
       containers:
         - name: qiadocs
-          image: registry.claiv.de/qi/services/qia_explorations/documentation/qiadocs:latest
+          image: registry.claiv.de/qi/services/qia_explorations/documentation/qiadocs:{{ index .Values "qia" "apps" "doc" "image-tag" }}
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
               name: web
           env:
             - name: SRV_LIVE_DOMAIN
-              value: "qia.CC_CLUSTER_SUBDOMAIN"
+              value: "{{ .Values.qia.fullyQualifiedDomainName }}"
             - name: SRV_LIVE_PROTOCOL
               value: "https://"
+            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
 {{- end }}

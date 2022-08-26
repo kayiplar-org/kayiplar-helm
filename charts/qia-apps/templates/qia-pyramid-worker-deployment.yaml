@@ -1,0 +1,110 @@
+{{- if index .Values "qia" "apps" "pyramid-worker" "enabled" }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pyramid-worker
+  name: pyramid-worker
+  namespace: qia-cloud
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pyramid-worker
+  template:
+    metadata:
+      labels:
+        app: pyramid-worker
+        actorSystemName: pyramid-worker
+    spec:
+      imagePullSecrets:
+        - name: "regcred"
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: "app"
+                      operator: In
+                      values:
+                        - pyramid-worker
+                topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: pyramid-worker
+          image: registry.claiv.de/qi/services/pyramid_worker/pyramid_worker:{{ index .Values "qia" "apps" "pyramid-worker" "image-tag" }}
+          # remove for real clusters, useful for minikube
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: management
+            periodSeconds: 10
+            failureThreshold: 3
+            initialDelaySeconds: 10
+          livenessProbe:
+            httpGet:
+              path: "/alive"
+              port: management
+            periodSeconds: 10
+            failureThreshold: 5
+            initialDelaySeconds: 20
+          ports:
+            # akka-management and bootstrap
+            - name: management
+              containerPort: 8558
+              protocol: TCP
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: APP_DOMAIN_URL
+              value: "https://{{ .Values.qia.fullyQualifiedDomainName }}"
+            - name: REQUIRED_CONTACT_POINT_NR
+              value: "2"
+            - name: S3_URL
+              value: "http://minio.minio.svc.cluster.local:9000"
+            - name: S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: s3creds
+                  key: access-key
+            - name: S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: s3creds
+                  key: secret-key
+            - name: NATS_HOST
+              value: "nats.nats.svc.cluster.local"
+            - name: NATS_PORT
+              value: "4222"
+            - name: PREDICT_JOB_STREAM_NAME
+              value: "model_job_stream"
+            - name: PROCESSING_JOB_STREAM_NAME
+              value: "processing_job_stream"
+            - name: PROGRESS_JOB_STREAM_NAME
+              value: "progress_job_stream"
+            - name: GRPC_HOST
+              value: "0.0.0.0"
+            - name: GRPC_PORT
+              value: "8080"
+            - name: QIK_HOST
+              value: "qik.qia-cloud.svc.cluster.local"
+            - name: QIK_PORT
+              value: "8080"
+            - name: CLARENCE_RAW_DATA_URL
+              value: "http://clarence.qia-cloud.svc.cluster.local:8080/raw_data"
+            - name: BIOFORMATS_HOME
+              value: "/opt/b2r"
+            - name: MAX_CONNECTIONS
+              value: "30"
+            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+{{- end}}

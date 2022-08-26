@@ -12,7 +12,7 @@ spec:
   source:
     chart: cert-manager-claiv-umbrella
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.2.7"
+    targetRevision: "0.2.8"
     helm:
       releaseName: cert-manager
       values: |
@@ -20,26 +20,21 @@ spec:
         cert-manager:
           installCRDs: true
           namespace: cert-manager
+          fullnameOverride: cert-manager
 
         cert-manager-webhook-hetzner:
           groupName: acme.claiv.de
           fullnameOverride: webhook-hetzner
 
-        # for hetzner api key
-        secrets:
-          - name: hetzner-api-key
-            namespace: cert-manager
-            {{- with index .Values "apps" "cert-manager" "spec" "secrets" "hetzner-api-key" "encryptedData" }}
-            encryptedData:
-              {{- range $key, $value := . }}
-              {{ $key }}: {{ $value }}
-              {{- end }}
-            {{- end}}
-            type: Opaque
-
         hetzner-webhook:
           enabled: true
           name: webhook-hetzner
+          groupName: acme.claiv.de
+          zoneName: claiv.de
+          secretKeyRef: 
+            name: {{ index .Values "apps" "cert-manager" "spec" "secretKeyRef" "name" }}
+            key: {{ index .Values "apps" "cert-manager" "spec" "secretKeyRef" "key" }}
+
         {{- with index .Values "apps" "cert-manager" "spec" "environment" }}
         environment: staging
         {{- end}}

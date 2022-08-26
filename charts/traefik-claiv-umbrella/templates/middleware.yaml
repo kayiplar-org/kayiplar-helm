@@ -1,3 +1,5 @@
+{{- if index .Values "middlewares" "allow-all-origin" "enabled" }}
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -7,6 +9,7 @@ spec:
   headers:
     accessControlAllowOriginList: 
       - "*"
+{{- end}}
 {{- if index .Values "forward-auth" "enabled" }}
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -33,4 +36,23 @@ spec:
     scheme: https
     port: "443"
     permanent: true
+{{- end}}
+{{- if index .Values "middlewares" "allow-cors" "enabled" }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: allow-cors-mw
+  namespace: kube-system
+spec:
+  headers:
+    accessControlAllowHeaders:
+    - authorization
+    accessControlAllowMethods:
+    - GET
+    - OPTIONS
+    - PUT
+    accessControlAllowOriginList:
+    - https://{{ $qiaDomainPrefix }}.{{ $baseDomain }}
+    addVaryHeader: true
 {{- end}}

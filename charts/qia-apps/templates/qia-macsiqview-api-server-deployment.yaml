@@ -1,22 +1,22 @@
+{{- if index .Values "qia" "apps" "macsiqview-api-server" "enabled" }}
 ---
-{{- if .Values.qia.apps.appka.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: appka
-  name: appka
+    app: macsiq-api-server
+  name: macsiq-api-server
   namespace: qia-cloud
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app: appka
+      app: macsiq-api-server
   template:
     metadata:
       labels:
-        app: appka
-        actorSystemName: appka
+        app: macsiq-api-server
+        actorSystemName: macsiq-api-server
     spec:
       imagePullSecrets:
         - name: "regcred"
@@ -30,11 +30,11 @@ spec:
                     - key: "app"
                       operator: In
                       values:
-                        - appka
+                        - macsiq-api-server
                 topologyKey: "kubernetes.io/hostname"
       containers:
-        - name: appka
-          image: registry.claiv.de/qi/services/qia_explorations/app_server/qia_server:latest
+        - name: macsiq-api-server
+          image: registry.claiv.de/qi/services/qia_explorations/macsiqview_backend_api_scala_generated/api_server:{{ index .Values "qia" "apps" "macsiqview-api-server" "image-tag" }}
           # remove for real clusters, useful for minikube
           imagePullPolicy: Always
           readinessProbe:
@@ -64,8 +64,14 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+            - name: MACSIQVIEW_CLOUD_URL
+              value: "https://{{ .Values.qia.fullyQualifiedDomainName }}"
             - name: REQUIRED_CONTACT_POINT_NR
-              value: "1"
+              value: "2"
+            - name: QIK_HOST
+              value: "qik.qia-cloud.svc.cluster.local"
+            - name: QIK_PORT
+              value: "8080"
             - name: S3_URL
               value: "http://minio.minio.svc.cluster.local:9000"
             - name: S3_ACCESS_KEY
@@ -78,4 +84,17 @@ spec:
                 secretKeyRef:
                   name: s3creds
                   key: secret-key
+            - name: NATS_HOST
+              value: "nats.nats.svc.cluster.local"
+            - name: NATS_PORT
+              value: "4222"
+            - name: HTTP_HOST
+              value: "0.0.0.0"
+            - name: HTTP_PORT
+              value: "8080"
+            - name: PROCESSING_JOB_STREAM_NAME
+              value: "processing_job_stream"
+            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
 {{- end }}

@@ -1,28 +1,17 @@
+gitlab-runner:
+  ## https://docs.gitlab.com/runner/install/kubernetes.html
+  gitlabUrl: https://gitlab.claiv.de/
+  concurrent: 10
+  checkInterval: 30
+  rbac:
+    create: true
+    clusterWideAccess: true
+  runners:
+    config: |
 
-#gitlab-runner:
-#  ## https://docs.gitlab.com/runner/install/kubernetes.html
-#  gitlabUrl: https://gitlab.claiv.de/
-#  concurrent: 10
-#  checkInterval: 30
-#  rbac:
-#    create: true
-#    clusterWideAccess: true
-#  runners:
-#    config: |
-#
-#      [[runners]]
-#        dns_search = ["gitlab.claiv.de"]
-#        [runners.kubernetes]
-#          namespace = gitlab-runner
-#    
-#    image: debian:latest
-#    serviceAccountName: default
-#    secret: gitlab-runner-secret
-#
-## secret will be in namepsace 'gitlab-runner'
-#secrets:
-#  - name: gitlab-runner-secret
-#    encryptedData:
-#      runner-registration-token: AgA00RSwjavcf0LKsA1TH6yn/xdXfhVB7kpWBfXT8bMj/cR+lVkR1P3kzSKsly9WO3wb580dYg9WBidu4u/PdFAE2cba4CL18N6BLH5CFG0rUvRNFGzzD/lDc2d5V0X1K8v450aGOR+AFr6F/IBIToCjArNboT/bUTkXPurzcM1fOl+OgYMlesTxI7HHNtxakQ5DYQbIhbPF/dnhl/ABUJ72ywGI2v2Bxjc1p2rdeU28HzDmV+ibBhitw+KMbWt8iToQJsgahvRyAKBgy5yPURMV5/sd5EYOkR/jRy13MwHJiZEQkuxEWHzi2rmcxFBobWJrsu5dhCl6V6NchL8YV3gSQUAOacnzcym4QTQCfeglYI423VaQB/So0DkcT2jKButGF5vwSKAqy2n3TOm2O41WqyZzlU0A9WWr7Jxtv+QJ4D4qKWKZ6j+wx2KKFrLcZwqahXaErNpOBV9lOAE6lCo8L36rmmFrwJXoWCaMHnMmBQv6rctal01iOBzu07UgHPghOR7chZO+8j2gZDF/alTnEWHHrPk8EkYiMx2kdPYoVTvLh8LSzydqLvUMFFfFlcogM3RjNKYn4zHNtPh7oFYXvJvn0l4KRXJMVuZF2S8tAJoG9X/QWGq+6eVwyLgbkU8ociLbDRJ2u/wnVZR75lvOf/0EfhrM8XI3nPX54wCuaD6BaXEbbO46tgvtxpcuz6TNQs4NzZrdhGa5xjX+i29DwC+fHA==
-#      runner-token: AgCEQFrzekHTbNdloLGFLXTNhtGxqXTSdgPdKdvolutecnUdlhAvgBzppHmQsGCNT0NYbaSEp63axASy2a1H+Dq+DpEa/Cf1DoC6ssKLU+ELidFVxtNFcudt1wX882NIbjlL+LwBLbxbtzG98siqmRYV29sciTZ0UAjPsMyBeYm7VBhRFkwrdp0vgdWrFWlSwEPx/QCkn49ObWlk1gm2tTV00k1rwRJgxvnKEq8rNvr+Ey+Y1xCtXZI3mzi2RI1B8UtG3v4IYeTx3w8c12Zf/fldUZIpJfYou9oKfskdM+5zZl9wOHrtwFv0n+HatP4I5g6vc1xZJFSn8LMig+Ap3W9AaUIbSSg9RmiTQ0H8jTym2ukIJ+c+70yZsWwbkDOX0eLuc2nBgGqSrf4K7j3naMsmAqn7TCaiZiw5ZuQZCBZRP60EP550r8QZxznSZ8aqRgMCInZ3aWlRCRUgI7zX5AD9XyUrr/CZarojg+n0VF0OmSu752Ct6HikSKukvCwopyUbwoW55B1pfLPjE7TbrMbkc2hruWRjNfysCCYAJkfTQDwsB7cmxCSZkAu50bH8uQl5x3z6nRe23z7kePkxFg7pGNmoo6QMJKuGwLN4N354ZPKHE+EWtHDI6Ri+aREuyReqVU7H1+7XOuISug0bzWUUBaiUXe5Ad0hkfp1WpNhHW6tvz+kb1MRmw+hBS5pOlWw=
-#
+      [[runners]]
+        dns_search = ["gitlab.claiv.de"]
+
+    image: debian:latest
+    serviceAccountName: default
+    secret: gitlab-runner-secret

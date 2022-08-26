@@ -13,7 +13,7 @@ spec:
   source:
     chart: qia-apps
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: {{ .Values.targetRevision }}
+    targetRevision: {{ .Values.helm.targetRevision }}
     helm:
       values: |
         {{ toYaml .Values | indent 8 | trim}}

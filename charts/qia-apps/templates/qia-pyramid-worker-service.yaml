@@ -1,11 +1,11 @@
+{{- if index .Values "qia" "apps" "pyramid-worker" "enabled" }}
 ---
-{{- if .Values.qia.apps.appka.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: "appka"
-  name: "appka"
+    app: "pyramid-worker"
+  name: "pyramid-worker"
   namespace: qia-cloud
 spec:
   ports:
@@ -14,5 +14,5 @@ spec:
       port: 8080
       targetPort: 8080
   selector:
-    app: "appka"
-{{- end }}
+    app: "pyramid-worker"
+{{- end}}

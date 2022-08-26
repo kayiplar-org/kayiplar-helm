@@ -25,12 +25,15 @@ spec:
         - name: regcred
       containers:
         - name: qiac
-          image: registry.claiv.de/qi/services/qia_explorations/qia_components/qiac-nginx:latest
+          image: registry.claiv.de/qi/services/qia_explorations/qia_components/qiac-nginx:{{ index .Values "qia" "apps" "components" "image-tag" }}
           imagePullPolicy: Always
           ports:
             - containerPort: 3031
               name: web
           env:
             - name: ENV_URL # To be implemented
-              value: "https://qia.CC_CLUSTER_SUBDOMAIN"
+              value: "https://{{ .Values.qia.fullyQualifiedDomainName }}"
+            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
 {{- end }}

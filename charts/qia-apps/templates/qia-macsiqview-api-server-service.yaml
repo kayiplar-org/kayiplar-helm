@@ -1,0 +1,18 @@
+{{- if index .Values "qia" "apps" "macsiqview-api-server" "enabled" }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: "macsiq-api-server"
+  name: "macsiq-api-server"
+  namespace: qia-cloud
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: "macsiq-api-server"
+{{- end }}

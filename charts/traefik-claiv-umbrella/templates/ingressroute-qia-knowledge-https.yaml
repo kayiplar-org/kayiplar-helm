@@ -1,0 +1,67 @@
+{{- if .Values.ingressRoutes.claiv.enabled }}
+{{- $baseDomain := index .Values "base-domain"}}
+{{- $baseDomainSafeName := index .Values "base-domain" | replace "." "-" }}
+{{- $qiaDomainPrefix :=  index .Values "ingressRoutes" "claiv" "domain-prefix" }}
+{{- $qiaDomainPrefixSafeName :=  index .Values "ingressRoutes" "claiv" "domain-prefix" | replace "." "_"}}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: qik-ingressroute-websecure
+  namespace: kube-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`)&& PathPrefix(`/qik_proto.QiKnowledgeGraph/macsIqLogin`)
+      kind: Rule
+      services:
+        - name: qik
+          namespace: qia-cloud
+          port: 8080
+          scheme: h2c
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`)&& PathPrefix(`/qik_proto.QiKnowledgeGraph`) && HeadersRegexp(`Authorization`, `Bearer.*` )
+      kind: Rule
+      services:
+        - name: qik
+          namespace: qia-cloud
+          port: 8080
+          scheme: h2c
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`)&& PathPrefix(`/qik_proto.QiKnowledgeGraph`) && Method(`OPTIONS`)
+      kind: Rule
+      services:
+        - name: qik
+          namespace: qia-cloud
+          port: 8080
+          scheme: h2c
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`)&& PathPrefix(`/qik_proto.QiKnowledgeGraph`) && HeadersRegexp(`Authorization`, `Bearer.*` ) && Method(`HEAD`)
+      kind: Rule
+      services:
+        - name: qik
+          namespace: qia-cloud
+          port: 8080
+          scheme: h2c
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`)&& PathPrefix(`/qik_proto.QiKnowledgeGraph`)
+      kind: Rule
+      services:
+        - name: qik
+          namespace: qia-cloud
+          port: 8080
+          scheme: h2c
+      middlewares:
+      - name: traefik-forward-auth
+    - match: Host(`{{ $qiaDomainPrefix }}.{{ $baseDomain }}`)&& PathPrefix(`/qik_proto.QiKnowledgeGraph`) && Method(`HEAD`)
+      kind: Rule
+      services:
+        - name: qik
+          namespace: qia-cloud
+          port: 8080
+          scheme: h2c
+      middlewares:
+      - name: traefik-forward-auth
+
+  tls:
+    secretName: {{ $qiaDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
+    domains: 
+    - main: {{ $qiaDomainPrefix }}.{{ $baseDomain }}
+{{- end }}

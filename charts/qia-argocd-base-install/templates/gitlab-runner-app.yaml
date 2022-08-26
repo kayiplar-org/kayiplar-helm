@@ -19,7 +19,7 @@ spec:
 
         gitlab-runner:
           ## https://docs.gitlab.com/runner/install/kubernetes.html
-          gitlabUrl: https://gitlab.claiv.de/
+          gitlabUrl: https://{{ index .Values "apps" "gitlab-runner" "spec" "domain" }}/
           concurrent: 10
           checkInterval: 30
           rbac:
@@ -29,21 +29,11 @@ spec:
             config: |
 
               [[runners]]
-                dns_search = ["gitlab.claiv.de"]
+                dns_search = ["{{ index .Values "apps" "gitlab-runner" "spec" "domain" }}"]
 
             image: debian:latest
             serviceAccountName: default
-            secret: gitlab-runner-secret
-
-        secrets:
-          - name: gitlab-runner-secret
-            {{- with index .Values "apps" "gitlab-runner" "spec" "secrets" "gitlab-runner-secret" "encryptedData" }}
-            encryptedData:
-              {{- range $key, $value := . }}
-              {{ $key }}: {{ $value }}
-              {{- end }}
-            {{- end}}
-            type: Opaque
+            secret: {{ index .Values "apps" "gitlab-runner" "spec" "secretKeyRef" "name" }}
 
   destination:
     server: "https://kubernetes.default.svc"

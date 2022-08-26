@@ -11,8 +11,8 @@ spec:
   project: default
   source:
     chart: jupyterhub-umbrella
-    repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.1.0"
+    repoURL: 'https://jupyterhub.github.io/helm-chart/'
+    targetRevision: "1.2.0"
     helm:
       releaseName: jupyterhub
       values: |
@@ -32,8 +32,8 @@ spec:
               - name: GITLAB_TOKEN
                 valueFrom:
                   secretKeyRef:
-                    name: gitlab-token
-                    key: gitlab-token
+                    name: {{ index .Values "apps" "jupyterhub" "spec" "secretKeyRef" "name" }}
+                    key: {{ index .Values "apps" "jupyterhub" "spec" "secretKeyRef" "key" }}
               - name: GRANT_SUDO
                 value: "yes"
               - name: NOTEBOOK_ARGS
@@ -47,17 +47,6 @@ spec:
                 password: admin
               JupyterHub:
                 authenticator_class: dummy
-
-        secrets:
-          - name: gitlab-token
-            namespace: jhub
-            {{- with index .Values "apps" "jupyterhub" "spec" "secrets" "gitlab-token" "encryptedData" }}
-            encryptedData:
-              {{- range $key, $value := . }}
-              {{ $key }}: {{ $value }}
-              {{- end }}
-            {{- end}}
-            type: Opaque
 
   destination:
     server: "https://kubernetes.default.svc"
