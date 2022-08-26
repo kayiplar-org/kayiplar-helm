@@ -12,7 +12,7 @@ spec:
   source:
     chart: cert-manager-claiv-umbrella
     repoURL: 'https://kayiplar-org.github.io/kayiplar-helm/'
-    targetRevision: "0.2.8"
+    targetRevision: "0.2.9"
     helm:
       releaseName: cert-manager
       values: |
