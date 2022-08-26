@@ -44,7 +44,7 @@ spec:
 
           resources:
             requests:
-              memory: 2Gi
+              memory: 1Gi
 
           existingSecret: {{ index .Values "apps" "minio" "spec" "secretKeyRef" "name" }}
 
