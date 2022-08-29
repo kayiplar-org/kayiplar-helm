@@ -33,7 +33,7 @@ spec:
           env:
             - name: ENV_URL # To be implemented
               value: "https://{{ .Values.qia.fullyQualifiedDomainName }}"
-            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+            {{- with index .Values "qia" "apps" "components" "extraEnv" }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
 {{- end }}

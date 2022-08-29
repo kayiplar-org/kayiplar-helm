@@ -75,9 +75,15 @@ spec:
             - name: S3_URL
               value: "http://minio.svc.cluster.local:9000"
             - name: S3_ACCESS_KEY
-              value: "w4rg7YWeF4ovavtUiWre"
+              valueFrom:
+                secretKeyRef:
+                  name: s3creds
+                  key: access-key
             - name: S3_SECRET_KEY
-              value: "dINWdTxDXaBAgszGx6Oa87TGi58om1YBPr0VpWVP"
+              valueFrom:
+                secretKeyRef:
+                  name: s3creds
+                  key: secret-key
             - name: NATS_HOST
               value: "nats.nats.svc.cluster.local"
             - name: NATS_PORT
@@ -95,8 +101,8 @@ spec:
             - name: QIK_PORT
               value: "8080"
             - name: ALLOWED_CORS_ORIGINS
-              value: "https://qia.CC_CLUSTER_SUBDOMAIN"
-            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+              value: "https://{{ .Values.qia.fullyQualifiedDomainName }}"
+            {{- with index .Values "qia" "apps" "qik" "extraEnv" }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
 {{- end }}

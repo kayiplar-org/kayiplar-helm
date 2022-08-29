@@ -35,7 +35,7 @@ spec:
               value: "{{ .Values.qia.fullyQualifiedDomainName }}"
             - name: SRV_LIVE_PROTOCOL
               value: "https://"
-            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+            {{- with index .Values "qia" "apps" "doc" "extraEnv" }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
 {{- end }}

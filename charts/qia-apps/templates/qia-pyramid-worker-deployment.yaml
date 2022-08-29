@@ -104,7 +104,7 @@ spec:
               value: "/opt/b2r"
             - name: MAX_CONNECTIONS
               value: "30"
-            {{- with index .Values "qia" "apps" "macsiqview-api-server" "extraEnv" }}
+            {{- with index .Values "qia" "apps" "pyramid-worker" "extraEnv" }}
               {{- toYaml . | nindent 12 }}
             {{- end }}
 {{- end}}
