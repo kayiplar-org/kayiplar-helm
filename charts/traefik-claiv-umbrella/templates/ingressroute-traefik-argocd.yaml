@@ -21,6 +21,8 @@ spec:
     - name: {{ .Values.ingressRoutes.argocd.service.name }}
       namespace: {{ .Values.ingressRoutes.argocd.service.namespace }}
       port: {{ .Values.ingressRoutes.argocd.service.port }}
+    middlewares:
+    - name: traefik-forward-auth
   tls:
     secretName: {{ $argocdDomainPrefixSafeName }}-{{ $baseDomainSafeName }}-cert
     domains: 
