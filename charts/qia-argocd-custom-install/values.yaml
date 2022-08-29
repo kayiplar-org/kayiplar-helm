@@ -1,5 +1,5 @@
 helm:
-  targetRevision: 0.0.8
+  targetRevision: 0.0.9
 
 qia:
   fullyQualifiedDomainName: qia.kayi.claiv.de # so the apps can reach each other
