@@ -683,6 +683,21 @@ entries:
     version: 0.1.0
   passbolt:
   - apiVersion: v1
+    created: "2022-09-05T18:02:28.607007993Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: '>11.1.2'
+    description: A Passbolt Helm chart for Kubernetes.
+    digest: ebd598866e0ac8040149083d7125ea37d8b17aafe2089812befd5837fda7651a
+    home: http://passbolt.com
+    icon: https://www.passbolt.com/img/logo/logo.svg
+    name: passbolt
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/passbolt-0.0.2/passbolt-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v1
     created: "2022-09-05T16:58:56.638501171Z"
     dependencies:
     - condition: mariadb.enabled
@@ -2081,4 +2096,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-05T16:58:56.639196922Z"
+generated: "2022-09-05T18:02:28.607524201Z"
