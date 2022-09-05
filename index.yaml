@@ -681,6 +681,22 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/minio-umbrella-0.1.0/minio-umbrella-0.1.0.tgz
     version: 0.1.0
+  passbolt-helm:
+  - apiVersion: v1
+    created: "2022-09-05T16:45:03.608719605Z"
+    dependencies:
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: '>11.1.2'
+    description: A Passbolt Helm chart for Kubernetes.
+    digest: 882dc4a0b37c101524d357fa5c128eb23cf62f477a0a0b045f14ae63b89f04bb
+    home: http://passbolt.com
+    icon: https://www.passbolt.com/img/logo/logo.svg
+    name: passbolt-helm
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/passbolt-helm-0.0.1/passbolt-helm-0.0.1.tgz
+    version: 0.0.1
   qia-apps:
   - apiVersion: v2
     created: "2022-08-29T14:52:32.431755811Z"
@@ -2034,4 +2050,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-29T15:37:52.284464447Z"
+generated: "2022-09-05T16:45:03.609469215Z"
