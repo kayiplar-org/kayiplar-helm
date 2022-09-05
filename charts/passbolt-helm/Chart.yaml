@@ -1,0 +1,7 @@
+apiVersion: v1
+version: 0.0.1
+home: http://passbolt.com
+description: A Passbolt Helm chart for Kubernetes.
+name: passbolt-helm
+icon: https://www.passbolt.com/img/logo/logo.svg
+
