@@ -35,7 +35,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: DATABASE_URL
-            value: "postgresql://postgres:{{ .Values.postgresql.postgresqlPassword }}@{{ include "openproject-helm-chart.postgresql.fullname" . }}:5432/{{ .Values.postgresql.postgresqlDatabase }}"
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.postgres.existingSecret }}
+                key: connection-string
           ports:
             - name: http
               containerPort: 8080

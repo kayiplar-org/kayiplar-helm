@@ -81,11 +81,9 @@ affinity: {}
 persistence:
   enabled: true
   accessMode: ReadWriteOnce
-  size: 48Gi
+  size: 10Gi
 
-postgresql:
-  persistence:
-    enabled: true
-    size: 15G
-  postgresqlPassword: superSecrectPassword
-  postgresqlDatabase: openproject
+postgres:
+  # we need an external db
+  # secret needs following format: postgresql://postgres:{{ postgresqlPassword }}@{{ host }}:5432/{{ dbname }} with key connection-string
+  existingSecret: postgres-connection-string
