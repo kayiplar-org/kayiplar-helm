@@ -772,6 +772,16 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/minio-umbrella-0.1.0/minio-umbrella-0.1.0.tgz
     version: 0.1.0
+  openproject:
+  - apiVersion: v2
+    created: "2022-09-06T12:46:27.910926095Z"
+    description: A Helm chart for openproject
+    digest: 78f33b6497530fb238d22dc0cd2803229892a09f238712f4d090e51b32f73c42
+    name: openproject
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/openproject-0.1.1/openproject-0.1.1.tgz
+    version: 0.1.1
   passbolt:
   - apiVersion: v1
     created: "2022-09-05T18:02:28.607007993Z"
@@ -2187,4 +2197,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-06T07:01:33.453736985Z"
+generated: "2022-09-06T12:46:27.911411594Z"
