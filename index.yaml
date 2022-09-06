@@ -774,6 +774,15 @@ entries:
     version: 0.1.0
   openproject:
   - apiVersion: v2
+    created: "2022-09-06T13:22:55.296217289Z"
+    description: A Helm chart for openproject
+    digest: 952e76bca763fa10258cb6f9006b9e2f8ccc1f1b11a40ad23b533820b269d80a
+    name: openproject
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/openproject-0.1.2/openproject-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2022-09-06T12:46:27.910926095Z"
     description: A Helm chart for openproject
     digest: 78f33b6497530fb238d22dc0cd2803229892a09f238712f4d090e51b32f73c42
@@ -2197,4 +2206,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-06T12:46:27.911411594Z"
+generated: "2022-09-06T13:22:55.296780307Z"
