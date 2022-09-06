@@ -41,9 +41,10 @@ spec:
               value: {{ $val | quote }}
             {{- end}}
             - name: ADMIN_TOKEN
-              secretKeyRef:
-                name: {{ .Values.adminTokenSecretName }}
-                key: token
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.adminTokenSecretName }}
+                  key: token
           ports:
             - name: http
               containerPort: 80
