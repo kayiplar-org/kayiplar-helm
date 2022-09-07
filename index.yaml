@@ -3,6 +3,24 @@ entries:
   bitwarden-k8s:
   - apiVersion: v1
     appVersion: "1.0"
+    created: "2022-09-07T06:10:59.212127611Z"
+    description: A Bitwarden Helm chart for Kubernetes
+    digest: f10e33e176489f4624f3b8210684f08fd5b67c8e629eb5590294e250b4c46d90
+    home: https://github.com/dani-garcia/bitwarden_rs
+    icon: https://raw.githubusercontent.com/bitwarden/brand/master/icons/icon.svg
+    maintainers:
+    - email: hello@codewave.eu
+      name: CodeWave
+      url: https://codewave.eu
+    name: bitwarden-k8s
+    sources:
+    - https://github.com/dani-garcia/bitwarden_rs
+    - https://github.com/cdwv/bitwarden-k8s
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/bitwarden-k8s-0.2.3/bitwarden-k8s-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v1
+    appVersion: "1.0"
     created: "2022-09-07T05:59:33.699033257Z"
     description: A Bitwarden Helm chart for Kubernetes
     digest: 7732f261ca96bb15f73ee12152bab1ba90a26b0344deb368f7e10f2a292bf940
@@ -2242,4 +2260,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-07T05:59:33.700238773Z"
+generated: "2022-09-07T06:10:59.213058247Z"
