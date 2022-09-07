@@ -56,10 +56,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: http
-          volumeDevices:
-            - name: dataDevice
-              devicePath: /dev/xvda         
+              port: http     
           volumeMounts:
           - name: data
             mountPath: /data
