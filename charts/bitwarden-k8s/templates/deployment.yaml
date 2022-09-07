@@ -58,7 +58,7 @@ spec:
               path: /
               port: http
           volumeDevices:
-            - name: data
+            - name: dataDevice
               devicePath: /dev/xvda         
           volumeMounts:
           - name: data
