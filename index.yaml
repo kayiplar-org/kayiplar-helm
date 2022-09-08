@@ -638,6 +638,24 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/cert-manager-umbrella-0.1.0/cert-manager-umbrella-0.1.0.tgz
     version: 0.1.0
+  elasticsearch-curator:
+  - apiVersion: v1
+    appVersion: 5.5.4
+    created: "2022-09-08T07:31:53.230712859Z"
+    description: A Helm chart for Elasticsearch Curator
+    digest: 1541da49d5546dbd562994f5c50eddec248802384f00764270e011460ad9f590
+    home: https://github.com/elastic/curator
+    keywords:
+    - curator
+    - elasticsearch
+    - elasticsearch-curator
+    name: elasticsearch-curator
+    sources:
+    - https://github.com/kubernetes/charts/elasticsearch-curator
+    - https://github.com/pires/docker-elasticsearch-curator
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/elasticsearch-curator-1.0.1/elasticsearch-curator-1.0.1.tgz
+    version: 1.0.1
   gitlab-runner-umbrella:
   - apiVersion: v2
     created: "2022-08-26T05:59:54.388401829Z"
@@ -2260,4 +2278,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-09-07T06:10:59.213058247Z"
+generated: "2022-09-08T07:31:53.231444868Z"
