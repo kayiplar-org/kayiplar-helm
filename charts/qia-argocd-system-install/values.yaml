@@ -1,9 +1,16 @@
 argo-cd:
-  nameOverride: argocd-claiv
-  fullnameOverride: argocd-claiv
-  dex:
-    enabled: false # we can connect argocd with keycloak if we want
+  nameOverride: argocd
+  fullnameOverride: argocd
 
+  crds:
+    install: true
+
+  server:
+    service:
+      type: NodePort 
+
+    extraArgs:
+    - --insecure
 
 apps:
   replicator:
