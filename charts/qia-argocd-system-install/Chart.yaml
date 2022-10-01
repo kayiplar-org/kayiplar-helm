@@ -2,10 +2,10 @@ apiVersion: v2
 name: qia-argocd-system-install
 description: A Helm chart to install qia system components.
 type: application
-version: 0.1.0
+version: 0.1.1
 dependencies:
   - name: argo-cd
-    version: 4.10.6
+    version: 5.5.7
     repository: https://argoproj.github.io/argo-helm
     alias: argo-cd
 #  - name: sealed-secrets

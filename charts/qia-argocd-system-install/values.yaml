@@ -11,4 +11,4 @@ apps:
     targetRevision: v2.7.3
   sealed-secrets-controller:
     enabled: true
-    targetRevision: 2.6.0
+    targetRevision: 2.6.9
