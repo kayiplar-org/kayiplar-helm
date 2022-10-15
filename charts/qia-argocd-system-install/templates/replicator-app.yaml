@@ -15,6 +15,9 @@ spec:
     targetRevision: {{ .Values.apps.replicator.targetRevision }}
     helm:
       releaseName: replicator
+      values: |
+        args: 
+          - --allow-all=true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system
