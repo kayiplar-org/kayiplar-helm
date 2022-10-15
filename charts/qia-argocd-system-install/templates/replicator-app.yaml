@@ -17,7 +17,7 @@ spec:
       releaseName: replicator
       values: |
         args: 
-          - --allow-all=true
+          - -allow-all=true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kube-system

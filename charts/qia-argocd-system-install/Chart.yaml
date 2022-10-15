@@ -2,7 +2,7 @@ apiVersion: v2
 name: qia-argocd-system-install
 description: A Helm chart to install qia system components.
 type: application
-version: 0.1.2
+version: 0.1.3
 dependencies:
   - name: argo-cd
     version: 5.5.7
