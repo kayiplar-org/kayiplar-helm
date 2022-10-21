@@ -361,10 +361,10 @@ spec:
         - name: all-in-one-config
           mountPath: "/root/conf"
           readOnly: true
-        {{- if .Values.james.tls.secretName }}
-        - name: james-secrets
-          mountPath: /root/secrets
-        {{- end }}
+#        {{- if .Values.james.tls.secretName }}
+#        - name: james-secrets
+#          mountPath: /root/secrets
+#        {{- end }}
       volumes:
       - name: all-in-one-config
         projected:
@@ -373,15 +373,15 @@ spec:
               name: james-configs
           - secret:
               name: james-jwt-key
-      {{- if .Values.james.tls.secretName }}        
-      - name: james-secrets
-        projected:
-          sources:
-          - secret:
-              name: {{ .Values.james.tls.secretName }}
-              items:
-              - key: tls.key
-                path: tls.key
-              - key: tls.crt
-                path: tls.crt
-        {{- end }}
+#      {{- if .Values.james.tls.secretName }}        
+#      - name: james-secrets
+#        projected:
+#          sources:
+#          - secret:
+#              name: {{ .Values.james.tls.secretName }}
+#              items:
+#              - key: tls.key
+#                path: tls.key
+#              - key: tls.crt
+#                path: tls.crt
+#        {{- end }}
