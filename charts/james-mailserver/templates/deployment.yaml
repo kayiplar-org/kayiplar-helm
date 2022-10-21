@@ -362,7 +362,6 @@ spec:
           mountPath: "/root/conf"
           readOnly: true
 
-        {{- end }}
       volumes:
       - name: all-in-one-config
         projected:
