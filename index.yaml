@@ -715,6 +715,21 @@ entries:
     version: 0.1.0
   james-mailserver:
   - apiVersion: v2
+    created: "2022-10-21T23:39:38.081198893Z"
+    description: A Helm chart for Distributed Apache James.
+    digest: 131e123b102960b6b0d7c09041d4bd57c5ccdba3407acc38fe9bc94ed7aaecc4
+    maintainers:
+    - email: salih.kayiplar@gmail.com
+      name: Salih Kayiplar
+      url: https://github.com/kayiplar
+    name: james-mailserver
+    sources:
+    - https://github.com/kayiplar-org/kayiplar-helm
+    type: application
+    urls:
+    - https://github.com/kayiplar-org/kayiplar-helm/releases/download/james-mailserver-0.0.15/james-mailserver-0.0.15.tgz
+    version: 0.0.15
+  - apiVersion: v2
     created: "2022-10-21T23:32:28.652005875Z"
     description: A Helm chart for Distributed Apache James.
     digest: d7eadb72544f3018b5d643e116d9e2e300231ea818ced77498f9c3bccd0d3ad2
@@ -2531,4 +2546,4 @@ entries:
     urls:
     - https://github.com/kayiplar-org/kayiplar-helm/releases/download/traefik-claiv-umbrella-0.1.0/traefik-claiv-umbrella-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-21T23:32:28.653098492Z"
+generated: "2022-10-21T23:39:38.090274367Z"
