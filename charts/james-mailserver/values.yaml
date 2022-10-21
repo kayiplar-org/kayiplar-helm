@@ -52,6 +52,8 @@ james:
     esUser: change-me
     esPassword: change-me
     dkimPrivateKey: "change-me"
+    rabbitmqUser: "change-me"
+    rabbitmqPassword: "change-me"
     s3:
       endpoint: "http://s3-us-east-1.amazonaws.com"
       region: "US"
