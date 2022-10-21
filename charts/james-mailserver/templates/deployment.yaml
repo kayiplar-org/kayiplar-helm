@@ -190,7 +190,6 @@ spec:
               - key: tls.crt
                 path: tls.crt
         {{- end }}
-      priorityClassName: application-scope-medium
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -384,4 +383,3 @@ spec:
               - key: tls.crt
                 path: tls.crt
         {{- end }}
-      priorityClassName: application-scope-medium
