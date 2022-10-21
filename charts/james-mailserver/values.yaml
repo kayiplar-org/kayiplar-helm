@@ -7,6 +7,8 @@ dns:
 
 # Default values for james
 james:
+  jmap:
+    enabled: false
   replicaJmapInstanceCount: 1
   replicaImapSmtpInstanceCount: 1
   image: apache/james:distributed-3.7.2

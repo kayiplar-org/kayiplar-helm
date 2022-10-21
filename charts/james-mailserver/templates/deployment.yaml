@@ -1,6 +1,7 @@
 {{- $elasticsearchUrl := include "elasticsearch.url.list" . }}
 {{- $cassandraUrl := include "cassandra.url.list" . }}
 {{- $jamesOpts := include "james.jvmOpts" . }}
+{{- if .Values.james.jmap.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -191,6 +192,7 @@ spec:
                 path: tls.crt
         {{- end }}
 ---
+{{- end }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
