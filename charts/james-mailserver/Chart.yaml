@@ -2,7 +2,7 @@ apiVersion: v2
 name: james-mailserver
 description: A Helm chart for Distributed Apache James.
 type: application
-version: 0.0.4
+version: 0.0.5
 
 sources:
   - https://github.com/kayiplar-org/kayiplar-helm
