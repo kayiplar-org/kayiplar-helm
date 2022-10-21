@@ -1,0 +1,110 @@
+dns:
+  ## Default domain for all emailing components
+  emailDomain: "example.com"
+  jmapUrl: "jmap.example.com"
+  adminUrl: "admin.example.com"
+  smtpHostname: "smtp.example.com"
+
+# Default values for james
+james:
+  replicaJmapInstanceCount: 1
+  replicaImapSmtpInstanceCount: 1
+  image: apache/james:distributed-3.7.2
+  ## Environment for James
+  env:
+    cassandraUrl: "change-me"
+    elasticSearchUrl: "change-me"
+    jamesCassandraKeyspace: sandbox_james
+    jamesCassandraCacheKeyspace: sandbox_james_cache
+    jamesEsMailboxIndex: "mailbox_v1"
+    jamesEsClusterName: opensearch-cluster
+    jamesEsHostScheme: "http"
+    jamesEsSslValidationStrategy: "default"
+    jamesEsHostNameVerifier: "default"
+    jamesEsNbShards: 5
+    jamesEsNbReplica: 1
+    jamesEsMailboxReadAlias: "read-mailbox"
+    jamesEsMailboxWriteAlias: "write-mailbox"
+    jamesRabbitHost: "rabbitmq.james-mailserver.svc"
+    jamesMessageSize: 25M
+    jamesDkimSignSmtp: "dkimselector"
+    jamesDkimSignDomain: "mail.kube.jondos.de"
+    cassandraReplicationFactor: 3
+    jamesHELOMessage: "hello"
+    jvmOpts: "-Xms3g -Xmx3g"
+    glowroot:
+      enabled: false
+    jamesResources:
+      limits:
+        cpu: "2000m"
+        memory: "4Gi"
+      requests:
+        cpu: "1000m"
+        memory: "4Gi"
+  # secrets are all b64 encrypted sealed-secrets! Refer to secrets.yaml.tmpl
+  secret:
+    jwtPublicKey: "change-me"
+    jwtPrivateKey: "change-me"
+    cassandraUser: change-me
+    cassandraPassword: change-me
+    esUser: change-me
+    esPassword: change-me
+    dkimPrivateKey: "change-me"
+    s3:
+      endpoint: "http://s3-us-east-1.amazonaws.com"
+      region: "US"
+      accessKeyId: "change-me"
+      secretKey: "change-me"
+      bucketNameSuffix: "change-me"
+  tls:
+    secretName: the-name-of-a-secret
+
+ldap:
+  secret:
+    ldapUser: change-me
+    ldapPassword: change-me
+    
+# Requires Prometheus Operator to be installed
+serviceMonitor:
+  enabled: false
+  # Labels for Prometheus Operator to detect ServiceMonitor. Cannot be empty 
+  additionalLabels:
+    change-me: change-me
+  # Scrape interval. Use Prometheus default value if not specified
+  interval: 30s
+
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: name-of-the-cluster-issuer
+  tls:
+      secretName: the-name-of-a-secret      
+
+###
+# Please refer to the values.yaml from the Helm package for databases
+# for a better explaination of the Cassandra parameters.
+###
+cassandra:
+  deploy: "as-pod"
+  namespace: james-mailserver
+  replicaCount: 1
+# deploy: as-ref
+# ips:
+#   - "1.2.3.4"
+#   - "5.6.7.8"
+#   - "9.10.11.12"
+
+###
+# Please refer to the values.yaml from the Helm package for databases
+# for a better explaination of the Elastic Search parameters.
+###
+elasticsearch:
+  deploy: "as-pod"
+  namespace: james-mailserver
+  replicaCount: 1
+# deploy: as-ref
+# ips:
+#   - "1.2.3.4"
+#   - "5.6.7.8"
+#   - "9.10.11.12"
