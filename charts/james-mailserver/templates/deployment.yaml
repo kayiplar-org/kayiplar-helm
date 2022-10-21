@@ -368,5 +368,3 @@ spec:
           sources:
           - configMap:
               name: james-configs
-          - secret:
-              name: james-jwt-key
