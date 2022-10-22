@@ -43,7 +43,7 @@ james:
       requests:
         cpu: "1000m"
         memory: "4Gi"
-  # secrets are all b64 encrypted sealed-secrets! Refer to secrets.yaml.tmpl
+  # secrets are encrypted sealed-secrets! Refer to secrets.yaml.tmpl. Just paste values
   secret:
     jwtPublicKey: "change-me"
     jwtPrivateKey: "change-me"
