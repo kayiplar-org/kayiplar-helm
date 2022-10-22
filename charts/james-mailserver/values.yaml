@@ -60,6 +60,7 @@ james:
       accessKeyId: "change-me"
       secretKey: "change-me"
       bucketNameSuffix: "change-me"
+  # existing secret which will be used for imap & smtp sockettls/starttls
   tls:
     secretName: tls-mailserver-cert
 
