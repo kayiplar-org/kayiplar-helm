@@ -22,4 +22,5 @@
   <autodiscover>true</autodiscover>
   <authoritative>false</authoritative>
   <maxcachesize>50000</maxcachesize>
+  <verbose>true</verbose>
 </dnsservice>
