@@ -20,6 +20,6 @@
 
 <usersrepository name="LocalUsers">
     <algorithm>SHA-512</algorithm>
-    <enableVirtualHosting>true</enableVirtualHosting>    
+    <enableVirtualHosting>false</enableVirtualHosting>    
     <enableForwarding>true</enableForwarding>
 </usersrepository>
