@@ -28,12 +28,17 @@
             <privateKey>file://secrets/tls.key</privateKey>
             <certificates>file://secrets/tls.crt</certificates>
         </tls>
-        <helloName autodetect="false">${env:JAMES_SMTP_HOSTNAME}</helloName>
+        <!--<helloName autodetect="false">${env:JAMES_SMTP_HOSTNAME}</helloName>-->
         <connectiontimeout>360</connectiontimeout>
         <connectionLimit>0</connectionLimit>
         <connectionLimitPerIP>0</connectionLimitPerIP>
         <authRequired>true</authRequired>
-        <requireSSL>false</requireSSL>
+        <auth>
+            <announce>never</announce>
+            <requireSSL>false</requireSSL>
+            <plainAuthEnabled>true</plainAuthEnabled>
+        </auth>
+        <authorizedAddresses>127.0.0.0/8</authorizedAddresses>
         <verifyIdentity>false</verifyIdentity>
         <proxyRequired>false</proxyRequired>
         <maxmessagesize>${env:JAMES_MESSAGE_SIZE}</maxmessagesize>
