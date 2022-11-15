@@ -27,20 +27,20 @@
                 -->
         </appender>
 
-        <root level="DEBUG">
+        <root level="INFO">
                 <appender-ref ref="CONSOLE" />
         </root>
 
-        <logger name="http.jmap" level="DEBUG" />
-        <logger name="org.apache.james.smtpserver" level="DEBUG" />
-        <logger name="org.apache.mailet.base.MailetPipelineLogging" level="DEBUG" />
-        <logger name="org.apache.james.mailetcontainer" level="DEBUG" />
-        <logger name="com.datastax.driver.core.QueryLogger.SLOW" level="DEBUG" />
-        <logger name="org.apache.james.mailetcontainer" level="DEBUG" />
-        <logger name="org.apache.james" level="DEBUG" />
-        <logger name="org.apache.james.backends.es" level="DEBUG" />
-        <logger name="com.datastax.driver.core.QueryLogger.SLOW" level="DEBUG" />
+        <logger name="http.jmap" level="INFO" />
+        <logger name="org.apache.james.smtpserver" level="INFO" />
+        <logger name="org.apache.mailet.base.MailetPipelineLogging" level="INFO" />
+        <logger name="org.apache.james.mailetcontainer" level="INFO" />
+        <logger name="com.datastax.driver.core.QueryLogger.SLOW" level="INFO" />
+        <logger name="org.apache.james.mailetcontainer" level="INFO" />
+        <logger name="org.apache.james" level="INFO" />
+        <logger name="org.apache.james.backends.es" level="INFO" />
+        <logger name="com.datastax.driver.core.QueryLogger.SLOW" level="INFO" />
         <logger name="com.datastax.driver.core.QueryLogger.ERROR" level="TRACE" />
-        <logger name="http.jmap" level="DEBUG" />
+        <logger name="http.jmap" level="INFO" />
 
 </configuration>
