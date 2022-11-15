@@ -53,15 +53,10 @@
         <jmxName>smtpserver-TLS</jmxName>
         <bind>0.0.0.0:465</bind>
         <connectionBacklog>200</connectionBacklog>
-        <tls socketTLS="false" startTLS="false">
+        <tls socketTLS="true" startTLS="false">
             <privateKey>file://secrets/tls.key</privateKey>
             <certificates>file://secrets/tls.crt</certificates>
         </tls>
-        <auth>
-            <announce>never</announce>
-            <requireSSL>false</requireSSL>
-            <plainAuthEnabled>true</plainAuthEnabled>
-        </auth>        
         <helloName autodetect="false">${env:JAMES_SMTP_HOSTNAME}</helloName>
         <connectiontimeout>360</connectiontimeout>
         <connectionLimit>0</connectionLimit>
