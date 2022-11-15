@@ -32,7 +32,8 @@
         <connectiontimeout>360</connectiontimeout>
         <connectionLimit>0</connectionLimit>
         <connectionLimitPerIP>0</connectionLimitPerIP>
-        <authRequired>false</authRequired>
+        <authRequired>true</authRequired>
+        <requireSSL>false</requireSSL>
         <verifyIdentity>false</verifyIdentity>
         <proxyRequired>false</proxyRequired>
         <maxmessagesize>${env:JAMES_MESSAGE_SIZE}</maxmessagesize>
