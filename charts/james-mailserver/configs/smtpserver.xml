@@ -38,7 +38,6 @@
             <requireSSL>false</requireSSL>
             <plainAuthEnabled>true</plainAuthEnabled>
         </auth>
-        <authorizedAddresses>10.0.0.0/8</authorizedAddresses>
         <verifyIdentity>false</verifyIdentity>
         <proxyRequired>false</proxyRequired>
         <maxmessagesize>${env:JAMES_MESSAGE_SIZE}</maxmessagesize>
