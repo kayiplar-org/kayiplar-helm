@@ -33,6 +33,10 @@ spec:
                   values:
                   - james
               topologyKey: "kubernetes.io/hostname"
+        {{- with .Values.james.nodeAffinity }}
+        nodeAffinity:
+          {{- toYaml . | nindent 10 }}      
+        {{- end}}                
 
       containers:
       - name: james-jmap
@@ -224,6 +228,10 @@ spec:
                   values:
                   - james
               topologyKey: "kubernetes.io/hostname"
+        {{- with .Values.james.nodeAffinity }}
+        nodeAffinity:
+          {{- toYaml . | nindent 10 }}      
+        {{- end}}          
 
       containers:
       - name: james-imap-smtp
